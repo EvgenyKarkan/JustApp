@@ -13,4 +13,7 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "EKConstants.h"
+    #import <MMDrawerController.h>
+    #import <MMDrawerBarButtonItem.h>
 #endif
