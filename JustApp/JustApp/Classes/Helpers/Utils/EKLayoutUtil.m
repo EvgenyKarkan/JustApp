@@ -30,6 +30,20 @@
 	return ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] == NSOrderedAscending);
 }
 
++ (CGFloat)verticalOffset
+{
+    CGFloat result = 0.0f;
+    
+    if ([self isSystemVersionLessThan7]) {
+        result = 0.0f;
+    }
+    else {
+        result = 64.0f;
+    }
+    
+    return result;
+}
+
 #pragma mark - Private API
 
 + (BOOL)isIPhone5

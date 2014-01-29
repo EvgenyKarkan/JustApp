@@ -9,11 +9,14 @@
 #import "EKMenuViewController.h"
 #import "EKMenuView.h"
 #import "EKMenuTableViewProvider.h"
+#import "EKAppDelegate.h"
+#import "EKCameraViewController.h"
 
 @interface EKMenuViewController () <EKMenuTableViewProviderDelegate>
 
 @property (nonatomic, strong) EKMenuView *menuView;
 @property (nonatomic, strong) EKMenuTableViewProvider *tableViewProvider;
+@property (nonatomic, strong) EKAppDelegate *appDelegate;
 
 @end
 
@@ -33,12 +36,14 @@
 {
     [super viewDidLoad];
     
+    self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     self.tableViewProvider = [[EKMenuTableViewProvider alloc] initWithDelegate:self];
     self.menuView.tableView.delegate = self.tableViewProvider;
 	self.menuView.tableView.dataSource = self.tableViewProvider;
     
-    self.view.backgroundColor = MENU_BACKGROUND_COLOR;
-    self.title = NSLocalizedString(@"Menu", @"Menu");
+    self.view.backgroundColor = BACKGROUND_COLOR;
+    self.title = NSLocalizedString(@"JustMenu", @"JustMenu");
     self.navigationController.navigationBar.titleTextAttributes = @{ UITextAttributeTextColor:[UIColor whiteColor],
                                                                      UITextAttributeFont:[UIFont systemFontOfSize:17.0f]};
 }
@@ -48,22 +53,55 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Show controllers
+
+- (void)showCameraViewController
+{
+	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    
+	if ([((UINavigationController *)self.appDelegate.drawerController.centerViewController).topViewController isKindOfClass :[EKCameraViewController class]]) {
+		[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+	}
+	else {
+		[self.appDelegate.drawerController setCenterViewController:self.appDelegate.navigationViewControllerCenter
+		                                        withCloseAnimation:YES
+		                                                completion:nil];
+	}
+}
+
 #pragma mark - EKMenuTableViewProviderDelegate
 
 - (void)cellDidPressWithIndex:(NSUInteger)index
 {
-    NSParameterAssert(index >= 0);
+	NSParameterAssert(index >= 0);
     
 	switch (index) {
 		case 0:
-                //[self showTimeTrackViewController];
+            [self showCameraViewController];
 			break;
             
 		case 1:
                 //[self showCalendarViewController];
+            NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
 			break;
             
 		case 2:
+            NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
+                //[self showSettingsViewController];
+			break;
+            
+		case 3:
+            NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
+                //[self showTimeTrackViewController];
+			break;
+            
+		case 4:
+            NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
+                //[self showCalendarViewController];
+			break;
+            
+		case 5:
+            NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
                 //[self showSettingsViewController];
 			break;
             

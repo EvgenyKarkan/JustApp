@@ -9,6 +9,7 @@
 #import "EKMenuView.h"
 #import "EKLayoutUtil.h"
 
+
 @implementation EKMenuView;
 
 - (id)initWithFrame:(CGRect)frame
@@ -18,7 +19,7 @@
 	if (self) {
 		self.tableView = [[UITableView alloc] init];
 		self.tableView.bounces = NO;
-		self.tableView.backgroundColor = MENU_BACKGROUND_COLOR;
+		self.tableView.backgroundColor = BACKGROUND_COLOR;
 		self.tableView.separatorColor = [[UIColor darkGrayColor] colorWithAlphaComponent:0.3f];
 		[self addSubview:self.tableView];
         

@@ -40,12 +40,12 @@ static CGFloat    const kEKTitleFontSize    = 20.0f;
 	self = [super init];
     
 	if (self) {
-        self.backgroundColor = MENU_BACKGROUND_COLOR;
+        self.backgroundColor = BACKGROUND_COLOR;
 		self.icon = [[UIImageView alloc] init];
 		[self addSubview:self.icon];
         
 		self.title = [[UILabel alloc] init];
-        self.title.backgroundColor = MENU_BACKGROUND_COLOR;
+        self.title.backgroundColor = BACKGROUND_COLOR;
         self.title.textColor = [UIColor whiteColor];
 		self.title.font = [UIFont fontWithName:kEKFont2 size:kEKTitleFontSize];
 		self.title.textAlignment = NSTextAlignmentLeft;
@@ -106,6 +106,18 @@ static CGFloat    const kEKTitleFontSize    = 20.0f;
 		default:
 			break;
 	}
+}
+
+#pragma mark - "selected" property setter
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    if (selected) {
+        self.title.textColor = NAV_BAR_BACKGROUND_COLOR;
+    }
+    else {
+        self.title.textColor = [UIColor whiteColor];
+    }
 }
 
 @end

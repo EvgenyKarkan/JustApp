@@ -19,7 +19,6 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
 @interface EKAppDelegate ()
 
 @property (nonatomic, strong) EKCameraViewController *cameraViewController;
-@property (nonatomic, strong) UINavigationController *navigationViewControllerCenter;
 
 @end
 
