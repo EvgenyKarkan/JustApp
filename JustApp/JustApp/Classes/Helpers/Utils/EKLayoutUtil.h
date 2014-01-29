@@ -11,6 +11,7 @@
 
 + (CGFloat)tableViewHeight;
 + (BOOL)isSystemVersionLessThan7;
++ (BOOL)isIPad;
 + (CGFloat)verticalOffset;
 
 @end

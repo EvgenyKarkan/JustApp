@@ -30,6 +30,20 @@
 	return ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] == NSOrderedAscending);
 }
 
++ (BOOL)isIPad
+{
+	BOOL result = NO;
+    
+	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+		result = YES;
+	}
+	else {
+		result = NO;
+	}
+    
+	return result;
+}
+
 + (CGFloat)verticalOffset
 {
     CGFloat result = 0.0f;
@@ -49,20 +63,6 @@
 + (BOOL)isIPhone5
 {
 	return (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)568.0f) < DBL_EPSILON);
-}
-
-+ (BOOL)isIPad
-{
-	BOOL result = NO;
-    
-	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		result = YES;
-	}
-	else {
-		result = NO;
-	}
-    
-	return result;
 }
 
 @end

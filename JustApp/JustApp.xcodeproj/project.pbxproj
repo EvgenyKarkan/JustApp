@@ -24,6 +24,7 @@
 		DE694609189807A400E4E961 /* JustAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE694608189807A400E4E961 /* JustAppTests.m */; };
 		DE92CBA118994A41000CA82E /* EKCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE92CBA018994A41000CA82E /* EKCameraView.m */; };
 		DE92CBA418994D73000CA82E /* EKMediaTypeControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DE92CBA318994D73000CA82E /* EKMediaTypeControl.m */; };
+		DE92CBA718999BAA000CA82E /* EKFontsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DE92CBA618999BAA000CA82E /* EKFontsUtil.m */; };
 		DED2B5AF189826780086CD5F /* EKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5AC189826780086CD5F /* EKAppDelegate.m */; };
 		DED2B5B2189828BE0086CD5F /* EKMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5B1189828BE0086CD5F /* EKMenuViewController.m */; };
 		DED2B5B5189829270086CD5F /* EKMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5B4189829270086CD5F /* EKMenuView.m */; };
@@ -69,6 +70,8 @@
 		DE92CBA018994A41000CA82E /* EKCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCameraView.m; sourceTree = "<group>"; };
 		DE92CBA218994D73000CA82E /* EKMediaTypeControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMediaTypeControl.h; sourceTree = "<group>"; };
 		DE92CBA318994D73000CA82E /* EKMediaTypeControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMediaTypeControl.m; sourceTree = "<group>"; };
+		DE92CBA518999BAA000CA82E /* EKFontsUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFontsUtil.h; sourceTree = "<group>"; };
+		DE92CBA618999BAA000CA82E /* EKFontsUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFontsUtil.m; sourceTree = "<group>"; };
 		DED2B5AB189826780086CD5F /* EKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAppDelegate.h; sourceTree = "<group>"; };
 		DED2B5AC189826780086CD5F /* EKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAppDelegate.m; sourceTree = "<group>"; };
 		DED2B5B0189828BE0086CD5F /* EKMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMenuViewController.h; sourceTree = "<group>"; };
@@ -243,6 +246,8 @@
 			children = (
 				DEE75F46189922B20072D03C /* EKLayoutUtil.h */,
 				DEE75F47189922B20072D03C /* EKLayoutUtil.m */,
+				DE92CBA518999BAA000CA82E /* EKFontsUtil.h */,
+				DE92CBA618999BAA000CA82E /* EKFontsUtil.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE92CBA718999BAA000CA82E /* EKFontsUtil.m in Sources */,
 				DED2B5B2189828BE0086CD5F /* EKMenuViewController.m in Sources */,
 				DE20E5191898338A00EA2F68 /* EKMenuTableViewProvider.m in Sources */,
 				DED2B5AF189826780086CD5F /* EKAppDelegate.m in Sources */,

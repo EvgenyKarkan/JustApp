@@ -11,6 +11,7 @@
 #import "EKMenuTableViewProvider.h"
 #import "EKAppDelegate.h"
 #import "EKCameraViewController.h"
+#import "EKFontsUtil.h"
 
 @interface EKMenuViewController () <EKMenuTableViewProviderDelegate>
 
@@ -45,7 +46,7 @@
     self.view.backgroundColor = BACKGROUND_COLOR;
     self.title = NSLocalizedString(@"JustMenu", @"JustMenu");
     self.navigationController.navigationBar.titleTextAttributes = @{ UITextAttributeTextColor:[UIColor whiteColor],
-                                                                     UITextAttributeFont:[UIFont systemFontOfSize:17.0f]};
+                                                                     UITextAttributeFont:[UIFont fontWithName:[EKFontsUtil fontName] size:kEKNavBarFontSize]};
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,26 +83,21 @@
             
 		case 1:
                 //[self showCalendarViewController];
-            NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
 			break;
             
 		case 2:
-            NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
                 //[self showSettingsViewController];
 			break;
             
 		case 3:
-            NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
                 //[self showTimeTrackViewController];
 			break;
             
 		case 4:
-            NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
                 //[self showCalendarViewController];
 			break;
             
 		case 5:
-            NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
                 //[self showSettingsViewController];
 			break;
             

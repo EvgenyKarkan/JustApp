@@ -7,6 +7,7 @@
 //
 
 #import "EKMenuCell.h"
+#import "EKFontsUtil.h"
 
 static NSString * const kEKCameraIcon       = @"Camera menu icon";
 static NSString * const kEKCameraTitle      = @"Camera";
@@ -47,7 +48,7 @@ static CGFloat    const kEKTitleFontSize    = 20.0f;
 		self.title = [[UILabel alloc] init];
         self.title.backgroundColor = BACKGROUND_COLOR;
         self.title.textColor = [UIColor whiteColor];
-		self.title.font = [UIFont fontWithName:kEKFont2 size:kEKTitleFontSize];
+		self.title.font = [UIFont fontWithName:[EKFontsUtil fontName] size:kEKTitleFontSize];
 		self.title.textAlignment = NSTextAlignmentLeft;
 		[self addSubview:self.title];
         

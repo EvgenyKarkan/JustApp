@@ -12,10 +12,6 @@
 #define NAV_BAR_BACKGROUND_COLOR  [UIColor colorWithRed:0.000000f green:0.443137f blue:0.615686f alpha:1.0f]
 #define BACKGROUND_COLOR          [UIColor colorWithRed:0.278431f green:0.686275f blue:0.803922f alpha:1.0f]
 
-static NSString * const kEKFont               = @"HelveticaNeue-UltraLight";
-static NSString * const kEKFont2              = @"Helvetica";
-static NSString * const kEKFont3              = @"HelveticaNeue-Light";
-
 static NSString * const kEKCameraAsset        = @"Shot";
 static NSString * const kEKCameraPressedAsset = @"ShotPressed";
 static NSString * const kEKFaceAsset          = @"Face";
@@ -31,5 +27,7 @@ static NSString * const kEKExceptionReason    = @"Class instance is singleton. I
 
 static NSString * const kEKClearedWithSuccess = @"Cleared";
 static NSString * const kEKErrorOnClear       = @"No data to clear";
+
+static CGFloat    const kEKNavBarFontSize     = 18.0f;
 
 #endif
