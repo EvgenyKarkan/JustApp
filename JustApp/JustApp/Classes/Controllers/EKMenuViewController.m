@@ -37,8 +37,10 @@
     self.menuView.tableView.delegate = self.tableViewProvider;
 	self.menuView.tableView.dataSource = self.tableViewProvider;
     
-        //self.view.backgroundColor = MENU_BACKGROUND_COLOR;
-    self.title = @"Menu";
+    self.view.backgroundColor = MENU_BACKGROUND_COLOR;
+    self.title = NSLocalizedString(@"Menu", @"Menu");
+    self.navigationController.navigationBar.titleTextAttributes = @{ UITextAttributeTextColor:[UIColor whiteColor],
+                                                                     UITextAttributeFont:[UIFont systemFontOfSize:17.0f]};
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,6 +71,5 @@
 			break;
 	}
 }
-
 
 @end

@@ -40,12 +40,13 @@ static CGFloat    const kEKTitleFontSize    = 20.0f;
 	self = [super init];
     
 	if (self) {
-            //self.backgroundColor = MENU_BACKGROUND_COLOR;
+        self.backgroundColor = MENU_BACKGROUND_COLOR;
 		self.icon = [[UIImageView alloc] init];
 		[self addSubview:self.icon];
         
 		self.title = [[UILabel alloc] init];
-        self.title.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.7f];
+        self.title.backgroundColor = MENU_BACKGROUND_COLOR;
+        self.title.textColor = [UIColor whiteColor];
 		self.title.font = [UIFont fontWithName:kEKFont2 size:kEKTitleFontSize];
 		self.title.textAlignment = NSTextAlignmentLeft;
 		[self addSubview:self.title];
@@ -61,8 +62,8 @@ static CGFloat    const kEKTitleFontSize    = 20.0f;
 {
 	[super layoutSubviews];
     
-    self.icon.frame  = CGRectMake(30.0f, 20.0f, 20.0f, 20.0f);
-    self.title.frame = CGRectMake(65.0f, 0.0f, self.frame.size.width, 60.0f);
+	self.icon.frame  = CGRectMake(30.0f, 20.0f, 20.0f, 20.0f);
+	self.title.frame = CGRectMake(65.0f, 0.0f, self.frame.size.width, 60.0f);
 }
 
 #pragma mark - Private API

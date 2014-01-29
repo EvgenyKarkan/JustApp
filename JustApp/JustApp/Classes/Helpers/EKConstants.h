@@ -1,17 +1,19 @@
 //
 //  EKConstants.h
-//  TrackMyTime
+//  JustApp
 //
-//  Created by Evgeny Karkan on 11.12.13.
-//  Copyright (c) 2013 EvgenyKarkan. All rights reserved.
+//  Created by Evgeny Karkan on 28.01.14.
+//  Copyright (c) 2014 EvgenyKarkan. All rights reserved.
 //
 
 #ifndef JustApp_Constants_h
 #define JustApp_Constants_h
 
-#define iOS7Blue              [UIColor colorWithRed:0.188235f green:0.564706f blue:0.980392f alpha:1.0f]
-#define APP_BACKGROUND_COLOR  [UIColor colorWithRed:0.949020f green:0.949020f blue:0.949020f alpha:1.0f]
-#define MENU_BACKGROUND_COLOR [UIColor colorWithRed:0.898039f green:0.898039f blue:0.898039f alpha:1.0f]
+#define iOS7Blue                  [UIColor colorWithRed:0.188235f green:0.564706f blue:0.980392f alpha:1.0f]
+#define NAV_BAR_BACKGROUND_COLOR  [UIColor colorWithRed:0.000000f green:0.443137f blue:0.615686f alpha:1.0f]
+
+#define MENU_BACKGROUND_COLOR     [UIColor colorWithRed:0.278431f green:0.686275f blue:0.803922f alpha:1.0f]
+
 
 static NSString * const kEKFont               = @"HelveticaNeue-UltraLight";
 static NSString * const kEKFont2              = @"Helvetica";

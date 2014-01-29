@@ -26,6 +26,7 @@
 		DED2B5B2189828BE0086CD5F /* EKMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5B1189828BE0086CD5F /* EKMenuViewController.m */; };
 		DED2B5B5189829270086CD5F /* EKMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5B4189829270086CD5F /* EKMenuView.m */; };
 		DED2B5B818982BFA0086CD5F /* EKMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5B618982BFA0086CD5F /* EKMenuCell.m */; };
+		DEE75F48189922B20072D03C /* EKLayoutUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE75F47189922B20072D03C /* EKLayoutUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		DED2B5B618982BFA0086CD5F /* EKMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMenuCell.m; sourceTree = "<group>"; };
 		DED2B5B718982BFA0086CD5F /* EKMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMenuCell.h; sourceTree = "<group>"; };
 		DED2B5BA18982D630086CD5F /* EKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKConstants.h; sourceTree = "<group>"; };
+		DEE75F46189922B20072D03C /* EKLayoutUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKLayoutUtil.h; sourceTree = "<group>"; };
+		DEE75F47189922B20072D03C /* EKLayoutUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKLayoutUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +216,7 @@
 		DED2B5B918982C8C0086CD5F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DEE75F45189922B20072D03C /* Utils */,
 				DE20E51E189841B600EA2F68 /* MMDrawerVisualStateManager.h */,
 				DE20E51D189841B600EA2F68 /* MMDrawerVisualStateManager.m */,
 				DED2B5BA18982D630086CD5F /* EKConstants.h */,
@@ -220,6 +224,15 @@
 				DE20E5181898338A00EA2F68 /* EKMenuTableViewProvider.m */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DEE75F45189922B20072D03C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DEE75F46189922B20072D03C /* EKLayoutUtil.h */,
+				DEE75F47189922B20072D03C /* EKLayoutUtil.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,6 +374,7 @@
 				DE6945F0189807A400E4E961 /* main.m in Sources */,
 				DE20E51F189841B600EA2F68 /* MMDrawerVisualStateManager.m in Sources */,
 				DED2B5B5189829270086CD5F /* EKMenuView.m in Sources */,
+				DEE75F48189922B20072D03C /* EKLayoutUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

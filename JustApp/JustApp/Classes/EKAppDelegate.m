@@ -10,6 +10,7 @@
 #import "EKMenuViewController.h"
 #import "EKCameraViewController.h"
 #import "MMDrawerVisualStateManager.h"
+#import "EKLayoutUtil.h"
 
 static NSString * const kEKRestorationID  = @"MMDrawer";
 static CGFloat    const kEKTitleFontSize  = 18.0f;
@@ -54,6 +55,13 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
 		}
 	}];
 
+    if ([EKLayoutUtil isSystemVersionLessThan7]) {
+        [[UINavigationBar appearance] setTintColor:NAV_BAR_BACKGROUND_COLOR];
+    }
+    else {
+        [[UINavigationBar appearance] setBarTintColor:NAV_BAR_BACKGROUND_COLOR];
+    }
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	[self.window setRootViewController:self.drawerController];
     [self.window makeKeyAndVisible];
