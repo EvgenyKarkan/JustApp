@@ -40,8 +40,6 @@
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"JustCamera", @"JustCamera");
-    self.navigationController.navigationBar.titleTextAttributes = @{ UITextAttributeTextColor:[UIColor whiteColor],
-                                                                     UITextAttributeFont:[UIFont fontWithName:[EKFontsUtil fontName] size:kEKNavBarFontSize]};
     self.view.backgroundColor = BACKGROUND_COLOR;
     [self setupLeftMenuButton];
     
@@ -61,7 +59,7 @@
 	NSLog(@"No camera in simulator, sorry bro :(");
 #else
 	if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-		[SVProgressHUD showErrorWithStatus:@"App is running on iPod, no camera, sorry :("];
+		[SVProgressHUD showErrorWithStatus:@"No camera on your device, sorry :("];
 	}
 	else {
 		__weak typeof(EKCameraViewController) * weakSelf = self;

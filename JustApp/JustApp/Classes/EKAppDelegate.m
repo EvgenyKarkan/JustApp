@@ -11,6 +11,7 @@
 #import "EKCameraViewController.h"
 #import "MMDrawerVisualStateManager.h"
 #import "EKLayoutUtil.h"
+#import "EKFontsUtil.h"
 
 static NSString * const kEKRestorationID  = @"MMDrawer";
 static CGFloat    const kEKTitleFontSize  = 18.0f;
@@ -60,6 +61,10 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
     else {
         [[UINavigationBar appearance] setBarTintColor:NAV_BAR_BACKGROUND_COLOR];
     }
+    
+    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:[EKFontsUtil fontName] size:kEKTitleFontSize], NSFontAttributeName,
+                                      [UIColor whiteColor], NSForegroundColorAttributeName, nil];
+	[[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	[self.window setRootViewController:self.drawerController];

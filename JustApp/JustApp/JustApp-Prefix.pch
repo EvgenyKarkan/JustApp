@@ -20,4 +20,6 @@
     #import <SVProgressHUD.h>
     #import <MobileCoreServices/MobileCoreServices.h>
     #import <MediaPlayer/MediaPlayer.h>
+    #import <CoreLocation/CoreLocation.h>
+    #import <MapKit/MapKit.h>
 #endif

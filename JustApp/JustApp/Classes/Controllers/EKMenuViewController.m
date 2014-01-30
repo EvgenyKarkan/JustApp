@@ -12,12 +12,14 @@
 #import "EKAppDelegate.h"
 #import "EKCameraViewController.h"
 #import "EKFontsUtil.h"
+#import "EKMapViewController.h"
 
 @interface EKMenuViewController () <EKMenuTableViewProviderDelegate>
 
 @property (nonatomic, strong) EKMenuView *menuView;
 @property (nonatomic, strong) EKMenuTableViewProvider *tableViewProvider;
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
+@property (nonatomic, strong) EKMapViewController *mapViewController;
 
 @end
 
@@ -39,15 +41,14 @@
     
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    self.view.backgroundColor = BACKGROUND_COLOR;
+    self.title = NSLocalizedString(@"JustMenu", @"JustMenu");
+    
     self.tableViewProvider = [[EKMenuTableViewProvider alloc] initWithDelegate:self];
     self.menuView.tableView.delegate = self.tableViewProvider;
 	self.menuView.tableView.dataSource = self.tableViewProvider;
     
-    self.view.backgroundColor = BACKGROUND_COLOR;
-    self.title = NSLocalizedString(@"JustMenu", @"JustMenu");
-    self.navigationController.navigationBar.titleTextAttributes = @{ UITextAttributeTextColor:[UIColor whiteColor],
-                                                                     UITextAttributeFont:[UIFont fontWithName:[EKFontsUtil fontName]
-                                                                                                         size:kEKNavBarFontSize]};
+    self.mapViewController = [[EKMapViewController alloc] init];
 }
 
 #pragma mark - Show controllers
@@ -57,13 +58,26 @@
 	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
 	if ([((UINavigationController *)self.appDelegate.drawerController.centerViewController).topViewController isKindOfClass:[EKCameraViewController class]]) {
-		[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+		[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft
+                                                   animated:YES
+                                                 completion:nil];
 	}
 	else {
 		[self.appDelegate.drawerController setCenterViewController:self.appDelegate.navigationViewControllerCenter
 		                                        withCloseAnimation:YES
 		                                                completion:nil];
 	}
+}
+
+- (void)showMapViewController
+{
+    [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    
+	UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:self.mapViewController];
+    
+	[self.appDelegate.drawerController setCenterViewController:foo
+	                                        withCloseAnimation:YES
+	                                                completion:nil];
 }
 
 #pragma mark - EKMenuTableViewProviderDelegate
@@ -78,7 +92,7 @@
 			break;
             
 		case 1:
-
+            [self showMapViewController];
 			break;
             
 		case 2:
