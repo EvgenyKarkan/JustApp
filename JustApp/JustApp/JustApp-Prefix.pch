@@ -19,4 +19,5 @@
     #import <DDExpandableButton.h>
     #import <SVProgressHUD.h>
     #import <MobileCoreServices/MobileCoreServices.h>
+    #import <MediaPlayer/MediaPlayer.h>
 #endif

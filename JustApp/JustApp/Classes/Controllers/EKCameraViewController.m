@@ -19,6 +19,7 @@
 @property (nonatomic, strong) EKCameraView *cameraView;
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
 @property (nonatomic, strong) EKImagePickerController *imagePickerController;
+@property (nonatomic, strong) MPMoviePlayerController *moviePlayerController;
 
 @end
 
@@ -52,11 +53,6 @@
     self.imagePickerController.delegate = self;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
 #pragma mark - Show imagePickerController
 
 - (void)showImagePickerController
@@ -65,10 +61,16 @@
 	NSLog(@"No camera in simulator, sorry bro :(");
 #else
 	if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        [SVProgressHUD showErrorWithStatus:@"App is running on iPod, no camera, sorry :("];
+		[SVProgressHUD showErrorWithStatus:@"App is running on iPod, no camera, sorry :("];
 	}
 	else {
-		[self presentViewController:self.imagePickerController animated:YES completion:nil];
+		__weak typeof(EKCameraViewController) * weakSelf = self;
+        
+		[self presentViewController:self.imagePickerController animated:YES completion: ^{
+		    if (weakSelf.moviePlayerController != nil) {
+		        [weakSelf.moviePlayerController.view removeFromSuperview];
+			}
+		}];
 	}
 #endif
 }
@@ -106,11 +108,31 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    CGFloat squareSide = self.cameraView.centerImage.frame.size.width;
-    UIImage *squareImage = [EKImageProcessingUtil squareImageWithImage:info[UIImagePickerControllerOriginalImage]
-                                                          scaledToSize:CGSizeMake(squareSide, squareSide)];
+	NSString *mediaType = info[UIImagePickerControllerMediaType];
     
-    self.cameraView.centerImage.image = squareImage;
+	if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+        [picker dismissViewControllerAnimated:YES completion:nil];
+		CGFloat squareSide = self.cameraView.centerImage.frame.size.width;
+		UIImage *squareImage = [EKImageProcessingUtil squareImageWithImage:info[UIImagePickerControllerOriginalImage]
+		                                                      scaledToSize:CGSizeMake(squareSide, squareSide)];
+		self.cameraView.centerImage.image = squareImage;
+	}
+	else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
+        [picker dismissViewControllerAnimated:YES completion:nil];
+        [self setUpMediaPlayerWithURL:info[UIImagePickerControllerMediaURL]];
+	}
+}
+
+#pragma mark - Media player stuff
+
+- (void)setUpMediaPlayerWithURL:(NSURL *)videoURL
+{
+    NSParameterAssert(videoURL != nil);
+    
+    self.moviePlayerController = [[MPMoviePlayerController alloc] initWithContentURL:videoURL];
+    self.moviePlayerController.view.frame = self.cameraView.centerImage.frame;
+    [self.cameraView addSubview:self.moviePlayerController.view];
+    [self.moviePlayerController play];
 }
 
 @end

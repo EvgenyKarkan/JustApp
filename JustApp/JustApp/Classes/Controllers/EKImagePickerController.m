@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) EKCameraOverlayView *overlayView;
 @property (nonatomic, strong) EKFocusFrameView *focusFrame;
+@property (nonatomic, assign) BOOL isVideoCapturing;
 
 @end
 
@@ -25,15 +26,13 @@
 - (void)viewDidLoad
 {
 	self.sourceType = UIImagePickerControllerSourceTypeCamera;
-    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+	self.modalPresentationStyle = UIModalPresentationCurrentContext;
 	self.showsCameraControls = NO;
-    self.cameraFlashMode = UIImagePickerControllerCameraFlashModeAuto;
-    self.mediaTypes = @[(NSString *) kUTTypeImage,(NSString *) kUTTypeMovie];
-    self.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+	self.cameraFlashMode = UIImagePickerControllerCameraFlashModeAuto;
+	self.mediaTypes = @[(NSString *)kUTTypeImage, (NSString *)kUTTypeMovie];
     
 	self.overlayView = [[EKCameraOverlayView alloc] initWithFrame:self.view.frame];
 	self.overlayView.frame = self.cameraOverlayView.frame;
-    
 	self.cameraOverlayView = self.overlayView;
     
 	self.focusFrame = [[EKFocusFrameView alloc] init];
@@ -42,12 +41,25 @@
 	[self addActionsToButtonsOnOverlay];
 }
 
-#pragma mark - UIResponder overriden API
+- (void)viewDidDisappear:(BOOL)animated
+{
+	[super viewDidDisappear:animated];
+    
+	self.overlayView.torchButton.selectedItem = 0;
+	self.overlayView.typeButton.selectedItem = 0;
+	self.overlayView.frontBackButton.selectedItem = 0;
+}
+
+#pragma mark - UIResponder's overriden API
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	CGPoint point = [[touches allObjects][0] locationInView:self.view];
-	[self.focusFrame moveToPoint:point whithScale:1.0f /*/ [self cameraViewScale]*/];
+	CGFloat barHeight = self.overlayView.barHeight;
+    
+	if (point.y > barHeight && point.y < self.view.frame.size.height - barHeight) {
+		[self.focusFrame moveToPoint:point whithScale:1.0f / [self cameraViewScale]];
+	}
 }
 
 #pragma mark - Focus frame helper
@@ -75,12 +87,12 @@
 	                      forControlEvents:UIControlEventValueChanged];
     
 	[self.overlayView.cancelButton addTarget:self
-	                                  action:@selector(dismissPicker:)
+	                                  action:@selector(cancelPressed:)
 	                        forControlEvents:UIControlEventTouchUpInside];
     
-    [self.overlayView.shotButton addTarget:self
-                                    action:@selector(takePictureOrVideo:)
-                          forControlEvents:UIControlEventTouchUpInside];
+	[self.overlayView.shotButton addTarget:self
+	                                action:@selector(takePictureOrVideo:)
+	                      forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)toggleFlashlight:(DDExpandableButton *)sender
@@ -137,34 +149,60 @@
 {
 	NSParameterAssert(sender != nil);
     
-    switch (sender.selectedItem) {
+	switch (sender.selectedItem) {
 		case 0:
-			NSLog(@"Photo");
 			self.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
 			break;
             
 		case 1:
-			NSLog(@"Videoh");
 			self.cameraCaptureMode = UIImagePickerControllerCameraCaptureModeVideo;
 			break;
             
- 		default:
+		default:
 			break;
 	}
 }
 
 - (void)takePictureOrVideo:(id)sender
 {
-    NSParameterAssert(sender != nil);
+	NSParameterAssert(sender != nil);
     
-        //TODO: is taken video or photo
-    [self takePicture];
-    [self dismissViewControllerAnimated:YES completion:nil];
+	if (self.cameraCaptureMode == UIImagePickerControllerCameraCaptureModePhoto) {
+		[self takePicture];
+	}
+	else {
+		self.isVideoCapturing = !self.isVideoCapturing;
+		[self startVideoCapture];
+        
+		if (!self.isVideoCapturing) {
+			[self stopVideoCapture];
+		}
+	}
 }
 
-- (void)dismissPicker:(DDExpandableButton *)sender
+- (void)cancelPressed:(DDExpandableButton *)sender
 {
 	NSParameterAssert(sender != nil);
+    
+	if (!self.isVideoCapturing) {
+		[self stopVideoCapture];
+	}
+    
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - "isVideoCapture" setter
+
+- (void)setIsVideoCapturing:(BOOL)isVideoCapturing
+{
+	_isVideoCapturing = isVideoCapturing;
+    
+	if (_isVideoCapturing) {
+		self.overlayView.videoIndicator.backgroundColor = [UIColor redColor];
+	}
+	else {
+		self.overlayView.videoIndicator.backgroundColor = [UIColor clearColor];
+	}
 }
 
 @end

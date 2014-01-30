@@ -68,14 +68,8 @@
         [self.cancelButton updateDisplay];
 		[self.bottomBar addSubview:self.cancelButton];
         
-        self.previewButton = [[DDExpandableButton alloc] initWithPoint:CGPointZero
-                                                            leftTitle:nil
-                                                              buttons:@[@"View"]];
-        [self.previewButton setToggleMode:YES];
-        [self.previewButton setInnerBorderWidth:0];
-		[self.previewButton setHorizontalPadding:6.0f];
-        [self.previewButton updateDisplay];
-        [self.bottomBar addSubview:self.previewButton];
+        self.videoIndicator = [[UIView alloc] init];
+        [self.bottomBar addSubview:self.videoIndicator];
         
         self.shotButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.shotButton setImage:[UIImage imageNamed:@"ShotOverlay"]
@@ -97,16 +91,18 @@
     [super layoutSubviews];
     
     CGFloat barHeight = 64.0f;
+    self.barHeight = barHeight;
     self.topBar.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, barHeight);
     self.bottomBar.frame = CGRectMake(0.0f, self.frame.size.height - barHeight, self.frame.size.width, barHeight);
     
     self.frontBackButton.frame = CGRectMake(self.topBar.frame.size.width - 80.0f, 18.0f, 60.0f, 31.0f);
     self.cancelButton.frame = CGRectMake(self.topBar.frame.size.width - 92.0f, 18.0f, 72.0f, 31.0f);
-    self.previewButton.frame = CGRectMake(self.cancelButton.frame.origin.x - 68.0f, 18.0f, 58.0f, 31.0f);
     
     CGFloat side = 60.0f;
     self.shotButton.frame = CGRectMake(self.bottomBar.frame.size.width / 2.0f - side / 2.0f, 2.0f, side, side);
     
+    CGFloat auxSide = side / 2.0f;
+    self.videoIndicator.frame = CGRectMake(self.bottomBar.frame.size.width / 2.0f - auxSide / 2.0f, barHeight / 2.0f - auxSide / 2.0f, auxSide, auxSide);
     self.visibleFrameView.frame = CGRectMake(0.0f, barHeight, self.frame.size.width, self.frame.size.height - barHeight * 2.0f);
 }
 

@@ -34,6 +34,7 @@
 		DEE648C5189A82E700633822 /* EKImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE648C4189A82E700633822 /* EKImagePickerController.m */; };
 		DEE648C7189A9FD400633822 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEE648C6189A9FD400633822 /* MobileCoreServices.framework */; };
 		DEE648CA189AC6FB00633822 /* EKImageProcessingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE648C9189AC6FB00633822 /* EKImageProcessingUtil.m */; };
+		DEE648CC189AD38E00633822 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEE648CB189AD38E00633822 /* MediaPlayer.framework */; };
 		DEE75F48189922B20072D03C /* EKLayoutUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE75F47189922B20072D03C /* EKLayoutUtil.m */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,7 @@
 		DEE648C6189A9FD400633822 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DEE648C8189AC6FB00633822 /* EKImageProcessingUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKImageProcessingUtil.h; sourceTree = "<group>"; };
 		DEE648C9189AC6FB00633822 /* EKImageProcessingUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKImageProcessingUtil.m; sourceTree = "<group>"; };
+		DEE648CB189AD38E00633822 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		DEE75F46189922B20072D03C /* EKLayoutUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKLayoutUtil.h; sourceTree = "<group>"; };
 		DEE75F47189922B20072D03C /* EKLayoutUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKLayoutUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEE648CC189AD38E00633822 /* MediaPlayer.framework in Frameworks */,
 				DEE648C7189A9FD400633822 /* MobileCoreServices.framework in Frameworks */,
 				DE6945E6189807A400E4E961 /* CoreGraphics.framework in Frameworks */,
 				DE6945E8189807A400E4E961 /* UIKit.framework in Frameworks */,
@@ -148,6 +151,7 @@
 		DE6945E2189807A400E4E961 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DEE648CB189AD38E00633822 /* MediaPlayer.framework */,
 				DEE648C6189A9FD400633822 /* MobileCoreServices.framework */,
 				DE92CB9D18993D38000CA82E /* AVFoundation.framework */,
 				DE6945E3189807A400E4E961 /* Foundation.framework */,

@@ -9,5 +9,4 @@
 
 @interface EKImagePickerController : UIImagePickerController
 
-
 @end

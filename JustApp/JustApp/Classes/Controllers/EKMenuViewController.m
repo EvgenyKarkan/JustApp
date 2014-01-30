@@ -46,12 +46,8 @@
     self.view.backgroundColor = BACKGROUND_COLOR;
     self.title = NSLocalizedString(@"JustMenu", @"JustMenu");
     self.navigationController.navigationBar.titleTextAttributes = @{ UITextAttributeTextColor:[UIColor whiteColor],
-                                                                     UITextAttributeFont:[UIFont fontWithName:[EKFontsUtil fontName] size:kEKNavBarFontSize]};
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
+                                                                     UITextAttributeFont:[UIFont fontWithName:[EKFontsUtil fontName]
+                                                                                                         size:kEKNavBarFontSize]};
 }
 
 #pragma mark - Show controllers
@@ -60,7 +56,7 @@
 {
 	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
-	if ([((UINavigationController *)self.appDelegate.drawerController.centerViewController).topViewController isKindOfClass :[EKCameraViewController class]]) {
+	if ([((UINavigationController *)self.appDelegate.drawerController.centerViewController).topViewController isKindOfClass:[EKCameraViewController class]]) {
 		[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 	}
 	else {
@@ -82,23 +78,23 @@
 			break;
             
 		case 1:
-                //[self showCalendarViewController];
+
 			break;
             
 		case 2:
-                //[self showSettingsViewController];
+
 			break;
             
 		case 3:
-                //[self showTimeTrackViewController];
+
 			break;
             
 		case 4:
-                //[self showCalendarViewController];
+
 			break;
             
 		case 5:
-                //[self showSettingsViewController];
+
 			break;
             
 		default:
