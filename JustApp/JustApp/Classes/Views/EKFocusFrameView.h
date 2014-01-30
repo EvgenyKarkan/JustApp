@@ -7,8 +7,6 @@
 //
 
 
-#define ANIMATION_SCALE .7f
-
 @interface EKFocusFrameView : UIView
 
 - (void)moveToPoint:(CGPoint)destinationPoint whithScale:(CGFloat)scale;

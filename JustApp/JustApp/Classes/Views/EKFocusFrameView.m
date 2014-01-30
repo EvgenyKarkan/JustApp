@@ -9,17 +9,17 @@
 
 #import "EKFocusFrameView.h"
 
+static CGFloat    const kEKAnimationScale = 0.7f;
+static CGFloat    const kEKFrameSide      = 120.0f;
+static CGFloat    const kEKPathWidth      = 2.0f;
+static CGFloat    const kEKLimbLenght     = 20.0f;
 
-#define FRAME_WIDTH 120
-#define FRAME_HEIGHT 120
-#define PATH_WIDTH  2
-#define LIMB_LENGTH 12
 
 @implementation EKFocusFrameView
 
 - (id)init
 {
-	self = [super initWithFrame:CGRectMake(0, 0, FRAME_WIDTH, FRAME_HEIGHT)];
+	self = [super initWithFrame:CGRectMake(0.0f, 0.0f, kEKFrameSide, kEKFrameSide)];
 	if (self) {
 		[self setBackgroundColor:[UIColor clearColor]];
 		[self setUserInteractionEnabled:NO];
@@ -36,7 +36,7 @@
 	                      delay:0.0f
 	                    options:UIViewAnimationOptionCurveEaseInOut
 	                 animations: ^{
-                         self.transform = CGAffineTransformMakeScale(ANIMATION_SCALE * scale, ANIMATION_SCALE * scale);
+                         self.transform = CGAffineTransformMakeScale(kEKAnimationScale * scale, kEKAnimationScale * scale);
                      }
 	                 completion: ^(BOOL finished) {
                          [self setAlpha:0.0f];
@@ -46,8 +46,8 @@
 
 - (void)moveToPoint:(CGPoint)destinationPoint whithScale:(CGFloat)scale
 {
-    [self setCenter:destinationPoint];
-    [self animateWhithScale:scale];
+	[self setCenter:destinationPoint];
+	[self animateWhithScale:scale];
 }
 
 - (void)drawRect:(CGRect)rect
@@ -55,21 +55,20 @@
 	CGContextRef context = UIGraphicsGetCurrentContext();
     
 	CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
-	CGContextSetLineWidth(context, PATH_WIDTH);
+	CGContextSetLineWidth(context, kEKPathWidth);
 	CGPathRef path = CGPathCreateWithRect(CGRectMake(self.bounds.origin.x, self.bounds.origin.y, self.bounds.size.width, self.bounds.size.height), nil);
     
-	CGContextMoveToPoint(context, self.bounds.size.width / 2, 0);
-	CGContextAddLineToPoint(context, self.bounds.size.width / 2, LIMB_LENGTH);
+	CGContextMoveToPoint(context, self.bounds.size.width / 2.0f, 0.0f);
+	CGContextAddLineToPoint(context, self.bounds.size.width / 2.0f, kEKLimbLenght);
     
-	CGContextMoveToPoint(context, self.bounds.size.width, self.bounds.size.height / 2);
-	CGContextAddLineToPoint(context, self.bounds.size.width - LIMB_LENGTH, self.bounds.size.height / 2);
+	CGContextMoveToPoint(context, self.bounds.size.width, self.bounds.size.height / 2.0f);
+	CGContextAddLineToPoint(context, self.bounds.size.width - kEKLimbLenght, self.bounds.size.height / 2.0f);
     
-	CGContextMoveToPoint(context, self.bounds.size.width / 2, self.bounds.size.height);
-	CGContextAddLineToPoint(context, self.bounds.size.width / 2, self.bounds.size.height - LIMB_LENGTH);
+	CGContextMoveToPoint(context, self.bounds.size.width / 2.0f, self.bounds.size.height);
+	CGContextAddLineToPoint(context, self.bounds.size.width / 2.0f, self.bounds.size.height - kEKLimbLenght);
     
-	CGContextMoveToPoint(context, 0, self.bounds.size.height / 2);
-	CGContextAddLineToPoint(context, LIMB_LENGTH, self.bounds.size.height / 2);
-    
+	CGContextMoveToPoint(context, 0.0f, self.bounds.size.height / 2.0f);
+	CGContextAddLineToPoint(context, kEKLimbLenght, self.bounds.size.height / 2.0f);
     
 	CGContextAddPath(context, path);
     
