@@ -23,8 +23,10 @@
 		DE694607189807A400E4E961 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE694605189807A400E4E961 /* InfoPlist.strings */; };
 		DE694609189807A400E4E961 /* JustAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE694608189807A400E4E961 /* JustAppTests.m */; };
 		DE92CBA118994A41000CA82E /* EKCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE92CBA018994A41000CA82E /* EKCameraView.m */; };
-		DE92CBA418994D73000CA82E /* EKMediaTypeControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DE92CBA318994D73000CA82E /* EKMediaTypeControl.m */; };
+		DE92CBA418994D73000CA82E /* EKCameraControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DE92CBA318994D73000CA82E /* EKCameraControl.m */; };
 		DE92CBA718999BAA000CA82E /* EKFontsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DE92CBA618999BAA000CA82E /* EKFontsUtil.m */; };
+		DE92CBAA1899B1F6000CA82E /* EKCameraOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE92CBA91899B1F6000CA82E /* EKCameraOverlayView.m */; };
+		DE92CBAD1899CA21000CA82E /* EKFocusFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE92CBAC1899CA21000CA82E /* EKFocusFrameView.m */; };
 		DED2B5AF189826780086CD5F /* EKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5AC189826780086CD5F /* EKAppDelegate.m */; };
 		DED2B5B2189828BE0086CD5F /* EKMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5B1189828BE0086CD5F /* EKMenuViewController.m */; };
 		DED2B5B5189829270086CD5F /* EKMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5B4189829270086CD5F /* EKMenuView.m */; };
@@ -68,10 +70,14 @@
 		DE92CB9D18993D38000CA82E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DE92CB9F18994A41000CA82E /* EKCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCameraView.h; sourceTree = "<group>"; };
 		DE92CBA018994A41000CA82E /* EKCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCameraView.m; sourceTree = "<group>"; };
-		DE92CBA218994D73000CA82E /* EKMediaTypeControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMediaTypeControl.h; sourceTree = "<group>"; };
-		DE92CBA318994D73000CA82E /* EKMediaTypeControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMediaTypeControl.m; sourceTree = "<group>"; };
+		DE92CBA218994D73000CA82E /* EKCameraControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCameraControl.h; sourceTree = "<group>"; };
+		DE92CBA318994D73000CA82E /* EKCameraControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCameraControl.m; sourceTree = "<group>"; };
 		DE92CBA518999BAA000CA82E /* EKFontsUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFontsUtil.h; sourceTree = "<group>"; };
 		DE92CBA618999BAA000CA82E /* EKFontsUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFontsUtil.m; sourceTree = "<group>"; };
+		DE92CBA81899B1F6000CA82E /* EKCameraOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCameraOverlayView.h; sourceTree = "<group>"; };
+		DE92CBA91899B1F6000CA82E /* EKCameraOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCameraOverlayView.m; sourceTree = "<group>"; };
+		DE92CBAB1899CA21000CA82E /* EKFocusFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFocusFrameView.h; sourceTree = "<group>"; };
+		DE92CBAC1899CA21000CA82E /* EKFocusFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFocusFrameView.m; sourceTree = "<group>"; };
 		DED2B5AB189826780086CD5F /* EKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAppDelegate.h; sourceTree = "<group>"; };
 		DED2B5AC189826780086CD5F /* EKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAppDelegate.m; sourceTree = "<group>"; };
 		DED2B5B0189828BE0086CD5F /* EKMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMenuViewController.h; sourceTree = "<group>"; };
@@ -216,14 +222,18 @@
 		DED2B5AE189826780086CD5F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DE92CBAB1899CA21000CA82E /* EKFocusFrameView.h */,
+				DE92CBAC1899CA21000CA82E /* EKFocusFrameView.m */,
 				DED2B5B718982BFA0086CD5F /* EKMenuCell.h */,
 				DED2B5B618982BFA0086CD5F /* EKMenuCell.m */,
 				DED2B5B3189829270086CD5F /* EKMenuView.h */,
 				DED2B5B4189829270086CD5F /* EKMenuView.m */,
 				DE92CB9F18994A41000CA82E /* EKCameraView.h */,
 				DE92CBA018994A41000CA82E /* EKCameraView.m */,
-				DE92CBA218994D73000CA82E /* EKMediaTypeControl.h */,
-				DE92CBA318994D73000CA82E /* EKMediaTypeControl.m */,
+				DE92CBA218994D73000CA82E /* EKCameraControl.h */,
+				DE92CBA318994D73000CA82E /* EKCameraControl.m */,
+				DE92CBA81899B1F6000CA82E /* EKCameraOverlayView.h */,
+				DE92CBA91899B1F6000CA82E /* EKCameraOverlayView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -383,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE92CBAA1899B1F6000CA82E /* EKCameraOverlayView.m in Sources */,
 				DE92CBA718999BAA000CA82E /* EKFontsUtil.m in Sources */,
 				DED2B5B2189828BE0086CD5F /* EKMenuViewController.m in Sources */,
 				DE20E5191898338A00EA2F68 /* EKMenuTableViewProvider.m in Sources */,
@@ -392,7 +403,8 @@
 				DED2B5B818982BFA0086CD5F /* EKMenuCell.m in Sources */,
 				DE6945F0189807A400E4E961 /* main.m in Sources */,
 				DE20E51F189841B600EA2F68 /* MMDrawerVisualStateManager.m in Sources */,
-				DE92CBA418994D73000CA82E /* EKMediaTypeControl.m in Sources */,
+				DE92CBA418994D73000CA82E /* EKCameraControl.m in Sources */,
+				DE92CBAD1899CA21000CA82E /* EKFocusFrameView.m in Sources */,
 				DED2B5B5189829270086CD5F /* EKMenuView.m in Sources */,
 				DEE75F48189922B20072D03C /* EKLayoutUtil.m in Sources */,
 			);

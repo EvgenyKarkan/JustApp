@@ -24,8 +24,9 @@
 - (id)initWithFrame:(CGRect)frame
 {
 	self = [super initWithFrame:frame];
+    
 	if (self) {
-		self.photoControl = [[EKMediaTypeControl alloc] initWithImage:[UIImage imageNamed:kEKCameraAsset]];
+		self.photoControl = [[EKCameraControl alloc] initWithImage:[UIImage imageNamed:kEKCameraAsset]];
 		[self addSubview:self.photoControl];
         
 		self.centerImage = [[UIImageView alloc] init];

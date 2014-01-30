@@ -6,22 +6,25 @@
 //  Copyright (c) 2014 EvgenyKarkan. All rights reserved.
 //
 
-#import "EKMediaTypeControl.h"
+#import "EKCameraControl.h"
 
-@interface EKMediaTypeControl ()
+@interface EKCameraControl ()
 
 @property (nonatomic, strong) UIImageView *imageView;
 
 @end
 
 
-@implementation EKMediaTypeControl;
+@implementation EKCameraControl;
 
 #pragma mark - Designated initializer
 
 - (instancetype)initWithImage:(UIImage *)givenImage
 {
+    NSParameterAssert(givenImage != nil);
+    
 	self = [super init];
+    
 	if (self) {
 		self.imageView = [[UIImageView alloc] init];
 		self.imageView.image = givenImage;

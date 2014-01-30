@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 EvgenyKarkan. All rights reserved.
 //
 
-#import "EKMediaTypeControl.h"
+#import "EKCameraControl.h"
 
 @interface EKCameraView : UIView
 
 @property (nonatomic, strong) UIImageView *centerImage;
-@property (nonatomic, strong) EKMediaTypeControl *photoControl;
+@property (nonatomic, strong) EKCameraControl *photoControl;
 
 @end

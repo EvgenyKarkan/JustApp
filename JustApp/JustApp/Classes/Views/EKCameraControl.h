@@ -7,7 +7,7 @@
 //
 
 
-@interface EKMediaTypeControl : UIControl
+@interface EKCameraControl : UIControl
 
 - (instancetype)initWithImage:(UIImage *)image;
 

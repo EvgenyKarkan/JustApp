@@ -11,16 +11,15 @@
 #import "EKAppDelegate.h"
 #import "EKLayoutUtil.h"
 #import "EKFontsUtil.h"
+#import "EKCameraOverlayView.h"
+#import "EKFocusFrameView.h"
 
-    // Transform values for full screen support:
-#define CAMERA_TRANSFORM_X 1
-    //#define CAMERA_TRANSFORM_Y 1.12412 // this was for iOS 3.x
-#define CAMERA_TRANSFORM_Y 1.24299 // this works for iOS 4.x
-
-@interface EKCameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface EKCameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) EKCameraView *cameraView;
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
+@property (nonatomic, strong) EKCameraOverlayView *overlayView;
+@property (nonatomic, strong) EKFocusFrameView *focusFrame;
 
 @property (nonatomic, strong) UIImagePickerController *imagePickerController;
 
@@ -51,57 +50,16 @@
     [self.cameraView.photoControl addTarget:self
                                      action:@selector(showImagePickerController)
                            forControlEvents:UIControlEventTouchUpInside];
-#ifdef __i386__
-	NSLog(@"No camera in simulator, sorry bro :(");
-#else
+    
     self.imagePickerController = [[UIImagePickerController alloc] init];
     self.imagePickerController.delegate = self;
-	[self setUpImagePickerController];
-#endif
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-//        // Make camera view full screen:
-//	picker.wantsFullScreenLayout = YES;
-//	picker.cameraViewTransform = CGAffineTransformScale(picker.cameraViewTransform, CAMERA_TRANSFORM_X, CAMERA_TRANSFORM_Y);
-//	
-//        // Insert the overlay:
-//        //picker.cameraOverlayView = overlay;
-//	
-//        // Show the picker:
-//    
-//    [self presentViewController:picker animated:YES completion:nil];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
-#pragma mark - Setup imagePickerController
-
-- (void)setUpImagePickerController
-{
-    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    self.imagePickerController.showsCameraControls = YES;
-    self.imagePickerController.navigationBarHidden = NO;
-    
-        //Create camera overlay
-    CGRect f = self.imagePickerController.view.bounds;
-    f.size.height -= self.imagePickerController.navigationBar.bounds.size.height;
-    UIGraphicsBeginImageContext(f.size);
-    [[UIColor colorWithWhite:0 alpha:.5] set];
-    UIRectFillUsingBlendMode(CGRectMake(0, 0, f.size.width, 124.0), kCGBlendModeNormal);
-    UIRectFillUsingBlendMode(CGRectMake(0, 444, f.size.width, 52), kCGBlendModeNormal);
-    UIImage *overlayImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    UIImageView *overlayIV = [[UIImageView alloc] initWithFrame:f];
-    overlayIV.image = overlayImage;
-    overlayIV.alpha = 0.7f;
-    [self.imagePickerController setCameraOverlayView:overlayIV];
 }
 
 #pragma mark - Show imagePickerController
@@ -111,6 +69,20 @@
 #ifdef __i386__
 	NSLog(@"No camera in simulator, sorry bro :(");
 #else
+    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    self.imagePickerController.showsCameraControls = NO;
+    
+    self.overlayView = [[EKCameraOverlayView alloc] init];
+    self.overlayView.frame = self.imagePickerController.cameraOverlayView.frame;
+    self.imagePickerController.cameraOverlayView = self.overlayView;
+    
+    self.focusFrame = [[EKFocusFrameView alloc] init];
+    [self.overlayView addSubview:self.focusFrame];
+    
+    UITapGestureRecognizer *tapGestureForVideoView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    [tapGestureForVideoView setDelegate:self];
+    [self.imagePickerController.cameraOverlayView addGestureRecognizer:tapGestureForVideoView];
+    
 	[self presentViewController:self.imagePickerController animated:YES completion:nil];
 #endif
 }
@@ -144,16 +116,21 @@
 	[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UIView * previewView = [[[[[[[[[[
-                                     self.imagePickerController.view // UILayoutContainerView
-                                     subviews] objectAtIndex:0] // UINavigationTransitionView
-                                   subviews] objectAtIndex:0] // UIViewControllerWrapperView
-                                 subviews] objectAtIndex:0] // UIView
-                               subviews] objectAtIndex:0] // PLCameraView
-                             subviews] objectAtIndex:0]; // PLPreviewView
-    [previewView touchesBegan:touches withEvent:event];
+- (void)tap:(UITapGestureRecognizer *)recognizer
+{
+    NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
+    NSParameterAssert(recognizer != nil);
+    
+	CGPoint gesturePoint = [recognizer locationInView:self.imagePickerController.view];
+    NSLog(@"point %f", gesturePoint.x);
+        NSLog(@"point %f", gesturePoint.y);
+	[self.focusFrame moveToPoint:gesturePoint whithScale:1 / [self cameraViewScale]];
 }
 
+- (float)cameraViewScale
+{
+    return sqrtf(self.imagePickerController.cameraOverlayView.transform.a * self.imagePickerController.cameraOverlayView.transform.a +
+                 self.imagePickerController.cameraOverlayView.transform.c * self.imagePickerController.cameraOverlayView.transform.c);
+}
 
 @end
