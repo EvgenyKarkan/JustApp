@@ -31,6 +31,9 @@
 		DED2B5B2189828BE0086CD5F /* EKMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5B1189828BE0086CD5F /* EKMenuViewController.m */; };
 		DED2B5B5189829270086CD5F /* EKMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5B4189829270086CD5F /* EKMenuView.m */; };
 		DED2B5B818982BFA0086CD5F /* EKMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5B618982BFA0086CD5F /* EKMenuCell.m */; };
+		DEE648C5189A82E700633822 /* EKImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE648C4189A82E700633822 /* EKImagePickerController.m */; };
+		DEE648C7189A9FD400633822 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEE648C6189A9FD400633822 /* MobileCoreServices.framework */; };
+		DEE648CA189AC6FB00633822 /* EKImageProcessingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE648C9189AC6FB00633822 /* EKImageProcessingUtil.m */; };
 		DEE75F48189922B20072D03C /* EKLayoutUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE75F47189922B20072D03C /* EKLayoutUtil.m */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +90,11 @@
 		DED2B5B618982BFA0086CD5F /* EKMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMenuCell.m; sourceTree = "<group>"; };
 		DED2B5B718982BFA0086CD5F /* EKMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMenuCell.h; sourceTree = "<group>"; };
 		DED2B5BA18982D630086CD5F /* EKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKConstants.h; sourceTree = "<group>"; };
+		DEE648C3189A82E700633822 /* EKImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKImagePickerController.h; sourceTree = "<group>"; };
+		DEE648C4189A82E700633822 /* EKImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKImagePickerController.m; sourceTree = "<group>"; };
+		DEE648C6189A9FD400633822 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		DEE648C8189AC6FB00633822 /* EKImageProcessingUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKImageProcessingUtil.h; sourceTree = "<group>"; };
+		DEE648C9189AC6FB00633822 /* EKImageProcessingUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKImageProcessingUtil.m; sourceTree = "<group>"; };
 		DEE75F46189922B20072D03C /* EKLayoutUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKLayoutUtil.h; sourceTree = "<group>"; };
 		DEE75F47189922B20072D03C /* EKLayoutUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKLayoutUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEE648C7189A9FD400633822 /* MobileCoreServices.framework in Frameworks */,
 				DE6945E6189807A400E4E961 /* CoreGraphics.framework in Frameworks */,
 				DE6945E8189807A400E4E961 /* UIKit.framework in Frameworks */,
 				DE6945E4189807A400E4E961 /* Foundation.framework in Frameworks */,
@@ -139,6 +148,7 @@
 		DE6945E2189807A400E4E961 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DEE648C6189A9FD400633822 /* MobileCoreServices.framework */,
 				DE92CB9D18993D38000CA82E /* AVFoundation.framework */,
 				DE6945E3189807A400E4E961 /* Foundation.framework */,
 				DE6945E5189807A400E4E961 /* CoreGraphics.framework */,
@@ -208,6 +218,8 @@
 				DED2B5B1189828BE0086CD5F /* EKMenuViewController.m */,
 				DE20E51A18983ED100EA2F68 /* EKCameraViewController.h */,
 				DE20E51B18983ED100EA2F68 /* EKCameraViewController.m */,
+				DEE648C3189A82E700633822 /* EKImagePickerController.h */,
+				DEE648C4189A82E700633822 /* EKImagePickerController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -222,8 +234,6 @@
 		DED2B5AE189826780086CD5F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DE92CBAB1899CA21000CA82E /* EKFocusFrameView.h */,
-				DE92CBAC1899CA21000CA82E /* EKFocusFrameView.m */,
 				DED2B5B718982BFA0086CD5F /* EKMenuCell.h */,
 				DED2B5B618982BFA0086CD5F /* EKMenuCell.m */,
 				DED2B5B3189829270086CD5F /* EKMenuView.h */,
@@ -232,6 +242,8 @@
 				DE92CBA018994A41000CA82E /* EKCameraView.m */,
 				DE92CBA218994D73000CA82E /* EKCameraControl.h */,
 				DE92CBA318994D73000CA82E /* EKCameraControl.m */,
+				DE92CBAB1899CA21000CA82E /* EKFocusFrameView.h */,
+				DE92CBAC1899CA21000CA82E /* EKFocusFrameView.m */,
 				DE92CBA81899B1F6000CA82E /* EKCameraOverlayView.h */,
 				DE92CBA91899B1F6000CA82E /* EKCameraOverlayView.m */,
 			);
@@ -258,6 +270,8 @@
 				DEE75F47189922B20072D03C /* EKLayoutUtil.m */,
 				DE92CBA518999BAA000CA82E /* EKFontsUtil.h */,
 				DE92CBA618999BAA000CA82E /* EKFontsUtil.m */,
+				DEE648C8189AC6FB00633822 /* EKImageProcessingUtil.h */,
+				DEE648C9189AC6FB00633822 /* EKImageProcessingUtil.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -393,6 +407,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEE648CA189AC6FB00633822 /* EKImageProcessingUtil.m in Sources */,
+				DEE648C5189A82E700633822 /* EKImagePickerController.m in Sources */,
 				DE92CBAA1899B1F6000CA82E /* EKCameraOverlayView.m in Sources */,
 				DE92CBA718999BAA000CA82E /* EKFontsUtil.m in Sources */,
 				DED2B5B2189828BE0086CD5F /* EKMenuViewController.m in Sources */,

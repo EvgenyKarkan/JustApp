@@ -58,7 +58,6 @@
     
 	CGFloat controlSide = 50.0f;
 	self.photoControl.frame = CGRectMake(halfSelfWidth - controlSide / 2.0f, self.frame.size.height - controlSide * 1.5f, controlSide, controlSide);
-    
 	self.helloLabel.frame = CGRectMake(0.0f, self.centerImage.frame.origin.y + imageSide, self.frame.size.width, 60.0f);
 }
 

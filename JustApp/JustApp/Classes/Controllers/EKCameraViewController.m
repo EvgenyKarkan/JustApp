@@ -11,17 +11,14 @@
 #import "EKAppDelegate.h"
 #import "EKLayoutUtil.h"
 #import "EKFontsUtil.h"
-#import "EKCameraOverlayView.h"
-#import "EKFocusFrameView.h"
+#import "EKImagePickerController.h"
+#import "EKImageProcessingUtil.h"
 
 @interface EKCameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) EKCameraView *cameraView;
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
-@property (nonatomic, strong) EKCameraOverlayView *overlayView;
-@property (nonatomic, strong) EKFocusFrameView *focusFrame;
-
-@property (nonatomic, strong) UIImagePickerController *imagePickerController;
+@property (nonatomic, strong) EKImagePickerController *imagePickerController;
 
 @end
 
@@ -51,10 +48,8 @@
                                      action:@selector(showImagePickerController)
                            forControlEvents:UIControlEventTouchUpInside];
     
-    self.imagePickerController = [[UIImagePickerController alloc] init];
+    self.imagePickerController = [[EKImagePickerController alloc] init];
     self.imagePickerController.delegate = self;
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,21 +64,12 @@
 #ifdef __i386__
 	NSLog(@"No camera in simulator, sorry bro :(");
 #else
-    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    self.imagePickerController.showsCameraControls = NO;
-    
-    self.overlayView = [[EKCameraOverlayView alloc] init];
-    self.overlayView.frame = self.imagePickerController.cameraOverlayView.frame;
-    self.imagePickerController.cameraOverlayView = self.overlayView;
-    
-    self.focusFrame = [[EKFocusFrameView alloc] init];
-    [self.overlayView addSubview:self.focusFrame];
-    
-    UITapGestureRecognizer *tapGestureForVideoView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-    [tapGestureForVideoView setDelegate:self];
-    [self.imagePickerController.cameraOverlayView addGestureRecognizer:tapGestureForVideoView];
-    
-	[self presentViewController:self.imagePickerController animated:YES completion:nil];
+	if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        [SVProgressHUD showErrorWithStatus:@"App is running on iPod, no camera, sorry :("];
+	}
+	else {
+		[self presentViewController:self.imagePickerController animated:YES completion:nil];
+	}
 #endif
 }
 
@@ -116,21 +102,15 @@
 	[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
-- (void)tap:(UITapGestureRecognizer *)recognizer
-{
-    NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
-    NSParameterAssert(recognizer != nil);
-    
-	CGPoint gesturePoint = [recognizer locationInView:self.imagePickerController.view];
-    NSLog(@"point %f", gesturePoint.x);
-        NSLog(@"point %f", gesturePoint.y);
-	[self.focusFrame moveToPoint:gesturePoint whithScale:1 / [self cameraViewScale]];
-}
+#pragma mark - UIImagePickerControllerDelegate API
 
-- (float)cameraViewScale
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    return sqrtf(self.imagePickerController.cameraOverlayView.transform.a * self.imagePickerController.cameraOverlayView.transform.a +
-                 self.imagePickerController.cameraOverlayView.transform.c * self.imagePickerController.cameraOverlayView.transform.c);
+    CGFloat squareSide = self.cameraView.centerImage.frame.size.width;
+    UIImage *squareImage = [EKImageProcessingUtil squareImageWithImage:info[UIImagePickerControllerOriginalImage]
+                                                          scaledToSize:CGSizeMake(squareSide, squareSide)];
+    
+    self.cameraView.centerImage.image = squareImage;
 }
 
 @end

@@ -41,7 +41,6 @@
     
 	CGFloat width = self.frame.size.width;
 	CGFloat height = self.frame.size.height;
-    
 	self.imageView.frame = CGRectMake(0.0f, 0.0f, width, height);
 }
 

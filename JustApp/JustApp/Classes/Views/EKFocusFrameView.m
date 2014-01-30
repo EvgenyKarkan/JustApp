@@ -12,10 +12,10 @@
 static CGFloat    const kEKAnimationScale = 0.7f;
 static CGFloat    const kEKFrameSide      = 120.0f;
 static CGFloat    const kEKPathWidth      = 2.0f;
-static CGFloat    const kEKLimbLenght     = 20.0f;
+static CGFloat    const kEKLimbLenght     = 25.0f;
 
 
-@implementation EKFocusFrameView
+@implementation EKFocusFrameView;
 
 - (id)init
 {

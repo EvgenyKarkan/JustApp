@@ -31,16 +31,16 @@ static NSString * const kEKFont2    = @"HelveticaNeue-Light";
 
 + (CGFloat)fontSizeForLabel
 {
-    CGFloat result = 0.0f;
+	CGFloat result = 0.0f;
     
-    if ([EKLayoutUtil isIPad]) {
-        result = 40.0f;
-    }
-    else {
-        result = 20.0f;
-    }
+	if ([EKLayoutUtil isIPad]) {
+		result = 40.0f;
+	}
+	else {
+		result = 20.0f;
+	}
     
-    return result;
+	return result;
 }
 
 @end

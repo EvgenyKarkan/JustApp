@@ -9,4 +9,12 @@
 
 @interface EKCameraOverlayView : UIView
 
+@property (nonatomic, strong) DDExpandableButton *torchButton;
+@property (nonatomic, strong) DDExpandableButton *frontBackButton;
+@property (nonatomic, strong) DDExpandableButton *typeButton;
+@property (nonatomic, strong) DDExpandableButton *cancelButton;
+@property (nonatomic, strong) DDExpandableButton *previewButton;
+@property (nonatomic, strong) UIButton *shotButton;
+@property (nonatomic, strong) UIView *visibleFrameView;
+
 @end
