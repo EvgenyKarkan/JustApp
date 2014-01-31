@@ -13,7 +13,7 @@
 #import "EKMapView.h"
 #import "EKFontsUtil.h"
 
-@interface EKMapViewController ()
+@interface EKMapViewController () <MKMapViewDelegate>
 
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
 @property (nonatomic, strong) EKMapView *mapView;
@@ -48,12 +48,13 @@
 	self.startStopButton.frame = CGRectMake(0.0f, 0.0f, 50.0f, 32.0f);
 	[self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
     [self.startStopButton.titleLabel setFont:[UIFont fontWithName:[EKFontsUtil fontName] size:15.0f]];
-
 	[self.startStopButton addTarget:self action:@selector(startPressed:) forControlEvents:UIControlEventTouchUpInside];
     
 	UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
 	[barButton setCustomView:self.startStopButton];
 	self.navigationItem.rightBarButtonItem = barButton;
+    
+    self.mapView.map.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -104,6 +105,35 @@
     else {
         [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
     }
+}
+
+#pragma mark - MKMapViewDelegate
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation> )annotation
+{
+	if ([annotation isKindOfClass:[MKUserLocation class]]) {
+		return nil;
+    }
+    
+	static NSString *identifier = @"MyLocation";
+    
+	if ([annotation isKindOfClass:[MyLocation class]]) {
+		MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[self.mapView.map dequeueReusableAnnotationViewWithIdentifier:identifier];
+		if (annotationView == nil) {
+			annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+		}
+		else {
+			annotationView.annotation = annotation;
+		}
+        
+		annotationView.enabled = YES;
+		annotationView.canShowCallout = YES;
+		annotationView.image = [UIImage imageNamed:@"arrest.png"]; 
+        
+		return annotationView;
+	}
+    
+	return nil;
 }
 
 @end

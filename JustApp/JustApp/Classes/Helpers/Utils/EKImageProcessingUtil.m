@@ -15,6 +15,9 @@
 
 + (UIImage *)squareImageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize
 {
+    NSParameterAssert(image != nil);
+    NSParameterAssert(!CGSizeEqualToSize(newSize, CGSizeZero));
+
 	double ratio = 0.0f;
 	double delta = 0.0f;
 	CGPoint offset = CGPointZero;

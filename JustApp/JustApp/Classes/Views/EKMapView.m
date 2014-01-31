@@ -16,6 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.map = [[MKMapView alloc] init];
+        self.map.showsUserLocation = YES;
         [self addSubview:self.map];
     }
     return self;

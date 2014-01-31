@@ -20,6 +20,7 @@ static CGFloat const kEKLimbLenght     = 25.0f;
 - (id)init
 {
 	self = [super initWithFrame:CGRectMake(0.0f, 0.0f, kEKFrameSide, kEKFrameSide)];
+    
 	if (self) {
 		[self setBackgroundColor:[UIColor clearColor]];
 		[self setUserInteractionEnabled:NO];
@@ -46,6 +47,8 @@ static CGFloat const kEKLimbLenght     = 25.0f;
 
 - (void)moveToPoint:(CGPoint)destinationPoint whithScale:(CGFloat)scale
 {
+    NSParameterAssert(!CGPointEqualToPoint(destinationPoint, CGPointZero));
+    
 	[self setCenter:destinationPoint];
 	[self animateWhithScale:scale];
 }

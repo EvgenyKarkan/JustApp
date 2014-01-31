@@ -27,6 +27,7 @@
 		DE92CBA718999BAA000CA82E /* EKFontsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DE92CBA618999BAA000CA82E /* EKFontsUtil.m */; };
 		DE92CBAA1899B1F6000CA82E /* EKCameraOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE92CBA91899B1F6000CA82E /* EKCameraOverlayView.m */; };
 		DE92CBAD1899CA21000CA82E /* EKFocusFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE92CBAC1899CA21000CA82E /* EKFocusFrameView.m */; };
+		DEA33AC9189BA90A000D2DBF /* EKLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA33AC8189BA90A000D2DBF /* EKLocation.m */; };
 		DEC33B1E189B0074005A9E67 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC33B1D189B0074005A9E67 /* CoreLocation.framework */; };
 		DEC33B20189B007B005A9E67 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC33B1F189B007B005A9E67 /* MapKit.framework */; };
 		DEC33B23189B0560005A9E67 /* EKMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC33B22189B0560005A9E67 /* EKMapViewController.m */; };
@@ -86,6 +87,8 @@
 		DE92CBA91899B1F6000CA82E /* EKCameraOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCameraOverlayView.m; sourceTree = "<group>"; };
 		DE92CBAB1899CA21000CA82E /* EKFocusFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFocusFrameView.h; sourceTree = "<group>"; };
 		DE92CBAC1899CA21000CA82E /* EKFocusFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFocusFrameView.m; sourceTree = "<group>"; };
+		DEA33AC7189BA90A000D2DBF /* EKLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKLocation.h; sourceTree = "<group>"; };
+		DEA33AC8189BA90A000D2DBF /* EKLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKLocation.m; sourceTree = "<group>"; };
 		DEC33B1D189B0074005A9E67 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DEC33B1F189B007B005A9E67 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DEC33B21189B0560005A9E67 /* EKMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMapViewController.h; sourceTree = "<group>"; };
@@ -247,6 +250,8 @@
 		DED2B5AD189826780086CD5F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DEA33AC7189BA90A000D2DBF /* EKLocation.h */,
+				DEA33AC8189BA90A000D2DBF /* EKLocation.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 				DE92CBAD1899CA21000CA82E /* EKFocusFrameView.m in Sources */,
 				DED2B5B5189829270086CD5F /* EKMenuView.m in Sources */,
 				DEE75F48189922B20072D03C /* EKLayoutUtil.m in Sources */,
+				DEA33AC9189BA90A000D2DBF /* EKLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
