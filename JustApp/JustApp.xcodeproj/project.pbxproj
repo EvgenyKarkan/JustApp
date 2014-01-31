@@ -30,6 +30,7 @@
 		DEA33AC9189BA90A000D2DBF /* EKLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA33AC8189BA90A000D2DBF /* EKLocation.m */; };
 		DEA33ACC189BE452000D2DBF /* PSLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA33ACB189BE452000D2DBF /* PSLocationManager.m */; };
 		DEA33ACF189BFEC9000D2DBF /* EKDashboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA33ACE189BFEC9000D2DBF /* EKDashboardView.m */; };
+		DEA33ADE189C6112000D2DBF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEA33AE0189C6112000D2DBF /* Localizable.strings */; };
 		DEC33B1E189B0074005A9E67 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC33B1D189B0074005A9E67 /* CoreLocation.framework */; };
 		DEC33B20189B007B005A9E67 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC33B1F189B007B005A9E67 /* MapKit.framework */; };
 		DEC33B23189B0560005A9E67 /* EKMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC33B22189B0560005A9E67 /* EKMapViewController.m */; };
@@ -95,6 +96,10 @@
 		DEA33ACB189BE452000D2DBF /* PSLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLocationManager.m; sourceTree = "<group>"; };
 		DEA33ACD189BFEC9000D2DBF /* EKDashboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKDashboardView.h; sourceTree = "<group>"; };
 		DEA33ACE189BFEC9000D2DBF /* EKDashboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKDashboardView.m; sourceTree = "<group>"; };
+		DEA33ADC189C60FC000D2DBF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DEA33ADD189C60FC000D2DBF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DEA33ADF189C6112000D2DBF /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DEA33AE1189C6118000D2DBF /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DEC33B1D189B0074005A9E67 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DEC33B1F189B007B005A9E67 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DEC33B21189B0560005A9E67 /* EKMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMapViewController.h; sourceTree = "<group>"; };
@@ -192,6 +197,7 @@
 				DED2B5A9189826780086CD5F /* Classes */,
 				DE6945F5189807A400E4E961 /* Images.xcassets */,
 				DE6945EA189807A400E4E961 /* Supporting Files */,
+				DEA33AE0189C6112000D2DBF /* Localizable.strings */,
 			);
 			path = JustApp;
 			sourceTree = "<group>";
@@ -364,6 +370,7 @@
 				ORGANIZATIONNAME = EvgenyKarkan;
 				TargetAttributes = {
 					DE6945DF189807A400E4E961 = {
+						DevelopmentTeam = 7VW32GE5L3;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -381,6 +388,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ru,
 			);
 			mainGroup = DE6945D7189807A400E4E961;
 			productRefGroup = DE6945E1189807A400E4E961 /* Products */;
@@ -399,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE6945EE189807A400E4E961 /* InfoPlist.strings in Resources */,
+				DEA33ADE189C6112000D2DBF /* Localizable.strings in Resources */,
 				DE6945F6189807A400E4E961 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +507,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				DE6945ED189807A400E4E961 /* en */,
+				DEA33ADC189C60FC000D2DBF /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -506,8 +516,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				DE694606189807A400E4E961 /* en */,
+				DEA33ADD189C60FC000D2DBF /* ru */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DEA33AE0189C6112000D2DBF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DEA33ADF189C6112000D2DBF /* en */,
+				DEA33AE1189C6118000D2DBF /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -593,6 +613,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JustApp/JustApp-Prefix.pch";
 				INFOPLIST_FILE = "JustApp/JustApp-Info.plist";
@@ -608,6 +629,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JustApp/JustApp-Prefix.pch";
 				INFOPLIST_FILE = "JustApp/JustApp-Info.plist";

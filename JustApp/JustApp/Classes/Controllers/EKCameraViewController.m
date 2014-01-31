@@ -59,7 +59,7 @@
 	NSLog(@"No camera in simulator, sorry bro :(");
 #else
 	if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-		[SVProgressHUD showErrorWithStatus:NSLocalizedString(@"NO_CAMERA", @"No camera on your device, sorry :(")];
+		[SVProgressHUD showErrorWithStatus:NSLocalizedString(@"NO_CAMERA", @"")];
 	}
 	else {
 		__weak typeof(EKCameraViewController) * weakSelf = self;

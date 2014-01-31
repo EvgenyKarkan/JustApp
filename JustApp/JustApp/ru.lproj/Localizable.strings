@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  JustApp
+
+  Created by Evgeny Karkan on 01.02.14.
+  Copyright (c) 2014 EvgenyKarkan. All rights reserved.
+*/
+
+    //Start route pin
+"START_TRACKING"      = "Старт";
+"START_TRACKING_INFO" = "Начало пути";
+"END_TRACKING"        = "Финиш";
+"END_TRACKING_INFO"   = "Конец пути";
+
+    //Start stop button on map
+"START_BUTTON_STARTS" = "Старт";
+"START_BUTTON_STOPS"  = "Стоп";
+
+    //Location update
+"LOCATION_UNABLED"    = "Геопозиция недоступна";
+
+    //No flash on device camera
+"NO_FLASH"            = "Вспышка недоступна :(";
+"NO_FRONT_CAMERA"     = "Фронтальная камера отсутствует :(";
+"NO_CAMERA"           = "Камера отсутсвует :(";
+
+    //Greetings
+"HELLO_TEXT"          = "Привет приятель! Желаешь сделать фото?";

@@ -6,7 +6,7 @@ target "JustApp" do
 pod "MMDrawerController"
 pod "DDExpandableButton"
 pod "SVProgressHUD"
-pod "PSLocationManager"
+pod "APAddressBook"
 
 end
 

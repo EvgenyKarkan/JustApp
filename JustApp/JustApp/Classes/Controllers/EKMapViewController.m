@@ -83,7 +83,7 @@
     
     self.startStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	self.startStopButton.frame = CGRectMake(0.0f, 0.0f, 50.0f, 32.0f);
-	[self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STARTS", @"Start") forState:UIControlStateNormal];
+	[self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STARTS", @"") forState:UIControlStateNormal];
     [self.startStopButton.titleLabel setFont:[UIFont fontWithName:[EKFontsUtil fontName] size:15.0f]];
 	[self.startStopButton addTarget:self action:@selector(startPressed:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -111,12 +111,12 @@
     [self clearMap];
     
     if (self.isTrackingLocation) {
-        [self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STARTS", @"Start") forState:UIControlStateNormal];
+        [self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STOPS", @"") forState:UIControlStateNormal];
         [self.mapView.map addAnnotation:self.userLocation];
         [self.mapView.map selectAnnotation:self.userLocation animated:YES];
     }
     else {
-        [self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STOPS", @"Stop") forState:UIControlStateNormal];
+        [self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STARTS", @"") forState:UIControlStateNormal];
         [self.mapView.map addAnnotation:self.userLocation];
         [self.mapView.map selectAnnotation:self.userLocation animated:YES];
     }
@@ -215,14 +215,11 @@
 	MKMapPoint southWestPoint = MKMapPointMake(0.f, 0.f);
 	MKMapPoint *pointArray = malloc(sizeof(CLLocationCoordinate2D) * [self.breadcrumbs count]);
     
+	NSParameterAssert([self.breadcrumbs count] > 1);
+    
 	for (NSUInteger i = 0; i < [self.breadcrumbs count]; i++) {
 		CLLocationCoordinate2D location2D = [(NSValue *)self.breadcrumbs[i] MKCoordinateValue];
-        
-		CLLocationDegrees latitude  = location2D.latitude;
-		CLLocationDegrees longitude = location2D.longitude;
-        
-		CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
-		MKMapPoint point = MKMapPointForCoordinate(coordinate);
+		MKMapPoint point = MKMapPointForCoordinate(CLLocationCoordinate2DMake(location2D.latitude, location2D.longitude));
         
 		if (i == 0) {
 			northEastPoint = point;
@@ -269,8 +266,8 @@
 	NSString *imageName = nil;
     
 	if (_isTrackingLocation) {
-		title     = NSLocalizedString(@"START_TRACKING", @"Start");
-		subtitle  = NSLocalizedString(@"START_TRACKING_INFO", @"The route has been started here");
+		title     = NSLocalizedString(@"START_TRACKING", @"");
+		subtitle  = NSLocalizedString(@"START_TRACKING_INFO", @"");
 		imageName = @"StartPin";
         
 		[[PSLocationManager sharedLocationManager] prepLocationUpdates];
@@ -286,8 +283,8 @@
 		[self.breadcrumbs addObject:[NSValue valueWithMKCoordinate:self.mapView.map.userLocation.location.coordinate]];
 	}
 	else {
-		title     = NSLocalizedString(@"END_TRACKING", @"End");
-		subtitle  = NSLocalizedString(@"END_TRACKING_INFO", @"The route has been ended here");
+		title     = NSLocalizedString(@"END_TRACKING", @"");
+		subtitle  = NSLocalizedString(@"END_TRACKING_INFO", @"");
 		imageName = @"FinishPin";
         
 		[[PSLocationManager sharedLocationManager] stopLocationUpdates];
@@ -335,7 +332,7 @@
 
 - (void)locationManager:(PSLocationManager *)locationManager error:(NSError *)error
 {
-	[SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Unable to determine location", @"")];
+	[SVProgressHUD showErrorWithStatus:NSLocalizedString(@"UNABLE_LOCATION", @"")];
 }
 
 @end
