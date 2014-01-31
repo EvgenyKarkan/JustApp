@@ -10,9 +10,9 @@
 @interface EKLocation : NSObject <MKAnnotation>
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *subTitle;
+@property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, strong) UIImage *imageForPin;
-@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 
 - (instancetype)initWithTitle:(NSString *)title
                      subTitle:(NSString *)subTitle

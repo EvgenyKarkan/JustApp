@@ -38,8 +38,9 @@
 		self.helloLabel = [[UILabel alloc] init];
 		self.helloLabel.backgroundColor = [UIColor clearColor];
 		self.helloLabel.textAlignment = NSTextAlignmentCenter;
-		self.helloLabel.font = [UIFont fontWithName:[EKFontsUtil fontName] size:[EKFontsUtil fontSizeForLabel]];
-		self.helloLabel.text = @"Hey! Some photo? Video?";
+		self.helloLabel.font = [UIFont fontWithName:[EKFontsUtil fontName]
+                                               size:[EKFontsUtil fontSizeForLabel]];
+		self.helloLabel.text = NSLocalizedString(@"HELLO_TEXT", @"Hey! Wanna some photo? Video?");
 		self.helloLabel.textColor = NAV_BAR_BACKGROUND_COLOR;
 		[self addSubview:self.helloLabel];
 	}

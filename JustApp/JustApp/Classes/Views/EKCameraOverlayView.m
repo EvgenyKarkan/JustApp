@@ -34,7 +34,9 @@
         
         self.torchButton = [[DDExpandableButton alloc] initWithPoint:CGPointMake(20.0f, 18.0f)
                                                            leftTitle:[UIImage imageNamed:@"Flash"]
-                                                             buttons:@[@"Auto", @"On", @"Off"]];
+                                                             buttons:@[NSLocalizedString(@"AUTO", @"Auto"),
+                                                                       NSLocalizedString(@"ON", @"On"),
+                                                                       NSLocalizedString(@"OFF", @"Off")]];
         [self.torchButton setVerticalPadding:6.0f];
         [self.torchButton updateDisplay];
         [self.torchButton setSelectedItem:0];
@@ -42,7 +44,8 @@
         
 		self.frontBackButton = [[DDExpandableButton alloc] initWithPoint:CGPointZero
 		                                                       leftTitle:nil
-		                                                         buttons:@[@"Back", @"Front"]];
+		                                                         buttons:@[NSLocalizedString(@"BACK", @"Back"),
+                                                                           NSLocalizedString(@"FRONT", @"Front")]];
         [self.frontBackButton setToggleMode:YES];
         [self.frontBackButton setInnerBorderWidth:0];
 		[self.frontBackButton setHorizontalPadding:6.0f];
@@ -51,7 +54,8 @@
         
 		self.typeButton = [[DDExpandableButton alloc] initWithPoint:CGPointMake(20.0, 16.5f)
 		                                                  leftTitle:[UIImage imageNamed:@"FrontBackCam"]
-		                                                    buttons:@[@"Photo", @"Video"]];
+		                                                    buttons:@[NSLocalizedString(@"PHOTO", @"Photo"),
+                                                                      NSLocalizedString(@"VIDEO", @"Video")]];
         [self.typeButton setInnerBorderWidth:0];
         [self.typeButton setHorizontalPadding:6.0f];
         [self.typeButton setUnSelectedLabelFont:[UIFont systemFontOfSize:self.typeButton.labelFont.pointSize]];
@@ -61,7 +65,7 @@
         
         self.cancelButton = [[DDExpandableButton alloc] initWithPoint:CGPointZero
 		                                                       leftTitle:nil
-		                                                         buttons:@[@"Cancel"]];
+		                                                         buttons:@[NSLocalizedString(@"CANCEL", @"Cancel")]];
         [self.cancelButton setToggleMode:YES];
         [self.cancelButton setInnerBorderWidth:0];
 		[self.cancelButton setHorizontalPadding:6.0f];

@@ -12,6 +12,7 @@
 #import "EKAppDelegate.h"
 #import "EKMapView.h"
 #import "EKFontsUtil.h"
+#import "EKLocation.h"
 
 @interface EKMapViewController () <MKMapViewDelegate>
 
@@ -19,6 +20,7 @@
 @property (nonatomic, strong) EKMapView *mapView;
 @property (nonatomic, strong) UIButton *startStopButton;
 @property (nonatomic, assign) BOOL isTrackingLocation;
+@property (nonatomic, strong) EKLocation *userLocation;
 
 @end
 
@@ -46,7 +48,7 @@
     
 	self.startStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	self.startStopButton.frame = CGRectMake(0.0f, 0.0f, 50.0f, 32.0f);
-	[self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+	[self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STARTS", @"Start") forState:UIControlStateNormal];
     [self.startStopButton.titleLabel setFont:[UIFont fontWithName:[EKFontsUtil fontName] size:15.0f]];
 	[self.startStopButton addTarget:self action:@selector(startPressed:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -99,15 +101,21 @@
     
     self.isTrackingLocation = !self.isTrackingLocation;
     
+    [self clearMap];
+    
     if (self.isTrackingLocation) {
-        [self.startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
+        [self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STARTS", @"Start") forState:UIControlStateNormal];
+        [self.mapView.map addAnnotation:self.userLocation];
+        [self.mapView.map selectAnnotation:self.userLocation animated:YES];
     }
     else {
-        [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+        [self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STOPS", @"Stop") forState:UIControlStateNormal];
+        [self.mapView.map addAnnotation:self.userLocation];
+        [self.mapView.map selectAnnotation:self.userLocation animated:YES];
     }
 }
 
-#pragma mark - MKMapViewDelegate
+#pragma mark - MKMapViewDelegate and aux stuff
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation> )annotation
 {
@@ -115,9 +123,9 @@
 		return nil;
     }
     
-	static NSString *identifier = @"MyLocation";
+	static NSString *identifier = @"EKLocation";
     
-	if ([annotation isKindOfClass:[MyLocation class]]) {
+	if ([annotation isKindOfClass:[EKLocation class]]) {
 		MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[self.mapView.map dequeueReusableAnnotationViewWithIdentifier:identifier];
 		if (annotationView == nil) {
 			annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
@@ -126,14 +134,57 @@
 			annotationView.annotation = annotation;
 		}
         
-		annotationView.enabled = YES;
-		annotationView.canShowCallout = YES;
-		annotationView.image = [UIImage imageNamed:@"arrest.png"]; 
-        
+        annotationView.enabled        = YES;
+        annotationView.canShowCallout = YES;
+        annotationView.image          = self.userLocation.imageForPin;
+
 		return annotationView;
 	}
     
 	return nil;
+}
+
+- (void)clearMap
+{
+	if ([[self.mapView.map annotations] count] > 2) {
+		NSMutableArray *array = [@[] mutableCopy];
+        
+		for (id <MKAnnotation> annotation in [self.mapView.map annotations]) {
+			if (![annotation isKindOfClass:[MKUserLocation class]]) {
+				[array addObject:annotation];
+			}
+		}
+		[self.mapView.map removeAnnotations:array];
+            //remove all overlays here
+	}
+}
+
+#pragma mark - "isTrackingLocation" setter
+
+- (void)setIsTrackingLocation:(BOOL)isTrackingLocation
+{
+	_isTrackingLocation = isTrackingLocation;
+    
+    NSString *title     = nil;
+    NSString *subtitle  = nil;
+    NSString *imageName = nil;
+    
+	if (_isTrackingLocation) {
+        title     = NSLocalizedString(@"START_TRACKING", @"Start");
+        subtitle  = NSLocalizedString(@"START_TRACKING_INFO", @"The route has been started here");
+        imageName = @"StartPin";
+	}
+	else {
+        title     = NSLocalizedString(@"END_TRACKING", @"End");
+        subtitle  = NSLocalizedString(@"END_TRACKING_INFO", @"The route has been ended here");
+        imageName = @"FinishPin";
+	}
+    
+	EKLocation *location = [[EKLocation alloc] initWithTitle:title
+	                                                subTitle:subtitle
+	                                                   image:[UIImage imageNamed:imageName]
+	                                              coordinate:self.mapView.map.userLocation.location.coordinate];
+	self.userLocation = location;
 }
 
 @end

@@ -27,7 +27,7 @@
     
     if (self) {
         self.title = title;
-        self.subTitle = subTitle;
+        self.subtitle = subTitle;
         self.imageForPin = pinImage;
         self.coordinate = coordinate;
     }

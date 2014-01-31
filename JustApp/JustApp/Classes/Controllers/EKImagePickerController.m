@@ -100,7 +100,7 @@
 	NSParameterAssert(sender != nil);
     
 	if (![UIImagePickerController isFlashAvailableForCameraDevice:UIImagePickerControllerCameraDeviceRear]) {
-		[SVProgressHUD showErrorWithStatus:@"Sorry, no flash on your device"];
+		[SVProgressHUD showErrorWithStatus:NSLocalizedString(@"NO_FLASH", @"Sorry, no flash on your device :(")];
 		return;
 	}
     
@@ -133,7 +133,7 @@
             
 		case 1:
 			if (![UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
-				[SVProgressHUD showErrorWithStatus:@"Sorry, no front camera on your device"];
+				[SVProgressHUD showErrorWithStatus:NSLocalizedString(@"NO_FRONT_CAMERA", @"Sorry, no front camera on your device :(")];
 			}
 			else {
 				self.cameraDevice = UIImagePickerControllerCameraDeviceFront;
