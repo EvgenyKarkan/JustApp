@@ -363,6 +363,13 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = EvgenyKarkan;
 				TargetAttributes = {
+					DE6945DF189807A400E4E961 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					DE6945FA189807A400E4E961 = {
 						TestTargetID = DE6945DF189807A400E4E961;
 					};

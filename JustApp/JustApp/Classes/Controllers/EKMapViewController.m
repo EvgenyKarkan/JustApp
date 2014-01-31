@@ -46,20 +46,8 @@
 	[super viewDidLoad];
     
 	self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
-	self.view.backgroundColor = BACKGROUND_COLOR;
-	self.title = NSLocalizedString(@"JustMap", @"JustMap");
-    
-    [self setupLeftMenuButton];
-    
-	self.startStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	self.startStopButton.frame = CGRectMake(0.0f, 0.0f, 50.0f, 32.0f);
-	[self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STARTS", @"Start") forState:UIControlStateNormal];
-    [self.startStopButton.titleLabel setFont:[UIFont fontWithName:[EKFontsUtil fontName] size:15.0f]];
-	[self.startStopButton addTarget:self action:@selector(startPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-	UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
-	[barButton setCustomView:self.startStopButton];
-	self.navigationItem.rightBarButtonItem = barButton;
+	
+    [self setupUI];
     
     self.mapView.map.delegate = self;
     [PSLocationManager sharedLocationManager].delegate = self;
@@ -70,9 +58,9 @@
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - Side-menu button with handler
+#pragma mark - Setup buttons
 
-- (void)setupLeftMenuButton
+- (void)setupUI
 {
 	MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
 	                                                                                 action:@selector(leftDrawerButtonPress:)];
@@ -89,6 +77,19 @@
 	else {
 		[self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 	}
+    
+    self.view.backgroundColor = BACKGROUND_COLOR;
+	self.title = NSLocalizedString(@"JustMap", @"JustMap");
+    
+    self.startStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	self.startStopButton.frame = CGRectMake(0.0f, 0.0f, 50.0f, 32.0f);
+	[self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STARTS", @"Start") forState:UIControlStateNormal];
+    [self.startStopButton.titleLabel setFont:[UIFont fontWithName:[EKFontsUtil fontName] size:15.0f]];
+	[self.startStopButton addTarget:self action:@selector(startPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+	UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
+	[barButton setCustomView:self.startStopButton];
+	self.navigationItem.rightBarButtonItem = barButton;
 }
 
 - (void)leftDrawerButtonPress:(id)sender
@@ -174,7 +175,6 @@
 		self.routeLineView.fillColor = [UIColor redColor];
 		self.routeLineView.strokeColor = [UIColor redColor];
 		self.routeLineView.lineWidth = 10;
-        
 		overlayView = self.routeLineView;
 	}
     
@@ -229,14 +229,18 @@
 			southWestPoint = point;
 		}
 		else {
-			if (point.x > northEastPoint.x)
+			if (point.x > northEastPoint.x) {
 				northEastPoint.x = point.x;
-			if (point.y > northEastPoint.y)
+			}
+			if (point.y > northEastPoint.y) {
 				northEastPoint.y = point.y;
-			if (point.x < southWestPoint.x)
+			}
+			if (point.x < southWestPoint.x) {
 				southWestPoint.x = point.x;
-			if (point.y < southWestPoint.y)
+			}
+			if (point.y < southWestPoint.y) {
 				southWestPoint.y = point.y;
+			}
 		}
 		pointArray[i] = point;
 	}
