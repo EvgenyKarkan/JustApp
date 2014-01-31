@@ -13,14 +13,19 @@
 #import "EKMapView.h"
 #import "EKFontsUtil.h"
 #import "EKLocation.h"
+#import "PSLocationManager.h"
 
-@interface EKMapViewController () <MKMapViewDelegate>
+@interface EKMapViewController () <MKMapViewDelegate, PSLocationManagerDelegate>
 
-@property (nonatomic, strong) EKAppDelegate *appDelegate;
-@property (nonatomic, strong) EKMapView *mapView;
-@property (nonatomic, strong) UIButton *startStopButton;
-@property (nonatomic, assign) BOOL isTrackingLocation;
-@property (nonatomic, strong) EKLocation *userLocation;
+@property (nonatomic, strong) EKAppDelegate  *appDelegate;
+@property (nonatomic, strong) EKMapView      *mapView;
+@property (nonatomic, strong) UIButton       *startStopButton;
+@property (nonatomic, assign) BOOL            isTrackingLocation;
+@property (nonatomic, strong) EKLocation     *userLocation;
+@property (nonatomic, strong) CLLocation     *waypoint;
+@property (nonatomic, strong) NSMutableArray *breadcrumbs;
+@property (nonatomic, retain) MKPolyline     *routeLine;
+@property (nonatomic, retain) MKPolylineView *routeLineView;
 
 @end
 
@@ -57,6 +62,7 @@
 	self.navigationItem.rightBarButtonItem = barButton;
     
     self.mapView.map.delegate = self;
+    [PSLocationManager sharedLocationManager].delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -115,13 +121,13 @@
     }
 }
 
-#pragma mark - MKMapViewDelegate and aux stuff
+#pragma mark - MKMapViewDelegate API
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation> )annotation
 {
 	if ([annotation isKindOfClass:[MKUserLocation class]]) {
 		return nil;
-    }
+	}
     
 	static NSString *identifier = @"EKLocation";
     
@@ -133,16 +139,49 @@
 		else {
 			annotationView.annotation = annotation;
 		}
+		annotationView.enabled        = YES;
+		annotationView.canShowCallout = YES;
+		annotationView.image          = self.userLocation.imageForPin;
         
-        annotationView.enabled        = YES;
-        annotationView.canShowCallout = YES;
-        annotationView.image          = self.userLocation.imageForPin;
-
 		return annotationView;
 	}
-    
 	return nil;
 }
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+	MKCoordinateRegion region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(0.0f, 0.0f), MKCoordinateSpanMake(0.0f, 0.0f));
+	MKCoordinateSpan span = MKCoordinateSpanMake(0.05f, 0.05f);
+    
+	CLLocationCoordinate2D location = CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude);
+    
+	region.span = span;
+	region.center = location;
+    
+	[mapView setRegion:region animated:YES];
+}
+
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay> )overlay
+{
+	MKOverlayView *overlayView = nil;
+    
+	if (overlay == self.routeLine) {
+		if (self.routeLineView) {
+			[self.routeLineView removeFromSuperview];
+		}
+        
+		self.routeLineView = [[MKPolylineView alloc] initWithPolyline:self.routeLine];
+		self.routeLineView.fillColor = [UIColor redColor];
+		self.routeLineView.strokeColor = [UIColor redColor];
+		self.routeLineView.lineWidth = 10;
+        
+		overlayView = self.routeLineView;
+	}
+    
+	return overlayView;
+}
+
+#pragma mark - Helpers API
 
 - (void)clearMap
 {
@@ -155,8 +194,64 @@
 			}
 		}
 		[self.mapView.map removeAnnotations:array];
-            //remove all overlays here
+		[self.mapView.dashboardView setUpInitialStateForLabels];
+		[self.mapView.map removeOverlay:self.routeLine];
 	}
+}
+
+- (NSString *)stringFromTimeInterval:(NSTimeInterval)interval
+{
+	NSInteger newTimeinterval = (NSInteger)interval;
+	NSInteger seconds = newTimeinterval % 60;
+	NSInteger minutes = (newTimeinterval / 60) % 60;
+	NSInteger hours = (newTimeinterval / 3600);
+    
+	return [NSString stringWithFormat:@"%02i:%02i:%02i", hours, minutes, seconds];
+}
+
+- (void)showRoute
+{
+	MKMapPoint northEastPoint = MKMapPointMake(0.f, 0.f);
+	MKMapPoint southWestPoint = MKMapPointMake(0.f, 0.f);
+	MKMapPoint *pointArray = malloc(sizeof(CLLocationCoordinate2D) * [self.breadcrumbs count]);
+    
+	for (NSUInteger i = 0; i < [self.breadcrumbs count]; i++) {
+		CLLocationCoordinate2D location2D = [(NSValue *)self.breadcrumbs[i] MKCoordinateValue];
+        
+		CLLocationDegrees latitude  = location2D.latitude;
+		CLLocationDegrees longitude = location2D.longitude;
+        
+		CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
+		MKMapPoint point = MKMapPointForCoordinate(coordinate);
+        
+		if (i == 0) {
+			northEastPoint = point;
+			southWestPoint = point;
+		}
+		else {
+			if (point.x > northEastPoint.x)
+				northEastPoint.x = point.x;
+			if (point.y > northEastPoint.y)
+				northEastPoint.y = point.y;
+			if (point.x < southWestPoint.x)
+				southWestPoint.x = point.x;
+			if (point.y < southWestPoint.y)
+				southWestPoint.y = point.y;
+		}
+		pointArray[i] = point;
+	}
+    
+	if (self.routeLine) {
+		[self.mapView.map removeOverlay:self.routeLine];
+	}
+    
+	self.routeLine = [MKPolyline polylineWithPoints:pointArray
+	                                          count:[self.breadcrumbs count]];
+    
+	if (nil != self.routeLine) {
+		[self.mapView.map addOverlay:self.routeLine];
+	}
+	free(pointArray);
 }
 
 #pragma mark - "isTrackingLocation" setter
@@ -165,26 +260,78 @@
 {
 	_isTrackingLocation = isTrackingLocation;
     
-    NSString *title     = nil;
-    NSString *subtitle  = nil;
-    NSString *imageName = nil;
+	NSString *title     = nil;
+	NSString *subtitle  = nil;
+	NSString *imageName = nil;
     
 	if (_isTrackingLocation) {
-        title     = NSLocalizedString(@"START_TRACKING", @"Start");
-        subtitle  = NSLocalizedString(@"START_TRACKING_INFO", @"The route has been started here");
-        imageName = @"StartPin";
+		title     = NSLocalizedString(@"START_TRACKING", @"Start");
+		subtitle  = NSLocalizedString(@"START_TRACKING_INFO", @"The route has been started here");
+		imageName = @"StartPin";
+        
+		[[PSLocationManager sharedLocationManager] prepLocationUpdates];
+		[[PSLocationManager sharedLocationManager] resetLocationUpdates];
+		[[PSLocationManager sharedLocationManager] startLocationUpdates];
+        
+		EKLocation *location = [[EKLocation alloc] initWithTitle:title
+		                                                subTitle:subtitle
+		                                                   image:[UIImage imageNamed:imageName]
+		                                              coordinate:self.mapView.map.userLocation.location.coordinate];
+		self.userLocation = location;
+		self.breadcrumbs = [@[] mutableCopy];
+		[self.breadcrumbs addObject:[NSValue valueWithMKCoordinate:self.mapView.map.userLocation.location.coordinate]];
 	}
 	else {
-        title     = NSLocalizedString(@"END_TRACKING", @"End");
-        subtitle  = NSLocalizedString(@"END_TRACKING_INFO", @"The route has been ended here");
-        imageName = @"FinishPin";
+		title     = NSLocalizedString(@"END_TRACKING", @"End");
+		subtitle  = NSLocalizedString(@"END_TRACKING_INFO", @"The route has been ended here");
+		imageName = @"FinishPin";
+        
+		[[PSLocationManager sharedLocationManager] stopLocationUpdates];
+        
+		CLLocationCoordinate2D enPoint = CLLocationCoordinate2DMake(0.0f, 0.0f);
+        
+#ifdef __i386__
+		enPoint = self.waypoint.coordinate;
+#else
+		enPoint = self.mapView.map.userLocation.location.coordinate;
+#endif
+		EKLocation *location = [[EKLocation alloc] initWithTitle:title
+		                                                subTitle:subtitle
+		                                                   image:[UIImage imageNamed:imageName]
+		                                              coordinate:enPoint];
+		self.userLocation = location;
+		[self showRoute];
+	}
+}
+
+#pragma mark - PSLocationManagerDelegate API
+
+- (void)locationManager:(PSLocationManager *)locationManager distanceUpdated:(CLLocationDistance)distance
+{
+	self.mapView.dashboardView.distanceLabel.text = [NSString stringWithFormat:@"%.2f %@", distance  / 1000.0f, @"km"];
+}
+
+- (void)locationManager:(PSLocationManager *)locationManager waypoint:(CLLocation *)waypoint calculatedSpeed:(double)calculatedSpeed
+{
+	[self.breadcrumbs addObject:[NSValue valueWithMKCoordinate:waypoint.coordinate]];
+    
+#ifdef __i386__
+	self.waypoint = [[CLLocation alloc] init];
+	self.waypoint = waypoint;
+#else
+#endif
+    
+	if (calculatedSpeed < 0) {
+		calculatedSpeed = 0.0f;
 	}
     
-	EKLocation *location = [[EKLocation alloc] initWithTitle:title
-	                                                subTitle:subtitle
-	                                                   image:[UIImage imageNamed:imageName]
-	                                              coordinate:self.mapView.map.userLocation.location.coordinate];
-	self.userLocation = location;
+	self.mapView.dashboardView.speedLabel.text = [NSString stringWithFormat:@"%.2f %@", calculatedSpeed, @"mph"];
+	self.mapView.dashboardView.timeLabel.text = [self stringFromTimeInterval:locationManager.totalSeconds];
+}
+
+- (void)locationManager:(PSLocationManager *)locationManager error:(NSError *)error
+{
+	[SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Unable to determine location", @"")];
 }
 
 @end

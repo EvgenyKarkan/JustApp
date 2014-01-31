@@ -34,10 +34,10 @@ static NSString * const kEKFont2    = @"HelveticaNeue-Light";
 	CGFloat result = 0.0f;
     
 	if ([EKLayoutUtil isIPad]) {
-		result = 40.0f;
+		result = 38.0f;
 	}
 	else {
-		result = 20.0f;
+		result = 17.0f;
 	}
     
 	return result;
