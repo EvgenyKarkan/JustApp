@@ -10,7 +10,7 @@
 
 @interface EKMapView : UIView
 
-@property (nonatomic, strong) MKMapView *map;
+@property (nonatomic, strong) MKMapView       *map;
 @property (nonatomic, strong) EKDashboardView *dashboardView;
 
 @end

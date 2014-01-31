@@ -53,13 +53,13 @@
 {
 	[super layoutSubviews];
     
-	CGFloat imageSide = self.frame.size.width / 1.25f;
-	CGFloat halfSelfWidth = self.frame.size.width / 2.0f;
-	self.centerImage.frame = CGRectMake(halfSelfWidth - imageSide / 2.0f, self.frame.origin.y + imageSide / 6.0f + [EKLayoutUtil verticalOffset], imageSide, imageSide);
-    
-	CGFloat controlSide = 50.0f;
-	self.photoControl.frame = CGRectMake(halfSelfWidth - controlSide / 2.0f, self.frame.size.height - controlSide * 1.5f, controlSide, controlSide);
-	self.helloLabel.frame = CGRectMake(0.0f, self.centerImage.frame.origin.y + imageSide, self.frame.size.width, 60.0f);
+    CGFloat imageSide       = self.frame.size.width / 1.25f;
+    CGFloat halfSelfWidth   = self.frame.size.width / 2.0f;
+    self.centerImage.frame  = CGRectMake(halfSelfWidth - imageSide / 2.0f, self.frame.origin.y + imageSide / 6.0f + [EKLayoutUtil verticalOffset], imageSide, imageSide);
+
+    CGFloat controlSide     = 50.0f;
+    self.photoControl.frame = CGRectMake(halfSelfWidth - controlSide / 2.0f, self.frame.size.height - controlSide * 1.5f, controlSide, controlSide);
+    self.helloLabel.frame   = CGRectMake(0.0f, self.centerImage.frame.origin.y + imageSide, self.frame.size.width, 60.0f);
 }
 
 @end

@@ -13,8 +13,8 @@
 @interface EKImagePickerController ()
 
 @property (nonatomic, strong) EKCameraOverlayView *overlayView;
-@property (nonatomic, strong) EKFocusFrameView *focusFrame;
-@property (nonatomic, assign) BOOL isVideoCapturing;
+@property (nonatomic, strong) EKFocusFrameView    *focusFrame;
+@property (nonatomic, assign) BOOL                 isVideoCapturing;
 
 @end
 

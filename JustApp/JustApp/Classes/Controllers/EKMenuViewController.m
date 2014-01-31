@@ -16,10 +16,10 @@
 
 @interface EKMenuViewController () <EKMenuTableViewProviderDelegate>
 
-@property (nonatomic, strong) EKMenuView *menuView;
+@property (nonatomic, strong) EKMenuView              *menuView;
 @property (nonatomic, strong) EKMenuTableViewProvider *tableViewProvider;
-@property (nonatomic, strong) EKAppDelegate *appDelegate;
-@property (nonatomic, strong) EKMapViewController *mapViewController;
+@property (nonatomic, strong) EKAppDelegate           *appDelegate;
+@property (nonatomic, strong) EKMapViewController     *mapViewController;
 
 @end
 

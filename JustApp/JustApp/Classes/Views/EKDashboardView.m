@@ -71,23 +71,23 @@
 {
 	[super layoutSubviews];
     
-	CGFloat iconSide = self.frame.size.height / 3.0f;
-	CGFloat halfSide = iconSide / 2.0f;
+    CGFloat iconSide         = self.frame.size.height / 3.0f;
+    CGFloat halfSide         = iconSide / 2.0f;
     
-	self.speedIcon.frame = CGRectMake(halfSide / 2.0f, halfSide / 2.0f, halfSide, halfSide);
-	self.distanceIcon.frame = CGRectMake(halfSide / 2.0f, iconSide + halfSide / 2.0f, halfSide, halfSide);
-	self.timeIcon.frame = CGRectMake(halfSide / 2.0f, (iconSide * 2.0f) + halfSide / 2.f, halfSide, halfSide);
-    
-	self.speedLabel.frame = CGRectMake(halfSide, 0.0f, self.frame.size.width - halfSide, iconSide);
-	self.distanceLabel.frame = CGRectMake(halfSide, iconSide, self.frame.size.width - halfSide, iconSide);
-	self.timeLabel.frame = CGRectMake(halfSide, iconSide * 2.0f, self.frame.size.width - halfSide, iconSide);
+    self.speedIcon.frame     = CGRectMake(halfSide / 2.0f, halfSide / 2.0f, halfSide, halfSide);
+    self.distanceIcon.frame  = CGRectMake(halfSide / 2.0f, iconSide + halfSide / 2.0f, halfSide, halfSide);
+    self.timeIcon.frame      = CGRectMake(halfSide / 2.0f, (iconSide * 2.0f) + halfSide / 2.f, halfSide, halfSide);
+
+    self.speedLabel.frame    = CGRectMake(halfSide, 0.0f, self.frame.size.width - halfSide, iconSide);
+    self.distanceLabel.frame = CGRectMake(halfSide, iconSide, self.frame.size.width - halfSide, iconSide);
+    self.timeLabel.frame     = CGRectMake(halfSide, iconSide * 2.0f, self.frame.size.width - halfSide, iconSide);
 }
 
 - (void)setUpInitialStateForLabels
 {
-    self.speedLabel.text = @"0 mph";
+    self.speedLabel.text    = @"0 mph";
     self.distanceLabel.text = @"0 km";
-    self.timeLabel.text = @"00:00:00";
+    self.timeLabel.text     = @"00:00:00";
 }
 
 @end

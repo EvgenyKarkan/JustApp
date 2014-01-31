@@ -27,9 +27,9 @@
 
 - (void)layoutSubviews
 {
-    self.map.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height);
-    
-    CGFloat dashboardSide = self.frame.size.width / 4.0f;
+    self.map.frame           = CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height);
+
+    CGFloat dashboardSide    = self.frame.size.width / 4.0f;
     self.dashboardView.frame = CGRectMake(self.frame.origin.x + 20.0f, self.frame.size.height - dashboardSide - 20.0f, dashboardSide * 1.5f, dashboardSide);
 }
 

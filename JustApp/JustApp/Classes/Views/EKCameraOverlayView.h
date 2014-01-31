@@ -13,9 +13,9 @@
 @property (nonatomic, strong) DDExpandableButton *frontBackButton;
 @property (nonatomic, strong) DDExpandableButton *typeButton;
 @property (nonatomic, strong) DDExpandableButton *cancelButton;
-@property (nonatomic, strong) UIButton *shotButton;
-@property (nonatomic, strong) UIView *visibleFrameView;
-@property (nonatomic, strong) UIView *videoIndicator;
-@property (nonatomic, assign) CGFloat barHeight;
+@property (nonatomic, strong) UIButton           *shotButton;
+@property (nonatomic, strong) UIView             *visibleFrameView;
+@property (nonatomic, strong) UIView             *videoIndicator;
+@property (nonatomic, assign) CGFloat             barHeight;
 
 @end

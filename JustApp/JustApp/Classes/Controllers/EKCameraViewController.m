@@ -16,8 +16,8 @@
 
 @interface EKCameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) EKCameraView *cameraView;
-@property (nonatomic, strong) EKAppDelegate *appDelegate;
+@property (nonatomic, strong) EKCameraView            *cameraView;
+@property (nonatomic, strong) EKAppDelegate           *appDelegate;
 @property (nonatomic, strong) EKImagePickerController *imagePickerController;
 @property (nonatomic, strong) MPMoviePlayerController *moviePlayerController;
 
