@@ -199,9 +199,17 @@
     
 	if (_isVideoCapturing) {
 		self.overlayView.videoIndicator.backgroundColor = [UIColor redColor];
+		self.overlayView.torchButton.userInteractionEnabled = NO;
+		self.overlayView.frontBackButton.userInteractionEnabled = NO;
+		self.overlayView.typeButton.userInteractionEnabled = NO;
+		self.overlayView.cancelButton.userInteractionEnabled = NO;
 	}
 	else {
 		self.overlayView.videoIndicator.backgroundColor = [UIColor clearColor];
+		self.overlayView.torchButton.userInteractionEnabled = YES;
+		self.overlayView.frontBackButton.userInteractionEnabled = YES;
+		self.overlayView.typeButton.userInteractionEnabled = YES;
+		self.overlayView.cancelButton.userInteractionEnabled = YES;
 	}
 }
 

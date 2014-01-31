@@ -30,6 +30,7 @@
 		DEC33B1E189B0074005A9E67 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC33B1D189B0074005A9E67 /* CoreLocation.framework */; };
 		DEC33B20189B007B005A9E67 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC33B1F189B007B005A9E67 /* MapKit.framework */; };
 		DEC33B23189B0560005A9E67 /* EKMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC33B22189B0560005A9E67 /* EKMapViewController.m */; };
+		DEC33B26189B10D3005A9E67 /* EKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC33B25189B10D3005A9E67 /* EKMapView.m */; };
 		DED2B5AF189826780086CD5F /* EKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5AC189826780086CD5F /* EKAppDelegate.m */; };
 		DED2B5B2189828BE0086CD5F /* EKMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5B1189828BE0086CD5F /* EKMenuViewController.m */; };
 		DED2B5B5189829270086CD5F /* EKMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5B4189829270086CD5F /* EKMenuView.m */; };
@@ -89,6 +90,8 @@
 		DEC33B1F189B007B005A9E67 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DEC33B21189B0560005A9E67 /* EKMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMapViewController.h; sourceTree = "<group>"; };
 		DEC33B22189B0560005A9E67 /* EKMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMapViewController.m; sourceTree = "<group>"; };
+		DEC33B24189B10D3005A9E67 /* EKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMapView.h; sourceTree = "<group>"; };
+		DEC33B25189B10D3005A9E67 /* EKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMapView.m; sourceTree = "<group>"; };
 		DED2B5AB189826780086CD5F /* EKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAppDelegate.h; sourceTree = "<group>"; };
 		DED2B5AC189826780086CD5F /* EKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAppDelegate.m; sourceTree = "<group>"; };
 		DED2B5B0189828BE0086CD5F /* EKMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMenuViewController.h; sourceTree = "<group>"; };
@@ -263,6 +266,8 @@
 				DE92CBAC1899CA21000CA82E /* EKFocusFrameView.m */,
 				DE92CBA81899B1F6000CA82E /* EKCameraOverlayView.h */,
 				DE92CBA91899B1F6000CA82E /* EKCameraOverlayView.m */,
+				DEC33B24189B10D3005A9E67 /* EKMapView.h */,
+				DEC33B25189B10D3005A9E67 /* EKMapView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 				DED2B5AF189826780086CD5F /* EKAppDelegate.m in Sources */,
 				DE92CBA118994A41000CA82E /* EKCameraView.m in Sources */,
 				DE20E51C18983ED100EA2F68 /* EKCameraViewController.m in Sources */,
+				DEC33B26189B10D3005A9E67 /* EKMapView.m in Sources */,
 				DEC33B23189B0560005A9E67 /* EKMapViewController.m in Sources */,
 				DED2B5B818982BFA0086CD5F /* EKMenuCell.m in Sources */,
 				DE6945F0189807A400E4E961 /* main.m in Sources */,

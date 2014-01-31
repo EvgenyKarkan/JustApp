@@ -10,16 +10,29 @@
 #import "EKLayoutUtil.h"
 #import "EKFontsUtil.h"
 #import "EKAppDelegate.h"
+#import "EKMapView.h"
+#import "EKFontsUtil.h"
 
 @interface EKMapViewController ()
 
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
+@property (nonatomic, strong) EKMapView *mapView;
+@property (nonatomic, strong) UIButton *startStopButton;
+@property (nonatomic, assign) BOOL isTrackingLocation;
 
 @end
 
 
 @implementation EKMapViewController;
 
+#pragma mark - Life cycle
+
+- (void)loadView
+{
+	EKMapView *view = [[EKMapView alloc] init];
+	self.view = view;
+	self.mapView = view;
+}
 
 - (void)viewDidLoad
 {
@@ -30,6 +43,17 @@
 	self.title = NSLocalizedString(@"JustMap", @"JustMap");
     
     [self setupLeftMenuButton];
+    
+	self.startStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	self.startStopButton.frame = CGRectMake(0.0f, 0.0f, 50.0f, 32.0f);
+	[self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+    [self.startStopButton.titleLabel setFont:[UIFont fontWithName:[EKFontsUtil fontName] size:15.0f]];
+
+	[self.startStopButton addTarget:self action:@selector(startPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+	UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
+	[barButton setCustomView:self.startStopButton];
+	self.navigationItem.rightBarButtonItem = barButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,6 +88,22 @@
     
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
 	[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
+#pragma mark - Action
+
+- (void)startPressed:(id)sender
+{
+    NSParameterAssert(sender != nil);
+    
+    self.isTrackingLocation = !self.isTrackingLocation;
+    
+    if (self.isTrackingLocation) {
+        [self.startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
+    }
+    else {
+        [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+    }
 }
 
 @end
