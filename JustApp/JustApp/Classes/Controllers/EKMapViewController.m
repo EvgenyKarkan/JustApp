@@ -83,9 +83,13 @@
     
     self.startStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	self.startStopButton.frame = CGRectMake(0.0f, 0.0f, 50.0f, 32.0f);
-	[self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STARTS", @"") forState:UIControlStateNormal];
-    [self.startStopButton.titleLabel setFont:[UIFont fontWithName:[EKFontsUtil fontName] size:15.0f]];
-	[self.startStopButton addTarget:self action:@selector(startPressed:) forControlEvents:UIControlEventTouchUpInside];
+	[self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STARTS", @"")
+                          forState:UIControlStateNormal];
+    [self.startStopButton.titleLabel setFont:[UIFont fontWithName:[EKFontsUtil fontName]
+                                                             size:15.0f]];
+	[self.startStopButton addTarget:self
+                             action:@selector(startPressed:)
+                   forControlEvents:UIControlEventTouchUpInside];
     
 	UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
 	[barButton setCustomView:self.startStopButton];
@@ -104,22 +108,21 @@
 
 - (void)startPressed:(id)sender
 {
-    NSParameterAssert(sender != nil);
+	NSParameterAssert(sender != nil);
     
-    self.isTrackingLocation = !self.isTrackingLocation;
+	self.isTrackingLocation = !self.isTrackingLocation;
+	[self clearMap];
     
-    [self clearMap];
-    
-    if (self.isTrackingLocation) {
-        [self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STOPS", @"") forState:UIControlStateNormal];
-        [self.mapView.map addAnnotation:self.userLocation];
-        [self.mapView.map selectAnnotation:self.userLocation animated:YES];
-    }
-    else {
-        [self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STARTS", @"") forState:UIControlStateNormal];
-        [self.mapView.map addAnnotation:self.userLocation];
-        [self.mapView.map selectAnnotation:self.userLocation animated:YES];
-    }
+	if (self.isTrackingLocation) {
+		[self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STOPS", @"")
+                              forState:UIControlStateNormal];
+	}
+	else {
+		[self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STARTS", @"")
+                              forState:UIControlStateNormal];
+	}
+	[self.mapView.map addAnnotation:self.userLocation];
+	[self.mapView.map selectAnnotation:self.userLocation animated:YES];
 }
 
 #pragma mark - MKMapViewDelegate API
@@ -135,7 +138,8 @@
 	if ([annotation isKindOfClass:[EKLocation class]]) {
 		MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[self.mapView.map dequeueReusableAnnotationViewWithIdentifier:identifier];
 		if (annotationView == nil) {
-			annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+			annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
+                                                             reuseIdentifier:identifier];
 		}
 		else {
 			annotationView.annotation = annotation;
@@ -151,11 +155,12 @@
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-	MKCoordinateRegion region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(0.0f, 0.0f), MKCoordinateSpanMake(0.0f, 0.0f));
+	MKCoordinateRegion region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(0.0f, 0.0f),
+                                                       MKCoordinateSpanMake(0.0f, 0.0f));
 	MKCoordinateSpan span = MKCoordinateSpanMake(0.05f, 0.05f);
     
-	CLLocationCoordinate2D location = CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude);
-    
+	CLLocationCoordinate2D location = CLLocationCoordinate2DMake(userLocation.coordinate.latitude,
+                                                                 userLocation.coordinate.longitude);
 	region.span = span;
 	region.center = location;
     
@@ -170,7 +175,6 @@
 		if (self.routeLineView) {
 			[self.routeLineView removeFromSuperview];
 		}
-        
 		self.routeLineView = [[MKPolylineView alloc] initWithPolyline:self.routeLine];
 		self.routeLineView.fillColor = [UIColor redColor];
 		self.routeLineView.strokeColor = [UIColor redColor];
@@ -201,10 +205,10 @@
 
 - (NSString *)stringFromTimeInterval:(NSTimeInterval)interval
 {
-	NSInteger newTimeinterval = (NSInteger)interval;
-	NSInteger seconds = newTimeinterval % 60;
-	NSInteger minutes = (newTimeinterval / 60) % 60;
-	NSInteger hours = (newTimeinterval / 3600);
+    NSInteger newTimeinterval = (NSInteger)interval;
+    NSInteger seconds         = newTimeinterval % 60;
+    NSInteger minutes         = (newTimeinterval / 60) % 60;
+    NSInteger hours           = (newTimeinterval / 3600);
     
 	return [NSString stringWithFormat:@"%02i:%02i:%02i", hours, minutes, seconds];
 }
@@ -213,13 +217,14 @@
 {
 	MKMapPoint northEastPoint = MKMapPointMake(0.f, 0.f);
 	MKMapPoint southWestPoint = MKMapPointMake(0.f, 0.f);
-	MKMapPoint *pointArray = malloc(sizeof(CLLocationCoordinate2D) * [self.breadcrumbs count]);
+	MKMapPoint *pointArray    = malloc(sizeof(CLLocationCoordinate2D) * [self.breadcrumbs count]);
     
 	NSParameterAssert([self.breadcrumbs count] > 1);
     
 	for (NSUInteger i = 0; i < [self.breadcrumbs count]; i++) {
 		CLLocationCoordinate2D location2D = [(NSValue *)self.breadcrumbs[i] MKCoordinateValue];
-		MKMapPoint point = MKMapPointForCoordinate(CLLocationCoordinate2DMake(location2D.latitude, location2D.longitude));
+		MKMapPoint point = MKMapPointForCoordinate(CLLocationCoordinate2DMake(location2D.latitude,
+                                                                              location2D.longitude));
         
 		if (i == 0) {
 			northEastPoint = point;
@@ -252,6 +257,7 @@
 	if (nil != self.routeLine) {
 		[self.mapView.map addOverlay:self.routeLine];
 	}
+    
 	free(pointArray);
 }
 
@@ -270,7 +276,7 @@
 		subtitle  = NSLocalizedString(@"START_TRACKING_INFO", @"");
 		imageName = @"StartPin";
         
-		[[PSLocationManager sharedLocationManager] prepLocationUpdates];
+        [[PSLocationManager sharedLocationManager] prepLocationUpdates];
 		[[PSLocationManager sharedLocationManager] resetLocationUpdates];
 		[[PSLocationManager sharedLocationManager] startLocationUpdates];
         
@@ -289,22 +295,22 @@
         
 		[[PSLocationManager sharedLocationManager] stopLocationUpdates];
         
-		CLLocationCoordinate2D enPoint = CLLocationCoordinate2DMake(0.0f, 0.0f);
+		CLLocationCoordinate2D endPoint = CLLocationCoordinate2DMake(0.0f, 0.0f);
         
 #ifdef __i386__
-		enPoint = self.waypoint.coordinate;
+		endPoint = self.waypoint.coordinate;
 #else
-		enPoint = self.mapView.map.userLocation.location.coordinate;
+		endPoint = self.mapView.map.userLocation.location.coordinate;
 #endif
 		EKLocation *location = [[EKLocation alloc] initWithTitle:title
 		                                                subTitle:subtitle
 		                                                   image:[UIImage imageNamed:imageName]
-		                                              coordinate:enPoint];
+		                                              coordinate:endPoint];
 		self.userLocation = location;
 	}
 }
 
-#pragma mark - PSLocationManagerDelegate API
+#pragma mark - PSLocationManagerDelegate APIs
 
 - (void)locationManager:(PSLocationManager *)locationManager distanceUpdated:(CLLocationDistance)distance
 {
@@ -324,7 +330,6 @@
 	if (calculatedSpeed < 0) {
 		calculatedSpeed = 0.0f;
 	}
-    
 	self.mapView.dashboardView.speedLabel.text = [NSString stringWithFormat:@"%.2f %@", calculatedSpeed, @"mph"];
 	self.mapView.dashboardView.timeLabel.text = [self stringFromTimeInterval:locationManager.totalSeconds];
     

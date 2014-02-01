@@ -14,7 +14,6 @@
 		DE6945E4189807A400E4E961 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6945E3189807A400E4E961 /* Foundation.framework */; };
 		DE6945E6189807A400E4E961 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6945E5189807A400E4E961 /* CoreGraphics.framework */; };
 		DE6945E8189807A400E4E961 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6945E7189807A400E4E961 /* UIKit.framework */; };
-		DE6945EE189807A400E4E961 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE6945EC189807A400E4E961 /* InfoPlist.strings */; };
 		DE6945F0189807A400E4E961 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6945EF189807A400E4E961 /* main.m */; };
 		DE6945F6189807A400E4E961 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE6945F5189807A400E4E961 /* Images.xcassets */; };
 		DE6945FD189807A400E4E961 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6945FC189807A400E4E961 /* XCTest.framework */; };
@@ -27,10 +26,17 @@
 		DE92CBA718999BAA000CA82E /* EKFontsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DE92CBA618999BAA000CA82E /* EKFontsUtil.m */; };
 		DE92CBAA1899B1F6000CA82E /* EKCameraOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE92CBA91899B1F6000CA82E /* EKCameraOverlayView.m */; };
 		DE92CBAD1899CA21000CA82E /* EKFocusFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE92CBAC1899CA21000CA82E /* EKFocusFrameView.m */; };
+		DE9EA319189D0A9100E39469 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA30D189D0A9100E39469 /* InfoPlist.strings */; };
+		DE9EA31A189D0A9100E39469 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA30F189D0A9100E39469 /* Localizable.strings */; };
+		DE9EA31B189D0A9100E39469 /* Eminem - Rhianna.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA314189D0A9100E39469 /* Eminem - Rhianna.mp3 */; };
+		DE9EA31C189D0A9100E39469 /* LMFAO - Party Rock Anthem.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA315189D0A9100E39469 /* LMFAO - Party Rock Anthem.mp3 */; };
+		DE9EA31D189D0A9100E39469 /* LMFAO - Sx & I now it.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA316189D0A9100E39469 /* LMFAO - Sx & I now it.mp3 */; };
+		DE9EA31E189D0A9100E39469 /* Pink panther theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA317189D0A9100E39469 /* Pink panther theme.mp3 */; };
+		DE9EA31F189D0A9100E39469 /* Tarantella dance.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA318189D0A9100E39469 /* Tarantella dance.mp3 */; };
+		DE9EA322189D109000E39469 /* EKFileSystemUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9EA321189D109000E39469 /* EKFileSystemUtil.m */; };
 		DEA33AC9189BA90A000D2DBF /* EKLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA33AC8189BA90A000D2DBF /* EKLocation.m */; };
 		DEA33ACC189BE452000D2DBF /* PSLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA33ACB189BE452000D2DBF /* PSLocationManager.m */; };
 		DEA33ACF189BFEC9000D2DBF /* EKDashboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA33ACE189BFEC9000D2DBF /* EKDashboardView.m */; };
-		DEA33ADE189C6112000D2DBF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEA33AE0189C6112000D2DBF /* Localizable.strings */; };
 		DEC33B1E189B0074005A9E67 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC33B1D189B0074005A9E67 /* CoreLocation.framework */; };
 		DEC33B20189B007B005A9E67 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC33B1F189B007B005A9E67 /* MapKit.framework */; };
 		DEC33B23189B0560005A9E67 /* EKMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC33B22189B0560005A9E67 /* EKMapViewController.m */; };
@@ -70,7 +76,6 @@
 		DE6945E5189807A400E4E961 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		DE6945E7189807A400E4E961 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DE6945EB189807A400E4E961 /* JustApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JustApp-Info.plist"; sourceTree = "<group>"; };
-		DE6945ED189807A400E4E961 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DE6945EF189807A400E4E961 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DE6945F1189807A400E4E961 /* JustApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JustApp-Prefix.pch"; sourceTree = "<group>"; };
 		DE6945F5189807A400E4E961 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -90,16 +95,24 @@
 		DE92CBA91899B1F6000CA82E /* EKCameraOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCameraOverlayView.m; sourceTree = "<group>"; };
 		DE92CBAB1899CA21000CA82E /* EKFocusFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFocusFrameView.h; sourceTree = "<group>"; };
 		DE92CBAC1899CA21000CA82E /* EKFocusFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFocusFrameView.m; sourceTree = "<group>"; };
+		DE9EA30E189D0A9100E39469 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DE9EA310189D0A9100E39469 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DE9EA311189D0A9100E39469 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DE9EA312189D0A9100E39469 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DE9EA314189D0A9100E39469 /* Eminem - Rhianna.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Eminem - Rhianna.mp3"; sourceTree = "<group>"; };
+		DE9EA315189D0A9100E39469 /* LMFAO - Party Rock Anthem.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "LMFAO - Party Rock Anthem.mp3"; sourceTree = "<group>"; };
+		DE9EA316189D0A9100E39469 /* LMFAO - Sx & I now it.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "LMFAO - Sx & I now it.mp3"; sourceTree = "<group>"; };
+		DE9EA317189D0A9100E39469 /* Pink panther theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Pink panther theme.mp3"; sourceTree = "<group>"; };
+		DE9EA318189D0A9100E39469 /* Tarantella dance.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Tarantella dance.mp3"; sourceTree = "<group>"; };
+		DE9EA320189D109000E39469 /* EKFileSystemUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFileSystemUtil.h; sourceTree = "<group>"; };
+		DE9EA321189D109000E39469 /* EKFileSystemUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFileSystemUtil.m; sourceTree = "<group>"; };
 		DEA33AC7189BA90A000D2DBF /* EKLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKLocation.h; sourceTree = "<group>"; };
 		DEA33AC8189BA90A000D2DBF /* EKLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKLocation.m; sourceTree = "<group>"; };
 		DEA33ACA189BE452000D2DBF /* PSLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLocationManager.h; sourceTree = "<group>"; };
 		DEA33ACB189BE452000D2DBF /* PSLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLocationManager.m; sourceTree = "<group>"; };
 		DEA33ACD189BFEC9000D2DBF /* EKDashboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKDashboardView.h; sourceTree = "<group>"; };
 		DEA33ACE189BFEC9000D2DBF /* EKDashboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKDashboardView.m; sourceTree = "<group>"; };
-		DEA33ADC189C60FC000D2DBF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DEA33ADD189C60FC000D2DBF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DEA33ADF189C6112000D2DBF /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		DEA33AE1189C6118000D2DBF /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DEC33B1D189B0074005A9E67 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DEC33B1F189B007B005A9E67 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DEC33B21189B0560005A9E67 /* EKMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMapViewController.h; sourceTree = "<group>"; };
@@ -197,7 +210,7 @@
 				DED2B5A9189826780086CD5F /* Classes */,
 				DE6945F5189807A400E4E961 /* Images.xcassets */,
 				DE6945EA189807A400E4E961 /* Supporting Files */,
-				DEA33AE0189C6112000D2DBF /* Localizable.strings */,
+				DE9EA30C189D0A9100E39469 /* Resourses */,
 			);
 			path = JustApp;
 			sourceTree = "<group>";
@@ -206,7 +219,6 @@
 			isa = PBXGroup;
 			children = (
 				DE6945EB189807A400E4E961 /* JustApp-Info.plist */,
-				DE6945EC189807A400E4E961 /* InfoPlist.strings */,
 				DE6945EF189807A400E4E961 /* main.m */,
 				DE6945F1189807A400E4E961 /* JustApp-Prefix.pch */,
 			);
@@ -229,6 +241,28 @@
 				DE694605189807A400E4E961 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DE9EA30C189D0A9100E39469 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				DE9EA30D189D0A9100E39469 /* InfoPlist.strings */,
+				DE9EA30F189D0A9100E39469 /* Localizable.strings */,
+				DE9EA313189D0A9100E39469 /* Sounds */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		DE9EA313189D0A9100E39469 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				DE9EA314189D0A9100E39469 /* Eminem - Rhianna.mp3 */,
+				DE9EA315189D0A9100E39469 /* LMFAO - Party Rock Anthem.mp3 */,
+				DE9EA316189D0A9100E39469 /* LMFAO - Sx & I now it.mp3 */,
+				DE9EA317189D0A9100E39469 /* Pink panther theme.mp3 */,
+				DE9EA318189D0A9100E39469 /* Tarantella dance.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		DED2B5A9189826780086CD5F /* Classes */ = {
@@ -315,6 +349,8 @@
 				DE92CBA618999BAA000CA82E /* EKFontsUtil.m */,
 				DEE648C8189AC6FB00633822 /* EKImageProcessingUtil.h */,
 				DEE648C9189AC6FB00633822 /* EKImageProcessingUtil.m */,
+				DE9EA320189D109000E39469 /* EKFileSystemUtil.h */,
+				DE9EA321189D109000E39469 /* EKFileSystemUtil.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -406,9 +442,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE6945EE189807A400E4E961 /* InfoPlist.strings in Resources */,
-				DEA33ADE189C6112000D2DBF /* Localizable.strings in Resources */,
 				DE6945F6189807A400E4E961 /* Images.xcassets in Resources */,
+				DE9EA31C189D0A9100E39469 /* LMFAO - Party Rock Anthem.mp3 in Resources */,
+				DE9EA31D189D0A9100E39469 /* LMFAO - Sx & I now it.mp3 in Resources */,
+				DE9EA31A189D0A9100E39469 /* Localizable.strings in Resources */,
+				DE9EA31E189D0A9100E39469 /* Pink panther theme.mp3 in Resources */,
+				DE9EA31F189D0A9100E39469 /* Tarantella dance.mp3 in Resources */,
+				DE9EA319189D0A9100E39469 /* InfoPlist.strings in Resources */,
+				DE9EA31B189D0A9100E39469 /* Eminem - Rhianna.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +515,7 @@
 				DEA33ACF189BFEC9000D2DBF /* EKDashboardView.m in Sources */,
 				DEC33B23189B0560005A9E67 /* EKMapViewController.m in Sources */,
 				DED2B5B818982BFA0086CD5F /* EKMenuCell.m in Sources */,
+				DE9EA322189D109000E39469 /* EKFileSystemUtil.m in Sources */,
 				DE6945F0189807A400E4E961 /* main.m in Sources */,
 				DE20E51F189841B600EA2F68 /* MMDrawerVisualStateManager.m in Sources */,
 				DE92CBA418994D73000CA82E /* EKCameraControl.m in Sources */,
@@ -503,15 +545,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DE6945EC189807A400E4E961 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE6945ED189807A400E4E961 /* en */,
-				DEA33ADC189C60FC000D2DBF /* ru */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		DE694605189807A400E4E961 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -521,11 +554,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		DEA33AE0189C6112000D2DBF /* Localizable.strings */ = {
+		DE9EA30D189D0A9100E39469 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DEA33ADF189C6112000D2DBF /* en */,
-				DEA33AE1189C6118000D2DBF /* ru */,
+				DE9EA30E189D0A9100E39469 /* en */,
+				DE9EA311189D0A9100E39469 /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DE9EA30F189D0A9100E39469 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE9EA310189D0A9100E39469 /* en */,
+				DE9EA312189D0A9100E39469 /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

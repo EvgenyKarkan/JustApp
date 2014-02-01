@@ -14,6 +14,8 @@
 #import "EKFontsUtil.h"
 #import "EKMapViewController.h"
 
+#import "EKFileSystemUtil.h"
+
 @interface EKMenuViewController () <EKMenuTableViewProviderDelegate>
 
 @property (nonatomic, strong) EKMenuView              *menuView;
@@ -37,6 +39,9 @@
 
 - (void)viewDidLoad
 {
+    [EKFileSystemUtil createNewFolderInDocumentsWithName:@"Foo"];
+    [EKFileSystemUtil copyFile:@"LMFAO - Sx & I now it.mp3" toFolder:@"Foo"];
+    
     [super viewDidLoad];
     
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];

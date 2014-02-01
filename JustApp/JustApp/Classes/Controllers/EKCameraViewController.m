@@ -62,7 +62,7 @@
 		[SVProgressHUD showErrorWithStatus:NSLocalizedString(@"NO_CAMERA", @"")];
 	}
 	else {
-		__weak typeof(EKCameraViewController) * weakSelf = self;
+		__weak typeof(EKCameraViewController) *weakSelf = self;
         
 		[self presentViewController:self.imagePickerController animated:YES completion: ^{
 		    if (weakSelf.moviePlayerController != nil) {
