@@ -301,7 +301,6 @@
 		                                                   image:[UIImage imageNamed:imageName]
 		                                              coordinate:enPoint];
 		self.userLocation = location;
-		[self showRoute];
 	}
 }
 
@@ -328,6 +327,8 @@
     
 	self.mapView.dashboardView.speedLabel.text = [NSString stringWithFormat:@"%.2f %@", calculatedSpeed, @"mph"];
 	self.mapView.dashboardView.timeLabel.text = [self stringFromTimeInterval:locationManager.totalSeconds];
+    
+    [self showRoute];
 }
 
 - (void)locationManager:(PSLocationManager *)locationManager error:(NSError *)error
