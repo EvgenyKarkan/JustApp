@@ -210,7 +210,7 @@
     NSInteger minutes         = (newTimeinterval / 60) % 60;
     NSInteger hours           = (newTimeinterval / 3600);
     
-	return [NSString stringWithFormat:@"%02i:%02i:%02i", hours, minutes, seconds];
+	return [NSString stringWithFormat:@"%02li:%02li:%02li", (long)hours, (long)minutes, (long)seconds];
 }
 
 - (void)showRoute
