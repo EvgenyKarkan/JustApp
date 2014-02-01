@@ -41,7 +41,7 @@ static CGFloat    const kEKHeightForRow    = 60.0f;
 {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSUReuseIdentifier];
 	if (cell == nil) {
-		cell = [[EKMenuCell alloc] initWithIndexPath:indexPath];
+        cell = [[EKMenuCell alloc] initWithIndexPath:indexPath];
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	}
     

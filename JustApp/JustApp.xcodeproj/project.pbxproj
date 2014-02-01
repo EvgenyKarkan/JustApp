@@ -30,10 +30,14 @@
 		DE9EA31A189D0A9100E39469 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA30F189D0A9100E39469 /* Localizable.strings */; };
 		DE9EA31B189D0A9100E39469 /* Eminem - Rhianna.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA314189D0A9100E39469 /* Eminem - Rhianna.mp3 */; };
 		DE9EA31C189D0A9100E39469 /* LMFAO - Party Rock Anthem.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA315189D0A9100E39469 /* LMFAO - Party Rock Anthem.mp3 */; };
-		DE9EA31D189D0A9100E39469 /* LMFAO - Sx & I now it.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA316189D0A9100E39469 /* LMFAO - Sx & I now it.mp3 */; };
+		DE9EA31D189D0A9100E39469 /* LMFAO - Sexy & I now it.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA316189D0A9100E39469 /* LMFAO - Sexy & I now it.mp3 */; };
 		DE9EA31E189D0A9100E39469 /* Pink panther theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA317189D0A9100E39469 /* Pink panther theme.mp3 */; };
 		DE9EA31F189D0A9100E39469 /* Tarantella dance.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA318189D0A9100E39469 /* Tarantella dance.mp3 */; };
 		DE9EA322189D109000E39469 /* EKFileSystemUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9EA321189D109000E39469 /* EKFileSystemUtil.m */; };
+		DE9EA332189D6EE400E39469 /* EKSongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9EA331189D6EE400E39469 /* EKSongCell.m */; };
+		DE9EA33D189DA71F00E39469 /* EKMusicPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9EA33C189DA71F00E39469 /* EKMusicPlayerViewController.m */; };
+		DE9EA340189DAC5500E39469 /* EKMusicPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9EA33F189DAC5500E39469 /* EKMusicPlayerView.m */; };
+		DE9EA343189DAE3D00E39469 /* EKMusicPlayerTableViewProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9EA342189DAE3D00E39469 /* EKMusicPlayerTableViewProvider.m */; };
 		DEA33AC9189BA90A000D2DBF /* EKLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA33AC8189BA90A000D2DBF /* EKLocation.m */; };
 		DEA33ACC189BE452000D2DBF /* PSLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA33ACB189BE452000D2DBF /* PSLocationManager.m */; };
 		DEA33ACF189BFEC9000D2DBF /* EKDashboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEA33ACE189BFEC9000D2DBF /* EKDashboardView.m */; };
@@ -101,11 +105,19 @@
 		DE9EA312189D0A9100E39469 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DE9EA314189D0A9100E39469 /* Eminem - Rhianna.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Eminem - Rhianna.mp3"; sourceTree = "<group>"; };
 		DE9EA315189D0A9100E39469 /* LMFAO - Party Rock Anthem.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "LMFAO - Party Rock Anthem.mp3"; sourceTree = "<group>"; };
-		DE9EA316189D0A9100E39469 /* LMFAO - Sx & I now it.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "LMFAO - Sx & I now it.mp3"; sourceTree = "<group>"; };
+		DE9EA316189D0A9100E39469 /* LMFAO - Sexy & I now it.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "LMFAO - Sexy & I now it.mp3"; sourceTree = "<group>"; };
 		DE9EA317189D0A9100E39469 /* Pink panther theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Pink panther theme.mp3"; sourceTree = "<group>"; };
 		DE9EA318189D0A9100E39469 /* Tarantella dance.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Tarantella dance.mp3"; sourceTree = "<group>"; };
 		DE9EA320189D109000E39469 /* EKFileSystemUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFileSystemUtil.h; sourceTree = "<group>"; };
 		DE9EA321189D109000E39469 /* EKFileSystemUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFileSystemUtil.m; sourceTree = "<group>"; };
+		DE9EA330189D6EE400E39469 /* EKSongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSongCell.h; sourceTree = "<group>"; };
+		DE9EA331189D6EE400E39469 /* EKSongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSongCell.m; sourceTree = "<group>"; };
+		DE9EA33B189DA71F00E39469 /* EKMusicPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMusicPlayerViewController.h; sourceTree = "<group>"; };
+		DE9EA33C189DA71F00E39469 /* EKMusicPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMusicPlayerViewController.m; sourceTree = "<group>"; };
+		DE9EA33E189DAC5500E39469 /* EKMusicPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMusicPlayerView.h; sourceTree = "<group>"; };
+		DE9EA33F189DAC5500E39469 /* EKMusicPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMusicPlayerView.m; sourceTree = "<group>"; };
+		DE9EA341189DAE3D00E39469 /* EKMusicPlayerTableViewProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMusicPlayerTableViewProvider.h; sourceTree = "<group>"; };
+		DE9EA342189DAE3D00E39469 /* EKMusicPlayerTableViewProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMusicPlayerTableViewProvider.m; sourceTree = "<group>"; };
 		DEA33AC7189BA90A000D2DBF /* EKLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKLocation.h; sourceTree = "<group>"; };
 		DEA33AC8189BA90A000D2DBF /* EKLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKLocation.m; sourceTree = "<group>"; };
 		DEA33ACA189BE452000D2DBF /* PSLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLocationManager.h; sourceTree = "<group>"; };
@@ -258,7 +270,7 @@
 			children = (
 				DE9EA314189D0A9100E39469 /* Eminem - Rhianna.mp3 */,
 				DE9EA315189D0A9100E39469 /* LMFAO - Party Rock Anthem.mp3 */,
-				DE9EA316189D0A9100E39469 /* LMFAO - Sx & I now it.mp3 */,
+				DE9EA316189D0A9100E39469 /* LMFAO - Sexy & I now it.mp3 */,
 				DE9EA317189D0A9100E39469 /* Pink panther theme.mp3 */,
 				DE9EA318189D0A9100E39469 /* Tarantella dance.mp3 */,
 			);
@@ -289,6 +301,8 @@
 				DEE648C4189A82E700633822 /* EKImagePickerController.m */,
 				DEC33B21189B0560005A9E67 /* EKMapViewController.h */,
 				DEC33B22189B0560005A9E67 /* EKMapViewController.m */,
+				DE9EA33B189DA71F00E39469 /* EKMusicPlayerViewController.h */,
+				DE9EA33C189DA71F00E39469 /* EKMusicPlayerViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -321,6 +335,10 @@
 				DEC33B25189B10D3005A9E67 /* EKMapView.m */,
 				DEA33ACD189BFEC9000D2DBF /* EKDashboardView.h */,
 				DEA33ACE189BFEC9000D2DBF /* EKDashboardView.m */,
+				DE9EA330189D6EE400E39469 /* EKSongCell.h */,
+				DE9EA331189D6EE400E39469 /* EKSongCell.m */,
+				DE9EA33E189DAC5500E39469 /* EKMusicPlayerView.h */,
+				DE9EA33F189DAC5500E39469 /* EKMusicPlayerView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -336,6 +354,8 @@
 				DED2B5BA18982D630086CD5F /* EKConstants.h */,
 				DE20E5171898338A00EA2F68 /* EKMenuTableViewProvider.h */,
 				DE20E5181898338A00EA2F68 /* EKMenuTableViewProvider.m */,
+				DE9EA341189DAE3D00E39469 /* EKMusicPlayerTableViewProvider.h */,
+				DE9EA342189DAE3D00E39469 /* EKMusicPlayerTableViewProvider.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -444,7 +464,7 @@
 			files = (
 				DE6945F6189807A400E4E961 /* Images.xcassets in Resources */,
 				DE9EA31C189D0A9100E39469 /* LMFAO - Party Rock Anthem.mp3 in Resources */,
-				DE9EA31D189D0A9100E39469 /* LMFAO - Sx & I now it.mp3 in Resources */,
+				DE9EA31D189D0A9100E39469 /* LMFAO - Sexy & I now it.mp3 in Resources */,
 				DE9EA31A189D0A9100E39469 /* Localizable.strings in Resources */,
 				DE9EA31E189D0A9100E39469 /* Pink panther theme.mp3 in Resources */,
 				DE9EA31F189D0A9100E39469 /* Tarantella dance.mp3 in Resources */,
@@ -503,6 +523,7 @@
 			files = (
 				DEE648CA189AC6FB00633822 /* EKImageProcessingUtil.m in Sources */,
 				DEA33ACC189BE452000D2DBF /* PSLocationManager.m in Sources */,
+				DE9EA332189D6EE400E39469 /* EKSongCell.m in Sources */,
 				DEE648C5189A82E700633822 /* EKImagePickerController.m in Sources */,
 				DE92CBAA1899B1F6000CA82E /* EKCameraOverlayView.m in Sources */,
 				DE92CBA718999BAA000CA82E /* EKFontsUtil.m in Sources */,
@@ -510,8 +531,10 @@
 				DE20E5191898338A00EA2F68 /* EKMenuTableViewProvider.m in Sources */,
 				DED2B5AF189826780086CD5F /* EKAppDelegate.m in Sources */,
 				DE92CBA118994A41000CA82E /* EKCameraView.m in Sources */,
+				DE9EA343189DAE3D00E39469 /* EKMusicPlayerTableViewProvider.m in Sources */,
 				DE20E51C18983ED100EA2F68 /* EKCameraViewController.m in Sources */,
 				DEC33B26189B10D3005A9E67 /* EKMapView.m in Sources */,
+				DE9EA340189DAC5500E39469 /* EKMusicPlayerView.m in Sources */,
 				DEA33ACF189BFEC9000D2DBF /* EKDashboardView.m in Sources */,
 				DEC33B23189B0560005A9E67 /* EKMapViewController.m in Sources */,
 				DED2B5B818982BFA0086CD5F /* EKMenuCell.m in Sources */,
@@ -521,6 +544,7 @@
 				DE92CBA418994D73000CA82E /* EKCameraControl.m in Sources */,
 				DE92CBAD1899CA21000CA82E /* EKFocusFrameView.m in Sources */,
 				DED2B5B5189829270086CD5F /* EKMenuView.m in Sources */,
+				DE9EA33D189DA71F00E39469 /* EKMusicPlayerViewController.m in Sources */,
 				DEE75F48189922B20072D03C /* EKLayoutUtil.m in Sources */,
 				DEA33AC9189BA90A000D2DBF /* EKLocation.m in Sources */,
 			);

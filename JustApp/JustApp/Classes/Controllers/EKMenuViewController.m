@@ -13,15 +13,15 @@
 #import "EKCameraViewController.h"
 #import "EKFontsUtil.h"
 #import "EKMapViewController.h"
-
-#import "EKFileSystemUtil.h"
+#import "EKMusicPlayerViewController.h"
 
 @interface EKMenuViewController () <EKMenuTableViewProviderDelegate>
 
-@property (nonatomic, strong) EKMenuView              *menuView;
-@property (nonatomic, strong) EKMenuTableViewProvider *tableViewProvider;
-@property (nonatomic, strong) EKAppDelegate           *appDelegate;
-@property (nonatomic, strong) EKMapViewController     *mapViewController;
+@property (nonatomic, strong) EKMenuView                  * menuView;
+@property (nonatomic, strong) EKMenuTableViewProvider     * tableViewProvider;
+@property (nonatomic, strong) EKAppDelegate               * appDelegate;
+@property (nonatomic, strong) EKMapViewController         * mapViewController;
+@property (nonatomic, strong) EKMusicPlayerViewController * musicPlayerViewController;
 
 @end
 
@@ -39,9 +39,6 @@
 
 - (void)viewDidLoad
 {
-    [EKFileSystemUtil createNewFolderInDocumentsWithName:@"Foo"];
-    [EKFileSystemUtil copyFile:@"LMFAO - Sx & I now it.mp3" toFolder:@"Foo"];
-    
     [super viewDidLoad];
     
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -54,6 +51,7 @@
 	self.menuView.tableView.dataSource = self.tableViewProvider;
     
     self.mapViewController = [[EKMapViewController alloc] init];
+    self.musicPlayerViewController = [[EKMusicPlayerViewController alloc] init];
 }
 
 #pragma mark - Show controllers
@@ -74,11 +72,24 @@
 	}
 }
 
+#warning REFACTOR THIS 
+
 - (void)showMapViewController
 {
     [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
 	UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:self.mapViewController];
+    
+	[self.appDelegate.drawerController setCenterViewController:foo
+	                                        withCloseAnimation:YES
+	                                                completion:nil];
+}
+
+- (void)showMusicPlayerViewController
+{
+    [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    
+	UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:self.musicPlayerViewController];
     
 	[self.appDelegate.drawerController setCenterViewController:foo
 	                                        withCloseAnimation:YES
@@ -101,7 +112,7 @@
 			break;
             
 		case 2:
-
+            [self showMusicPlayerViewController];
 			break;
             
 		case 3:

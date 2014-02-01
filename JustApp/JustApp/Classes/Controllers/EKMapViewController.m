@@ -45,8 +45,6 @@
 {
 	[super viewDidLoad];
     
-	self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
-	
     [self setupUI];
     
     self.mapView.map.delegate = self;
