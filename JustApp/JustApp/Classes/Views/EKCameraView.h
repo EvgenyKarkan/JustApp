@@ -10,7 +10,7 @@
 
 @interface EKCameraView : UIView
 
-@property (nonatomic, strong) UIImageView *centerImage;
+@property (nonatomic, strong) UIImageView     *centerImage;
 @property (nonatomic, strong) EKCameraControl *photoControl;
 
 @end

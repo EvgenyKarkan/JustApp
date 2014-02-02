@@ -94,7 +94,7 @@
 	}
 }
 
-- (void)leftDrawerButtonPress:(id)sender
+- (void)leftDrawerButtonPress:(MMDrawerBarButtonItem *)sender
 {
     NSParameterAssert(sender != nil);
     

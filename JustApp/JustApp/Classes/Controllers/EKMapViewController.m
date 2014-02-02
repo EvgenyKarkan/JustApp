@@ -46,7 +46,6 @@
 	[super viewDidLoad];
     
     [self setupUI];
-    
     self.mapView.map.delegate = self;
     [PSLocationManager sharedLocationManager].delegate = self;
 }
@@ -94,7 +93,7 @@
 	self.navigationItem.rightBarButtonItem = barButton;
 }
 
-- (void)leftDrawerButtonPress:(id)sender
+- (void)leftDrawerButtonPress:(MMDrawerBarButtonItem *)sender
 {
     NSParameterAssert(sender != nil);
     
@@ -191,6 +190,7 @@
 		NSMutableArray *array = [@[] mutableCopy];
         
 		for (id <MKAnnotation> annotation in [self.mapView.map annotations]) {
+            NSParameterAssert(annotation != nil);
 			if (![annotation isKindOfClass:[MKUserLocation class]]) {
 				[array addObject:annotation];
 			}
@@ -223,7 +223,6 @@
 		CLLocationCoordinate2D location2D = [(NSValue *)self.breadcrumbs[i] MKCoordinateValue];
 		MKMapPoint point = MKMapPointForCoordinate(CLLocationCoordinate2DMake(location2D.latitude,
                                                                               location2D.longitude));
-        
 		if (i == 0) {
 			northEastPoint = point;
 			southWestPoint = point;
