@@ -9,6 +9,7 @@ pod "SVProgressHUD"
 pod "APAddressBook"
 pod "DTTableViewManager"
 pod "APAddressBook"
+pod "SDWebImage"
 
 end
 
