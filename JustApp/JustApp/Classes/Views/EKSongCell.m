@@ -36,14 +36,17 @@
         [self addSubview:self.mp3Icon];
                 
         self.playButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.playButton.showsTouchWhenHighlighted = YES;
         [self.playButton setImage:[UIImage imageNamed:@"Play"] forState:UIControlStateNormal];
         [self addSubview:self.playButton];
         
         self.pauseButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.pauseButton.showsTouchWhenHighlighted = YES;
         [self.pauseButton setImage:[UIImage imageNamed:@"Pause"] forState:UIControlStateNormal];
         [self addSubview:self.pauseButton];
         
         self.stopButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.stopButton.showsTouchWhenHighlighted = YES;
         [self.stopButton setImage:[UIImage imageNamed:@"Stop"] forState:UIControlStateNormal];
         [self addSubview:self.stopButton];
     }
@@ -56,16 +59,11 @@
     
     self.songLabel.frame = CGRectMake(65.0f, 10.0f, self.frame.size.width - 20.0f, self.frame.size.height / 3.0f);
     self.mp3Icon.frame = CGRectMake(30.0f, 12.0f, 25.0f, 25.0f);
-        // self.progressView.frame = CGRectMake(10.0f, self.frame.size.height / 2.0f, self.frame.size.width - 20.0f, 10.0f);
     
     CGFloat buttonSide = 35.0f;
 	self.playButton.frame = CGRectMake(self.center.x - buttonSide / 2.0f, 50.0f, buttonSide, buttonSide);
     
     CGFloat quadro = self.frame.size.width / 4.0f;
-    
-//    self.pauseButton.frame = CGRectMake(self.playButton.frame.origin.x - buttonSide * 3.0f, 50.0f, buttonSide, buttonSide);
-//	self.stopButton.frame = CGRectMake(self.playButton.frame.origin.x + buttonSide * 3.0f, 50.0f, buttonSide, buttonSide);
-    
     self.pauseButton.frame = CGRectMake(self.playButton.frame.origin.x - quadro, 50.0f, buttonSide, buttonSide);
 	self.stopButton.frame = CGRectMake(self.playButton.frame.origin.x + quadro, 50.0f, buttonSide, buttonSide);
 }

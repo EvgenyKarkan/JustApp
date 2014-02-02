@@ -32,7 +32,7 @@
 		DE9EA31A189D0A9100E39469 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA30F189D0A9100E39469 /* Localizable.strings */; };
 		DE9EA31B189D0A9100E39469 /* Eminem - Rhianna.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA314189D0A9100E39469 /* Eminem - Rhianna.mp3 */; };
 		DE9EA31C189D0A9100E39469 /* LMFAO - Party Rock Anthem.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA315189D0A9100E39469 /* LMFAO - Party Rock Anthem.mp3 */; };
-		DE9EA31D189D0A9100E39469 /* LMFAO - Sexy & I now it.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA316189D0A9100E39469 /* LMFAO - Sexy & I now it.mp3 */; };
+		DE9EA31D189D0A9100E39469 /* LMFAO - Sexy & I know it.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA316189D0A9100E39469 /* LMFAO - Sexy & I know it.mp3 */; };
 		DE9EA31E189D0A9100E39469 /* Pink panther theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA317189D0A9100E39469 /* Pink panther theme.mp3 */; };
 		DE9EA31F189D0A9100E39469 /* Tarantella dance.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DE9EA318189D0A9100E39469 /* Tarantella dance.mp3 */; };
 		DE9EA322189D109000E39469 /* EKFileSystemUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9EA321189D109000E39469 /* EKFileSystemUtil.m */; };
@@ -109,7 +109,7 @@
 		DE9EA312189D0A9100E39469 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DE9EA314189D0A9100E39469 /* Eminem - Rhianna.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Eminem - Rhianna.mp3"; sourceTree = "<group>"; };
 		DE9EA315189D0A9100E39469 /* LMFAO - Party Rock Anthem.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "LMFAO - Party Rock Anthem.mp3"; sourceTree = "<group>"; };
-		DE9EA316189D0A9100E39469 /* LMFAO - Sexy & I now it.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "LMFAO - Sexy & I now it.mp3"; sourceTree = "<group>"; };
+		DE9EA316189D0A9100E39469 /* LMFAO - Sexy & I know it.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "LMFAO - Sexy & I know it.mp3"; sourceTree = "<group>"; };
 		DE9EA317189D0A9100E39469 /* Pink panther theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Pink panther theme.mp3"; sourceTree = "<group>"; };
 		DE9EA318189D0A9100E39469 /* Tarantella dance.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Tarantella dance.mp3"; sourceTree = "<group>"; };
 		DE9EA320189D109000E39469 /* EKFileSystemUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFileSystemUtil.h; sourceTree = "<group>"; };
@@ -275,7 +275,7 @@
 			children = (
 				DE9EA314189D0A9100E39469 /* Eminem - Rhianna.mp3 */,
 				DE9EA315189D0A9100E39469 /* LMFAO - Party Rock Anthem.mp3 */,
-				DE9EA316189D0A9100E39469 /* LMFAO - Sexy & I now it.mp3 */,
+				DE9EA316189D0A9100E39469 /* LMFAO - Sexy & I know it.mp3 */,
 				DE9EA317189D0A9100E39469 /* Pink panther theme.mp3 */,
 				DE9EA318189D0A9100E39469 /* Tarantella dance.mp3 */,
 			);
@@ -471,7 +471,7 @@
 			files = (
 				DE6945F6189807A400E4E961 /* Images.xcassets in Resources */,
 				DE9EA31C189D0A9100E39469 /* LMFAO - Party Rock Anthem.mp3 in Resources */,
-				DE9EA31D189D0A9100E39469 /* LMFAO - Sexy & I now it.mp3 in Resources */,
+				DE9EA31D189D0A9100E39469 /* LMFAO - Sexy & I know it.mp3 in Resources */,
 				DE9EA31A189D0A9100E39469 /* Localizable.strings in Resources */,
 				DE9EA31E189D0A9100E39469 /* Pink panther theme.mp3 in Resources */,
 				DE9EA31F189D0A9100E39469 /* Tarantella dance.mp3 in Resources */,

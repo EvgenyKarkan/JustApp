@@ -62,7 +62,8 @@ static id _sharedInstance;
     NSParameterAssert(file != nil);
     
     NSError *error = nil;
-    self.player = [[AVAudioPlayer alloc] initWithData:file  error:&error];
+    self.player = [[AVAudioPlayer alloc] initWithData:file
+                                                error:&error];
     NSParameterAssert(error == nil);
     
     [self.player prepareToPlay];
@@ -87,6 +88,12 @@ static id _sharedInstance;
 - (void)play
 {
     [self.player play];
+}
+
+- (void)stop
+{
+    [self.player stop];
+    self.player.currentTime = 0.0f;
 }
 
 @end

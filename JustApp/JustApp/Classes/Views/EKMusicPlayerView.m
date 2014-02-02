@@ -8,6 +8,13 @@
 
 #import "EKMusicPlayerView.h"
 #import "EKLayoutUtil.h"
+#import "EKFontsUtil.h"
+
+@interface EKMusicPlayerView ()
+
+@property (nonatomic, strong) UIImageView *soundIcon;
+
+@end
 
 
 @implementation EKMusicPlayerView;
@@ -33,9 +40,20 @@
         
 		self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
 		self.progressView.progress = 0.0f;
-		self.progressView.hidden = NO;
 		self.progressView.progressTintColor = BACKGROUND_COLOR;
 		[self.bottomView addSubview:self.progressView];
+        
+        self.soundIcon = [[UIImageView alloc] init];
+        self.soundIcon.image = [UIImage imageNamed:@"SoundPlaying"];
+        [self.bottomView addSubview:self.soundIcon];
+        
+        self.songLabel = [[UILabel alloc] init];
+        self.songLabel.backgroundColor = [UIColor clearColor];
+        self.songLabel.textColor = [UIColor whiteColor];
+        self.songLabel.textAlignment = NSTextAlignmentLeft;
+		self.songLabel.font = [UIFont fontWithName:[EKFontsUtil fontName]
+                                              size:[EKFontsUtil fontSizeForMusicLabel]];
+        [self.bottomView addSubview:self.songLabel];
 	}
 	return self;
 }
@@ -45,11 +63,11 @@
 	[super layoutSubviews];
     
     CGFloat height = 44.0f;
-    
 	self.tableView.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height - height);
     self.bottomView.frame = CGRectMake(0.0f, self.frame.size.height - height, self.frame.size.width, height);
-    
-    self.progressView.frame = CGRectMake(20.0f, 30.0f, self.frame.size.width - 40.0f, 10.0f);
+    self.progressView.frame = CGRectMake(20.0f, 25.0f, self.frame.size.width - 40.0f, 10.0f);
+    self.soundIcon.frame = CGRectMake(20.0f, 5.0f, height / 3.0f, height / 3.0f);
+    self.songLabel.frame = CGRectMake(50.0f, 0.0f, self.frame.size.width - 70.0f, 25.0f);
 }
 
 @end

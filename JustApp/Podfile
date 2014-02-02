@@ -7,6 +7,8 @@ pod "MMDrawerController"
 pod "DDExpandableButton"
 pod "SVProgressHUD"
 pod "APAddressBook"
+pod "DTTableViewManager"
+pod "APAddressBook"
 
 end
 

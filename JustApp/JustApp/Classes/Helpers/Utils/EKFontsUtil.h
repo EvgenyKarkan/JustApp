@@ -11,5 +11,6 @@
 
 + (NSString *)fontName;
 + (CGFloat)fontSizeForLabel;
++ (CGFloat)fontSizeForMusicLabel;
 
 @end

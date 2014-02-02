@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 EvgenyKarkan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 
 @interface EKMusicPlayer : NSObject
 
@@ -16,5 +15,6 @@
 - (NSTimeInterval)duration;
 - (void)pause;
 - (void)play;
+- (void)stop;
 
 @end

@@ -43,4 +43,18 @@ static NSString * const kEKFont2    = @"HelveticaNeue-Light";
 	return result;
 }
 
++ (CGFloat)fontSizeForMusicLabel
+{
+	CGFloat result = 0.0f;
+    
+	if ([EKLayoutUtil isIPad]) {
+		result = 25.0f;
+	}
+	else {
+		result = 14.0f;
+	}
+    
+	return result;
+}
+
 @end

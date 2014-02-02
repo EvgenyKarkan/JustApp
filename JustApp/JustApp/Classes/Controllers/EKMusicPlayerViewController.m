@@ -21,7 +21,7 @@
 @property (nonatomic, strong) EKMusicPlayerTableViewProvider *tableViewProvider;
 @property (nonatomic, strong) NSTimer                        *timer;
 @property (nonatomic, assign) BOOL                            paused;
-
+@property (nonatomic, assign) NSUInteger                     lastPressedButtonTag;
 @end
 
 
@@ -44,16 +44,16 @@
     [EKFileSystemUtil createNewFolderInDocumentsWithName:@"Music"];
     
     //Copy music files from bundle to Music folder
-    [EKFileSystemUtil copyFile:@"LMFAO - Sexy & I now it.mp3" toFolder:@"Music"];
+    [EKFileSystemUtil copyFile:@"LMFAO - Sexy & I know it.mp3" toFolder:@"Music"];
     [EKFileSystemUtil copyFile:@"Eminem - Rhianna.mp3" toFolder:@"Music"];
     [EKFileSystemUtil copyFile:@"LMFAO - Party Rock Anthem.mp3" toFolder:@"Music"];
     [EKFileSystemUtil copyFile:@"Pink panther theme.mp3" toFolder:@"Music"];
     [EKFileSystemUtil copyFile:@"Tarantella dance.mp3" toFolder:@"Music"];
 
-    self.tableViewProvider = [[EKMusicPlayerTableViewProvider alloc] initWithData:[EKFileSystemUtil filesFromFolder:@"Music"] delegate:self];
+    self.tableViewProvider = [[EKMusicPlayerTableViewProvider alloc] initWithData:[EKFileSystemUtil filesFromFolder:@"Music"]
+                                                                         delegate:self];
     self.musicPlayerView.tableView.delegate = self.tableViewProvider;
 	self.musicPlayerView.tableView.dataSource = self.tableViewProvider;
-
     [self setupUI];
 }
 
@@ -86,7 +86,7 @@
 	self.title = NSLocalizedString(@"JustMusicPlayer", @"JustMusicPlayer");
 }
 
-- (void)leftDrawerButtonPress:(id)sender
+- (void)leftDrawerButtonPress:(MMDrawerBarButtonItem *)sender
 {
     NSParameterAssert(sender != nil);
     
@@ -98,7 +98,9 @@
 
 - (void)playDidPressedWithTag:(NSUInteger)tag
 {
+    self.lastPressedButtonTag = tag;
 	NSArray *songs = [EKFileSystemUtil filesFromFolder:@"Music"];
+    self.musicPlayerView.songLabel.text = [songs[tag] allKeys][0];
     
 	if (!self.paused) {
 		[[EKMusicPlayer sharedInstance] playMusicFile:[songs[tag] allValues][0]];
@@ -117,39 +119,46 @@
 	                             forMode:NSRunLoopCommonModes];
     
 	self.paused = NO;
-    
-	NSLog(@"Playing %@", [songs[tag] allKeys][0]);
+	
 }
 
 - (void)pauseDidPressedWithTag:(NSUInteger)tag
 {
-    self.paused = !self.paused;
+    if (self.lastPressedButtonTag != tag) {
+        return;
+    }
     
-    [[EKMusicPlayer sharedInstance] pause];
-    [self.timer invalidate];
+	self.paused = !self.paused;
+	[[EKMusicPlayer sharedInstance] pause];
+	[self.timer invalidate];
 	[self updateDisplay];
 }
 
 - (void)stopDidPressedWithTag:(NSUInteger)tag
 {
-    NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
+    if (self.lastPressedButtonTag != tag) {
+        return;
+    }
+    
+	[[EKMusicPlayer sharedInstance] stop];
+	[self.timer invalidate];
+	[self updateDisplay];
 }
 
-#pragma mark - Actions 
+#pragma mark - Actions
 
-- (void)timerFired:(NSTimer*)timer
+- (void)timerFired:(NSTimer *)timer
 {
-    [self updateDisplay];
+	[self updateDisplay];
 }
 
 - (void)updateDisplay
 {
-    NSTimeInterval currentTime = [[EKMusicPlayer sharedInstance] currentTime];
-    NSTimeInterval duration = [[EKMusicPlayer sharedInstance] duration];
+	NSTimeInterval currentTime = [[EKMusicPlayer sharedInstance] currentTime];
+	NSTimeInterval duration = [[EKMusicPlayer sharedInstance] duration];
     
-    [self.musicPlayerView.progressView setProgress:(CGFloat)(currentTime/duration)
-                                          animated:YES];
+	[self.musicPlayerView.progressView setProgress:(CGFloat)(currentTime / duration)
+	                                      animated:YES];
 }
-
 
 @end

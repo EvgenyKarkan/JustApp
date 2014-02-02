@@ -1,6 +1,20 @@
 PODS:
   - APAddressBook (0.0.3)
   - DDExpandableButton (1.0.0)
+  - DTModelStorage (0.3.1):
+    - DTModelStorage/All
+  - DTModelStorage/All (0.3.1):
+    - DTModelStorage/CoreDataStorage
+    - DTModelStorage/MemoryStorage
+    - DTModelStorage/ModelTransfer
+  - DTModelStorage/Core (0.3.1)
+  - DTModelStorage/CoreDataStorage (0.3.1):
+    - DTModelStorage/Core
+  - DTModelStorage/MemoryStorage (0.3.1):
+    - DTModelStorage/Core
+  - DTModelStorage/ModelTransfer (0.3.1)
+  - DTTableViewManager (2.1.0):
+    - DTModelStorage (= 0.3.1)
   - MMDrawerController (0.5.1):
     - MMDrawerController/Core
     - MMDrawerController/MMDrawerBarButtonItem
@@ -18,12 +32,15 @@ PODS:
 DEPENDENCIES:
   - APAddressBook
   - DDExpandableButton
+  - DTTableViewManager
   - MMDrawerController
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   APAddressBook: ff4c95def5f0e8e15b6d67856693869eeed7620c
   DDExpandableButton: 0ba1536af0633b0c73701f9a8321e7233970ec67
+  DTModelStorage: 099f6c97f1b3fe67c737898465804414f686f792
+  DTTableViewManager: b4ce4ab4b6f74cccf2ef45b8f7c9dbd5405bc1c8
   MMDrawerController: 3e22aec684dbee5307ff9d1e76523003a3303a2d
   SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
 
