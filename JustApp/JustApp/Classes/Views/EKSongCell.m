@@ -34,13 +34,7 @@
         self.mp3Icon = [[UIImageView alloc] init];
         self.mp3Icon.image = [UIImage imageNamed:@"MP3"];
         [self addSubview:self.mp3Icon];
-        
-        self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-        self.progressView.progress = 0.0f;
-        self.progressView.hidden = YES;
-        self.progressView.progressTintColor = NAV_BAR_BACKGROUND_COLOR;
-        [self addSubview:self.progressView];
-        
+                
         self.playButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.playButton setImage:[UIImage imageNamed:@"Play"] forState:UIControlStateNormal];
         [self addSubview:self.playButton];
@@ -61,13 +55,19 @@
     [super layoutSubviews];
     
     self.songLabel.frame = CGRectMake(65.0f, 10.0f, self.frame.size.width - 20.0f, self.frame.size.height / 3.0f);
-    self.mp3Icon.frame = CGRectMake(30.0f, 15.0f, 25.0f, 25.0f);
-    self.progressView.frame = CGRectMake(10.0f, self.frame.size.height / 2.0f, self.frame.size.width - 20.0f, 10.0f);
+    self.mp3Icon.frame = CGRectMake(30.0f, 12.0f, 25.0f, 25.0f);
+        // self.progressView.frame = CGRectMake(10.0f, self.frame.size.height / 2.0f, self.frame.size.width - 20.0f, 10.0f);
     
     CGFloat buttonSide = 35.0f;
-	self.playButton.frame = CGRectMake(self.center.x - buttonSide / 2.0f, 60.0f, buttonSide, buttonSide);
-    self.pauseButton.frame = CGRectMake(self.playButton.frame.origin.x - buttonSide * 3.0f, 60.0f, buttonSide, buttonSide);
-	self.stopButton.frame = CGRectMake(self.playButton.frame.origin.x + buttonSide * 3.0f, 60.0f, buttonSide, buttonSide);
+	self.playButton.frame = CGRectMake(self.center.x - buttonSide / 2.0f, 50.0f, buttonSide, buttonSide);
+    
+    CGFloat quadro = self.frame.size.width / 4.0f;
+    
+//    self.pauseButton.frame = CGRectMake(self.playButton.frame.origin.x - buttonSide * 3.0f, 50.0f, buttonSide, buttonSide);
+//	self.stopButton.frame = CGRectMake(self.playButton.frame.origin.x + buttonSide * 3.0f, 50.0f, buttonSide, buttonSide);
+    
+    self.pauseButton.frame = CGRectMake(self.playButton.frame.origin.x - quadro, 50.0f, buttonSide, buttonSide);
+	self.stopButton.frame = CGRectMake(self.playButton.frame.origin.x + quadro, 50.0f, buttonSide, buttonSide);
 }
 
 @end

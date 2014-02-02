@@ -9,6 +9,10 @@
 
 @interface EKMusicPlayerView : UIView
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UITableView    *tableView;
+@property (nonatomic, strong) UIView         *bottomView;
+@property (nonatomic, strong) UIProgressView *progressView;
+@property (nonatomic, strong) UILabel        *songLabel;
+
 
 @end

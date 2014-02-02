@@ -11,14 +11,16 @@
 #import "EKAppDelegate.h"
 #import "EKMusicPlayerView.h"
 #import "EKMusicPlayerTableViewProvider.h"
-
 #import "EKFileSystemUtil.h"
+#import "EKMusicPlayer.h"
 
-@interface EKMusicPlayerViewController ()
+@interface EKMusicPlayerViewController () <EKMusicPlayerTableViewProviderDelegate>
 
-@property (nonatomic, strong) EKAppDelegate  *appDelegate;
-@property (nonatomic, strong) EKMusicPlayerView  *musicPlayerView;
+@property (nonatomic, strong) EKAppDelegate                  *appDelegate;
+@property (nonatomic, strong) EKMusicPlayerView              *musicPlayerView;
 @property (nonatomic, strong) EKMusicPlayerTableViewProvider *tableViewProvider;
+@property (nonatomic, strong) NSTimer                        *timer;
+@property (nonatomic, assign) BOOL                            paused;
 
 @end
 
@@ -48,11 +50,10 @@
     [EKFileSystemUtil copyFile:@"Pink panther theme.mp3" toFolder:@"Music"];
     [EKFileSystemUtil copyFile:@"Tarantella dance.mp3" toFolder:@"Music"];
 
-    self.tableViewProvider = [[EKMusicPlayerTableViewProvider alloc] initWithData:[EKFileSystemUtil filesFromFolder:@"Music"]];
+    self.tableViewProvider = [[EKMusicPlayerTableViewProvider alloc] initWithData:[EKFileSystemUtil filesFromFolder:@"Music"] delegate:self];
     self.musicPlayerView.tableView.delegate = self.tableViewProvider;
 	self.musicPlayerView.tableView.dataSource = self.tableViewProvider;
 
-    
     [self setupUI];
 }
 
@@ -92,5 +93,63 @@
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
 	[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
+
+#pragma mark - EKMusicPlayerProviderDelegate
+
+- (void)playDidPressedWithTag:(NSUInteger)tag
+{
+	NSArray *songs = [EKFileSystemUtil filesFromFolder:@"Music"];
+    
+	if (!self.paused) {
+		[[EKMusicPlayer sharedInstance] playMusicFile:[songs[tag] allValues][0]];
+	}
+	else {
+		[[EKMusicPlayer sharedInstance] play];
+	}
+    
+	self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1f
+	                                              target:self
+	                                            selector:@selector(timerFired:)
+	                                            userInfo:nil
+	                                             repeats:YES];
+    
+	[[NSRunLoop currentRunLoop] addTimer:self.timer
+	                             forMode:NSRunLoopCommonModes];
+    
+	self.paused = NO;
+    
+	NSLog(@"Playing %@", [songs[tag] allKeys][0]);
+}
+
+- (void)pauseDidPressedWithTag:(NSUInteger)tag
+{
+    self.paused = !self.paused;
+    
+    [[EKMusicPlayer sharedInstance] pause];
+    [self.timer invalidate];
+	[self updateDisplay];
+}
+
+- (void)stopDidPressedWithTag:(NSUInteger)tag
+{
+    NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
+}
+
+#pragma mark - Actions 
+
+- (void)timerFired:(NSTimer*)timer
+{
+    [self updateDisplay];
+}
+
+- (void)updateDisplay
+{
+    NSTimeInterval currentTime = [[EKMusicPlayer sharedInstance] currentTime];
+    NSTimeInterval duration = [[EKMusicPlayer sharedInstance] duration];
+    
+    [self.musicPlayerView.progressView setProgress:(CGFloat)(currentTime/duration)
+                                          animated:YES];
+}
+
 
 @end

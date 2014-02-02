@@ -11,7 +11,7 @@
 @interface EKSongCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel        *songLabel;
-@property (nonatomic, strong) UIProgressView *progressView;
+
 
 @property (nonatomic, strong) UIButton       *playButton;
 @property (nonatomic, strong) UIButton       *pauseButton;

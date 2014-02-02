@@ -10,7 +10,7 @@
 #import "EKSongCell.h"
 
 static NSString * const kSUReuseIdentifier = @"defaultCell";
-static CGFloat    const kEKHeightForRow    = 100.0f;
+static CGFloat    const kEKHeightForRow    = 92.0f;
 
 @interface EKMusicPlayerTableViewProvider () 
 
@@ -23,7 +23,7 @@ static CGFloat    const kEKHeightForRow    = 100.0f;
 
 #pragma mark - Designated initializer
 
-- (instancetype)initWithData:(NSArray *)dataSource
+- (instancetype)initWithData:(NSArray *)dataSource delegate:(id <EKMusicPlayerTableViewProviderDelegate>)delegate
 {
     NSParameterAssert(dataSource != nil);
     NSParameterAssert([dataSource count] > 0);
@@ -31,6 +31,7 @@ static CGFloat    const kEKHeightForRow    = 100.0f;
 	self = [super init];
 	if (self) {
 		self.data = dataSource;
+        self.delegate = delegate;
 	}
     
 	return self;
@@ -39,7 +40,7 @@ static CGFloat    const kEKHeightForRow    = 100.0f;
 #pragma mark - Tableview delegate & datasourse APIs
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{    
+{
 	return [self.data count];
 }
 
@@ -47,9 +48,17 @@ static CGFloat    const kEKHeightForRow    = 100.0f;
 {
 	EKSongCell *cell = [tableView dequeueReusableCellWithIdentifier:kSUReuseIdentifier];
 	if (cell == nil) {
-        cell = [[EKSongCell alloc] init];
+		cell = [[EKSongCell alloc] init];
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.songLabel.text = [self.data[indexPath.row] allKeys][0];
+		cell.songLabel.text = [self.data[indexPath.row] allKeys][0];
+        
+		cell.playButton.tag = indexPath.row;
+		cell.pauseButton.tag = indexPath.row;
+		cell.stopButton.tag = indexPath.row;
+        
+		[cell.playButton addTarget:self action:@selector(playButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+		[cell.pauseButton addTarget:self action:@selector(pauseButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+		[cell.stopButton addTarget:self action:@selector(stopButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 	}
     
 	return cell;
@@ -58,6 +67,23 @@ static CGFloat    const kEKHeightForRow    = 100.0f;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	return kEKHeightForRow;
+}
+
+#pragma mark - Cell buttons actions
+
+- (void)playButtonPressed:(UIButton *)sender
+{
+	[self.delegate playDidPressedWithTag:sender.tag];
+}
+
+- (void)pauseButtonPressed:(UIButton *)sender
+{
+	[self.delegate pauseDidPressedWithTag:sender.tag];
+}
+
+- (void)stopButtonPressed:(UIButton *)sender
+{
+	[self.delegate stopDidPressedWithTag:sender.tag];
 }
 
 @end

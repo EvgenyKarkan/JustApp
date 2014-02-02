@@ -26,6 +26,16 @@
 		if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
 			[self.tableView setSeparatorInset:UIEdgeInsetsZero];
 		}
+        
+		self.bottomView = [[UIView alloc] init];
+		self.bottomView.backgroundColor = NAV_BAR_BACKGROUND_COLOR;
+		[self addSubview:self.bottomView];
+        
+		self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+		self.progressView.progress = 0.0f;
+		self.progressView.hidden = NO;
+		self.progressView.progressTintColor = BACKGROUND_COLOR;
+		[self.bottomView addSubview:self.progressView];
 	}
 	return self;
 }
@@ -34,7 +44,12 @@
 {
 	[super layoutSubviews];
     
-	self.tableView.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height);
+    CGFloat height = 44.0f;
+    
+	self.tableView.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height - height);
+    self.bottomView.frame = CGRectMake(0.0f, self.frame.size.height - height, self.frame.size.width, height);
+    
+    self.progressView.frame = CGRectMake(20.0f, 30.0f, self.frame.size.width - 40.0f, 10.0f);
 }
 
 @end

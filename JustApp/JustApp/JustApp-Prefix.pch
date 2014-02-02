@@ -22,4 +22,5 @@
     #import <MediaPlayer/MediaPlayer.h>
     #import <CoreLocation/CoreLocation.h>
     #import <MapKit/MapKit.h>
+    #import <AVFoundation/AVFoundation.h>
 #endif
