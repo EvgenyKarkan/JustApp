@@ -76,6 +76,7 @@
         [self.bottomBar addSubview:self.videoIndicator];
         
         self.shotButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.shotButton.showsTouchWhenHighlighted = YES;
         [self.shotButton setImage:[UIImage imageNamed:@"ShotOverlay"]
                          forState:UIControlStateNormal];
         [self.shotButton setImage:[UIImage imageNamed:@"ShotOverlayPressed"]

@@ -23,4 +23,5 @@
     #import <CoreLocation/CoreLocation.h>
     #import <MapKit/MapKit.h>
     #import <AVFoundation/AVFoundation.h>
+#import <AddressBook/AddressBook.h>
 #endif

@@ -12,6 +12,7 @@
 #import "MMDrawerVisualStateManager.h"
 #import "EKLayoutUtil.h"
 #import "EKFontsUtil.h"
+#import "EKAddressBookUtil.h"
 
 static NSString * const kEKRestorationID  = @"MMDrawer";
 static CGFloat    const kEKTitleFontSize  = 18.0f;
@@ -69,6 +70,9 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	[self.window setRootViewController:self.drawerController];
     [self.window makeKeyAndVisible];
+    
+    //Initially access to AB
+    [EKAddressBookUtil currentAccessType];
     
     return YES;
 }

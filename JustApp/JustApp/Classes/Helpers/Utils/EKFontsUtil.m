@@ -9,8 +9,8 @@
 #import "EKFontsUtil.h"
 #import "EKLayoutUtil.h"
 
-static NSString * const kEKFont     = @"Helvetica";
-static NSString * const kEKFont2    = @"HelveticaNeue-Light";
+static NSString * const kEKFont  = @"Helvetica";
+static NSString * const kEKFont2 = @"HelveticaNeue-Light";
 
 
 @implementation EKFontsUtil;

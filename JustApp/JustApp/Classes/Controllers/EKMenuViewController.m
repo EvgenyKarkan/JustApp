@@ -14,6 +14,7 @@
 #import "EKFontsUtil.h"
 #import "EKMapViewController.h"
 #import "EKMusicPlayerViewController.h"
+#import "EKContactsViewController.h"
 
 @interface EKMenuViewController () <EKMenuTableViewProviderDelegate>
 
@@ -22,6 +23,7 @@
 @property (nonatomic, strong) EKAppDelegate               *appDelegate;
 @property (nonatomic, strong) EKMapViewController         *mapViewController;
 @property (nonatomic, strong) EKMusicPlayerViewController *musicPlayerViewController;
+@property (nonatomic, strong) EKContactsViewController    *contactsViewController;
 
 @end
 
@@ -44,6 +46,7 @@
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.view.backgroundColor = BACKGROUND_COLOR;
+    [self.navigationController.navigationBar setTranslucent:NO];
     self.title = NSLocalizedString(@"JustMenu", @"JustMenu");
     
     self.tableViewProvider = [[EKMenuTableViewProvider alloc] initWithDelegate:self];
@@ -52,6 +55,7 @@
     
     self.mapViewController = [[EKMapViewController alloc] init];
     self.musicPlayerViewController = [[EKMusicPlayerViewController alloc] init];
+    self.contactsViewController = [[EKContactsViewController alloc] init];
 }
 
 #pragma mark - Show controllers
@@ -96,6 +100,17 @@
 	                                                completion:nil];
 }
 
+- (void)showContactsViewController
+{
+    [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    
+	UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:self.contactsViewController];
+    
+	[self.appDelegate.drawerController setCenterViewController:foo
+	                                        withCloseAnimation:YES
+	                                                completion:nil];
+}
+
 #pragma mark - EKMenuTableViewProviderDelegate
 
 - (void)cellDidPressWithIndex:(NSUInteger)index
@@ -116,7 +131,8 @@
 			break;
             
 		case 3:
-
+            [self showContactsViewController];
+            
 			break;
             
 		case 4:

@@ -6,9 +6,6 @@ target "JustApp" do
 pod "MMDrawerController"
 pod "DDExpandableButton"
 pod "SVProgressHUD"
-pod "APAddressBook"
-pod "DTTableViewManager"
-pod "APAddressBook"
 pod "SDWebImage"
 
 end

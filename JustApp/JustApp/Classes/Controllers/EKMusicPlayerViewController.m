@@ -40,10 +40,10 @@
 {
     [super viewDidLoad];
     
-    //Create new folder Music in Documents directory
+    //Create new folder "Music" in Documents directory
     [EKFileSystemUtil createNewFolderInDocumentsWithName:@"Music"];
     
-    //Copy music files from bundle to Music folder
+    //Copy music files from bundle to "Music" folder
     [EKFileSystemUtil copyFile:@"LMFAO - Sexy & I know it.mp3" toFolder:@"Music"];
     [EKFileSystemUtil copyFile:@"Eminem - Rhianna.mp3" toFolder:@"Music"];
     [EKFileSystemUtil copyFile:@"LMFAO - Party Rock Anthem.mp3" toFolder:@"Music"];
@@ -82,7 +82,7 @@
 		[self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 	}
     
-    self.view.backgroundColor = BACKGROUND_COLOR;
+    [self.navigationController.navigationBar setTranslucent:NO];
 	self.title = NSLocalizedString(@"JustMusicPlayer", @"JustMusicPlayer");
 }
 
@@ -117,7 +117,6 @@
     
 	[[NSRunLoop currentRunLoop] addTimer:self.timer
 	                             forMode:NSRunLoopCommonModes];
-    
 	self.paused = NO;
 	
 }

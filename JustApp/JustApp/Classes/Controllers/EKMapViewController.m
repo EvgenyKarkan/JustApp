@@ -45,14 +45,14 @@
 {
 	[super viewDidLoad];
     
-    [self setupUI];
-    self.mapView.map.delegate = self;
-    [PSLocationManager sharedLocationManager].delegate = self;
+	[self setupUI];
+	self.mapView.map.delegate = self;
+	[PSLocationManager sharedLocationManager].delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
+	[super didReceiveMemoryWarning];
 }
 
 #pragma mark - Setup buttons
@@ -76,10 +76,12 @@
 	}
     
     self.view.backgroundColor = BACKGROUND_COLOR;
+    [self.navigationController.navigationBar setTranslucent:NO];
 	self.title = NSLocalizedString(@"JustMap", @"JustMap");
     
     self.startStopButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	self.startStopButton.frame = CGRectMake(0.0f, 0.0f, 50.0f, 32.0f);
+    self.startStopButton.showsTouchWhenHighlighted = YES;
 	[self.startStopButton setTitle:NSLocalizedString(@"START_BUTTON_STARTS", @"")
                           forState:UIControlStateNormal];
     [self.startStopButton.titleLabel setFont:[UIFont fontWithName:[EKFontsUtil fontName]

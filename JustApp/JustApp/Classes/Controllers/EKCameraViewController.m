@@ -37,18 +37,19 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
     
-    self.title = NSLocalizedString(@"JustCamera", @"JustCamera");
-    self.view.backgroundColor = BACKGROUND_COLOR;
-    [self setupLeftMenuButton];
+	self.title = NSLocalizedString(@"JustCamera", @"JustCamera");
     
-    [self.cameraView.photoControl addTarget:self
-                                     action:@selector(showImagePickerController)
-                           forControlEvents:UIControlEventTouchUpInside];
+	self.view.backgroundColor = BACKGROUND_COLOR;
+	[self setupLeftMenuButton];
     
-    self.imagePickerController = [[EKImagePickerController alloc] init];
-    self.imagePickerController.delegate = self;
+	[self.cameraView.photoControl addTarget:self
+	                                 action:@selector(showImagePickerController)
+	                       forControlEvents:UIControlEventTouchUpInside];
+    
+	self.imagePickerController = [[EKImagePickerController alloc] init];
+	self.imagePickerController.delegate = self;
 }
 
 #pragma mark - Show imagePickerController

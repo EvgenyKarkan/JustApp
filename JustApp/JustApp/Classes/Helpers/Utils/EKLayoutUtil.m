@@ -19,7 +19,7 @@
 		result = 360.0f;
 	}
 	else {
-		result = 424.f;
+		result = 360.f;
 	}
     
 	return result;
@@ -46,16 +46,16 @@
 
 + (CGFloat)verticalOffset
 {
-    CGFloat result = 0.0f;
+	CGFloat result = 0.0f;
     
-    if ([self isSystemVersionLessThan7]) {
-        result = 0.0f;
-    }
-    else {
-        result = 64.0f;
-    }
+	if ([self isSystemVersionLessThan7]) {
+		result = 0.0f;
+	}
+	else {
+		result = 64.0f;
+	}
     
-    return result;
+	return result;
 }
 
 #pragma mark - Private API
