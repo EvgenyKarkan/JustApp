@@ -10,11 +10,9 @@
 
 @interface EKSongCell : UITableViewCell
 
-@property (nonatomic, strong) UILabel        *songLabel;
-
-
-@property (nonatomic, strong) UIButton       *playButton;
-@property (nonatomic, strong) UIButton       *pauseButton;
-@property (nonatomic, strong) UIButton       *stopButton;
+@property (nonatomic, strong) UILabel   *songLabel;
+@property (nonatomic, strong) UIButton  *playButton;
+@property (nonatomic, strong) UIButton  *pauseButton;
+@property (nonatomic, strong) UIButton  *stopButton;
 
 @end

@@ -7,7 +7,6 @@
 //
 
 
-
 @interface EKDashboardView : UIView
 
 @property (nonatomic, strong) UILabel *speedLabel;

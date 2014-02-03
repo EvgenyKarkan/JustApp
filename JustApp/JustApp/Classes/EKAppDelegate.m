@@ -71,7 +71,7 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
 	[self.window setRootViewController:self.drawerController];
     [self.window makeKeyAndVisible];
     
-    //Initially access to AB
+    //Initially asking access to AB
     [EKAddressBookUtil currentAccessType];
     
     return YES;
