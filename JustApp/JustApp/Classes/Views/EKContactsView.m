@@ -21,6 +21,13 @@
 		self.tableView.bounces = YES;
 		self.tableView.backgroundColor = BACKGROUND_COLOR;
 		self.tableView.separatorColor = [NAV_BAR_BACKGROUND_COLOR colorWithAlphaComponent:0.5f];
+        
+		[self.tableView setSectionIndexColor:[UIColor whiteColor]];
+        
+		if ([self.tableView respondsToSelector:@selector(setSectionIndexBackgroundColor:)]) {
+			[self.tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
+		}
+        
 		[self addSubview:self.tableView];
         
 		self.searchBar = [[UISearchBar alloc] init];

@@ -20,7 +20,6 @@ static CGFloat const kEKTitleFontSize = 20.0f;
 	if (self) {
 		self.backgroundColor = BACKGROUND_COLOR;
 		self.icon = [[UIImageView alloc] init];
-		self.icon.image = [UIImage imageNamed:@"FaceThumb"];
 		[self addSubview:self.icon];
         
 		self.title = [[UILabel alloc] init];
@@ -28,7 +27,6 @@ static CGFloat const kEKTitleFontSize = 20.0f;
 		self.title.textColor = [UIColor whiteColor];
 		self.title.font = [UIFont fontWithName:[EKFontsUtil fontName] size:kEKTitleFontSize];
 		self.title.textAlignment = NSTextAlignmentLeft;
-		self.title.text = @"Foo";
 		[self addSubview:self.title];
 	}
 	return self;

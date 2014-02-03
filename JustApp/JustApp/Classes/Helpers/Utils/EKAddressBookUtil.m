@@ -12,7 +12,7 @@
 
 @implementation EKAddressBookUtil;
 
-+ (NSArray *)persons
++ (NSMutableArray *)persons
 {
 	NSMutableArray *result = [@[] mutableCopy];
     

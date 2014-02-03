@@ -12,6 +12,7 @@
 #import "EKLayoutUtil.h"
 #import "EKAppDelegate.h"
 #import "EKAddressBookUtil.h"
+#import "EKPerson.h"
 
 
 @interface EKContactsViewController () <UISearchBarDelegate>
@@ -39,13 +40,31 @@
 	[super viewDidLoad];
     
 	[self setupUI];
-    
 	[self handleAccessToAdressBookForCurrentAccesType:[EKAddressBookUtil currentAccessType]];
+    
+    self.contactsView.searchBar.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
 {
 	[super didReceiveMemoryWarning];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+	                                         selector:@selector(onKeyboardHide:)
+	                                             name:UIKeyboardWillHideNotification
+	                                           object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - AddressBook access stuff
@@ -76,7 +95,7 @@
 
 - (void)loadAddressBookDataAndPassItToTableViewProvider
 {
-	NSArray *data = [EKAddressBookUtil persons];
+	NSMutableArray *data = [EKAddressBookUtil persons];
     
 	if ([data count] > 0 && data != nil) {
 		self.tableViewProvider = [[EKContactsTableViewProvider alloc] initWithData:data];
@@ -123,5 +142,65 @@
 	self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
 	[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
+
+#pragma mark - UISearchBarDelegate stuff
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+	self.contactsView.searchBar.showsCancelButton = YES;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+	if ([self.tableViewProvider.searchData count] > 0) {
+		[self.tableViewProvider.searchData removeAllObjects];
+	}
+    
+	if ([searchText length] > 0) {
+		self.tableViewProvider.searching = YES;
+		for (NSUInteger i = 0; i < [self.tableViewProvider.data count]; i++) {
+			NSParameterAssert(self.tableViewProvider.data[i] != nil);
+            
+			NSString *name = ((EKPerson *)self.tableViewProvider.data[i]).firstName;
+			NSString *lastName = ((EKPerson *)self.tableViewProvider.data[i]).lastName;
+			NSString *fullName = [NSString stringWithFormat:@"%@%@", name, lastName];
+            
+			NSRange titleResultsRange = [fullName rangeOfString:searchText options:NSCaseInsensitiveSearch];
+			if (titleResultsRange.length > 0) {
+				[self.tableViewProvider.searchData addObject:[self.tableViewProvider.data objectAtIndex:i]];
+			}
+		}
+	}
+	else {
+		self.tableViewProvider.searching = NO;
+	}
+    
+	[self.contactsView.tableView reloadData];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+	[[searchBar valueForKey:@"_searchField"] resignFirstResponder];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+	self.contactsView.searchBar.text = @"";
+	[self.contactsView.searchBar resignFirstResponder];
+	self.contactsView.searchBar.showsCancelButton = NO;
+    
+	[self.tableViewProvider.searchData removeAllObjects];
+	self.tableViewProvider.searching = NO;
+    
+	[self.contactsView.tableView reloadData];
+}
+
+#pragma mark - Listening to UIKeybord notification
+
+- (void)onKeyboardHide:(NSNotification *)notification
+{
+	self.contactsView.searchBar.showsCancelButton = NO;
+}
+
 
 @end

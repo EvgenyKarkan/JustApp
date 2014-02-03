@@ -15,7 +15,7 @@ typedef NS_ENUM (NSInteger, EKAddressBookAccessType) {
 
 @interface EKAddressBookUtil : NSObject
 
-+ (NSArray *)persons;
++ (NSMutableArray *)persons;
 + (EKAddressBookAccessType)currentAccessType;
 
 @end
