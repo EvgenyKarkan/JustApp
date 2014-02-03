@@ -9,6 +9,7 @@
 #import "EKContactsCell.h"
 #import "EKFontsUtil.h"
 
+
 static CGFloat const kEKTitleFontSize = 20.0f;
 
 

@@ -19,9 +19,6 @@ static NSString * const kEKFaceAsset          = @"Face";
 static NSString * const kEKException          = @"Deprecated method";
 static NSString * const kEKExceptionReason    = @"Class instance is singleton. It's not possible to call +new method directly. Use +sharedInstance instead";
 
-static NSString * const kEKClearedWithSuccess = @"Cleared";
-static NSString * const kEKErrorOnClear       = @"No data to clear";
-
 static CGFloat    const kEKNavBarFontSize     = 18.0f;
 
 #endif

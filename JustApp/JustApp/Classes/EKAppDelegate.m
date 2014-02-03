@@ -14,9 +14,11 @@
 #import "EKFontsUtil.h"
 #import "EKAddressBookUtil.h"
 
+
 static NSString * const kEKRestorationID  = @"MMDrawer";
 static CGFloat    const kEKTitleFontSize  = 18.0f;
 static CGFloat    const kEKDrawerSize     = 260.0f;
+
 
 @interface EKAppDelegate ()
 

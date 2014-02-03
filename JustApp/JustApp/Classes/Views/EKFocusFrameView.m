@@ -9,6 +9,7 @@
 
 #import "EKFocusFrameView.h"
 
+
 static CGFloat const kEKAnimationScale = 0.7f;
 static CGFloat const kEKFrameSide      = 120.0f;
 static CGFloat const kEKPathWidth      = 2.0f;

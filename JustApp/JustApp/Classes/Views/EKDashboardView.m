@@ -9,6 +9,7 @@
 #import "EKDashboardView.h"
 #import "EKFontsUtil.h"
 
+
 @interface EKDashboardView ()
 
 @property (nonatomic, strong) UIImageView *speedIcon;

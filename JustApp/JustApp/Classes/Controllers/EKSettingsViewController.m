@@ -94,7 +94,7 @@
     self.centerImage.layer.borderWidth = 5.0f;
     CGFloat imageSide       = self.view.frame.size.width / 1.25f;
     CGFloat halfSelfWidth   = self.view.frame.size.width / 2.0f;
-    self.centerImage.frame  = CGRectMake(halfSelfWidth - imageSide / 2.0f, 45, imageSide, imageSide);
+    self.centerImage.frame  = CGRectMake(halfSelfWidth - imageSide / 2.0f, 45.0f, imageSide, imageSide);
     [self.view addSubview:self.centerImage];
     
     if (![EKLayoutUtil isSystemVersionLessThan7]) {

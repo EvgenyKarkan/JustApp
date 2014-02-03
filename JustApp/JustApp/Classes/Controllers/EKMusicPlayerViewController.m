@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSTimer                        *timer;
 @property (nonatomic, assign) BOOL                            paused;
 @property (nonatomic, assign) NSUInteger                     lastPressedButtonTag;
+
 @end
 
 

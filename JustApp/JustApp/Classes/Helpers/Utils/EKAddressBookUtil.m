@@ -15,7 +15,6 @@
 + (NSMutableArray *)persons
 {
 	NSMutableArray *result = [@[] mutableCopy];
-    
 	ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
     
 	if (addressBook != nil) {
@@ -33,15 +32,12 @@
 				if (firstName == nil) {
 					firstName = @"";
 				}
-                
 				if (lastName == nil) {
 					lastName = @"";
 				}
-                
 				if (image == nil) {
 					image = [UIImage imageNamed:@"FaceThumb"];
 				}
-                
 				if (!([firstName isEqualToString:@""] && [lastName isEqualToString:@""])) {
 					EKPerson *human = [[EKPerson alloc] initWithName:firstName lastName:lastName avatar:image];
 					NSParameterAssert(human != nil);
@@ -67,7 +63,6 @@
 + (EKAddressBookAccessType)currentAccessType
 {
 	__block EKAddressBookAccessType type = EKAddressBookAccessTypeDeniedInitially;
-    
 	ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
     
 	if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {

@@ -9,6 +9,7 @@
 #import "EKMenuCell.h"
 #import "EKFontsUtil.h"
 
+
 static NSString * const kEKCameraIcon       = @"Camera menu icon";
 static NSString * const kEKCameraTitle      = @"Camera";
 

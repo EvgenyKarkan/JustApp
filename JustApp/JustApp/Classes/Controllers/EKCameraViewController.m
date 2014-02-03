@@ -14,6 +14,7 @@
 #import "EKImagePickerController.h"
 #import "EKImageProcessingUtil.h"
 
+
 @interface EKCameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) EKCameraView            *cameraView;

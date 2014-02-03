@@ -13,6 +13,7 @@
 static NSString * const kSUReuseIdentifier = @"defaultCell";
 static CGFloat    const kEKHeightForRow    = 52.0f;
 
+
 @interface EKContactsTableViewProvider ()
 
 @property (nonatomic, strong) NSMutableArray *lastNames;
@@ -72,7 +73,7 @@ static CGFloat    const kEKHeightForRow    = 52.0f;
 		[[self.sections objectForKey:[human.lastName substringToIndex:1]] addObject:human];
 	}
     
-	for (NSString *key in[self.sections allKeys]) {
+	for (NSString *key in [self.sections allKeys]) {
 		[[self.sections objectForKey:key] sortUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES]]];
 	}
 }
@@ -87,9 +88,9 @@ static CGFloat    const kEKHeightForRow    = 52.0f;
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
 		if (!self.searching) {
-			EKPerson *book = [[self.sections valueForKey:[[[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
-			cell.title.text = [NSString stringWithFormat:@"%@ %@", book.firstName, book.lastName];
-			cell.icon.image = book.avatar;
+			EKPerson *buddy = [[self.sections valueForKey:[[[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+			cell.title.text = [NSString stringWithFormat:@"%@ %@", buddy.firstName, buddy.lastName];
+			cell.icon.image = buddy.avatar;
 		}
         
             //TODO: finish live search
@@ -102,7 +103,7 @@ static CGFloat    const kEKHeightForRow    = 52.0f;
             //				if (indexPath.row <= indexPath.section) {
             //                    //EKPerson *homoSapiens = self.searchData[indexPath.row];
             //
-            //					EKPerson *homoSapiens = [[self.sections valueForKey:[[[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]                 objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+            //					EKPerson *homoSapiens = [[self.sections valueForKey:[[[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
             //
             //					NSParameterAssert(homoSapiens != nil);
             //					cell.title.text = [NSString stringWithFormat:@"%@ %@", homoSapiens.firstName, homoSapiens.lastName];
@@ -119,7 +120,7 @@ static CGFloat    const kEKHeightForRow    = 52.0f;
 	return kEKHeightForRow;
 }
 
-#pragma mark - Indexed stuff
+#pragma mark - Indexed stuff APIs
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {

@@ -8,6 +8,7 @@
 
 #import "EKCameraControl.h"
 
+
 @interface EKCameraView : UIView
 
 @property (nonatomic, strong) UIImageView     *centerImage;

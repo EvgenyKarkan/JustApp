@@ -9,6 +9,7 @@
 #import "EKSongCell.h"
 #import "EKFontsUtil.h"
 
+
 @interface EKSongCell ()
 
 @property (nonatomic, strong) UIImageView *mp3Icon;

@@ -8,6 +8,7 @@
 
 #import "EKCameraControl.h"
 
+
 @interface EKCameraControl ()
 
 @property (nonatomic, strong) UIImageView *imageView;

@@ -10,6 +10,7 @@
 #import "EKLayoutUtil.h"
 #import "EKFontsUtil.h"
 
+
 @interface EKCameraView ()
 
 @property (nonatomic, strong) UILabel *helloLabel;

@@ -8,6 +8,7 @@
 
 #import "EKCameraOverlayView.h"
 
+
 @interface EKCameraOverlayView ()
 
 @property (nonatomic, strong) UIView *topBar;
