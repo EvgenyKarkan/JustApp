@@ -15,6 +15,8 @@
 #import "EKMapViewController.h"
 #import "EKMusicPlayerViewController.h"
 #import "EKContactsViewController.h"
+#import "EKGalleryViewController.h"
+#import "EKSettingsViewController.h"
 
 @interface EKMenuViewController () <EKMenuTableViewProviderDelegate>
 
@@ -24,6 +26,8 @@
 @property (nonatomic, strong) EKMapViewController         *mapViewController;
 @property (nonatomic, strong) EKMusicPlayerViewController *musicPlayerViewController;
 @property (nonatomic, strong) EKContactsViewController    *contactsViewController;
+@property (nonatomic, strong) EKGalleryViewController     *galleryViewController;
+@property (nonatomic, strong) EKSettingsViewController    *settingsViewController;
 
 @end
 
@@ -56,6 +60,8 @@
     self.mapViewController = [[EKMapViewController alloc] init];
     self.musicPlayerViewController = [[EKMusicPlayerViewController alloc] init];
     self.contactsViewController = [[EKContactsViewController alloc] init];
+    self.galleryViewController = [[EKGalleryViewController alloc] init];
+    self.settingsViewController = [[EKSettingsViewController alloc] init];
 }
 
 #pragma mark - Show controllers
@@ -64,10 +70,10 @@
 {
 	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
-	if ([((UINavigationController *)self.appDelegate.drawerController.centerViewController).topViewController isKindOfClass:[EKCameraViewController class]]) {
+	if ([((UINavigationController *)self.appDelegate.drawerController.centerViewController).topViewController isKindOfClass :[EKCameraViewController class]]) {
 		[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft
-                                                   animated:YES
-                                                 completion:nil];
+		                                           animated:YES
+		                                         completion:nil];
 	}
 	else {
 		[self.appDelegate.drawerController setCenterViewController:self.appDelegate.navigationViewControllerCenter
@@ -76,35 +82,11 @@
 	}
 }
 
-#warning REFACTOR THIS 
-
-- (void)showMapViewController
+- (void)showViewController:(UIViewController *)controller
 {
-    [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
-	UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:self.mapViewController];
-    
-	[self.appDelegate.drawerController setCenterViewController:foo
-	                                        withCloseAnimation:YES
-	                                                completion:nil];
-}
-
-- (void)showMusicPlayerViewController
-{
-    [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-    
-	UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:self.musicPlayerViewController];
-    
-	[self.appDelegate.drawerController setCenterViewController:foo
-	                                        withCloseAnimation:YES
-	                                                completion:nil];
-}
-
-- (void)showContactsViewController
-{
-    [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-    
-	UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:self.contactsViewController];
+	UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:controller];
     
 	[self.appDelegate.drawerController setCenterViewController:foo
 	                                        withCloseAnimation:YES
@@ -119,28 +101,27 @@
     
 	switch (index) {
 		case 0:
-            [self showCameraViewController];
+			[self showCameraViewController];
 			break;
             
 		case 1:
-            [self showMapViewController];
+			[self showViewController:self.mapViewController];
 			break;
             
 		case 2:
-            [self showMusicPlayerViewController];
+			[self showViewController:self.musicPlayerViewController];
 			break;
             
 		case 3:
-            [self showContactsViewController];
-            
+			[self showViewController:self.contactsViewController];
 			break;
             
 		case 4:
-
+			[self showViewController:self.galleryViewController];
 			break;
             
 		case 5:
-
+            [self showViewController:self.settingsViewController];
 			break;
             
 		default:

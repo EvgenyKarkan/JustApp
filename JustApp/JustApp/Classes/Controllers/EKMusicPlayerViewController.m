@@ -27,7 +27,7 @@
 
 @implementation EKMusicPlayerViewController;
 
-#pragma mark - Live cycle
+#pragma mark - Life cycle
 
 - (void)loadView
 {

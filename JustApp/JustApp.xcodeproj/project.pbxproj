@@ -54,6 +54,9 @@
 		DEC95A4D189EEA6C004A6007 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEC95A4C189EEA6C004A6007 /* AddressBook.framework */; };
 		DEC95A53189F04A7004A6007 /* EKAddressBookUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC95A52189F04A7004A6007 /* EKAddressBookUtil.m */; };
 		DEC95A56189F04DD004A6007 /* EKPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC95A55189F04DD004A6007 /* EKPerson.m */; };
+		DEC95A5C189F76EA004A6007 /* EKGalleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC95A5B189F76EA004A6007 /* EKGalleryCell.m */; };
+		DEC95A5F189F790A004A6007 /* EKGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC95A5E189F790A004A6007 /* EKGalleryViewController.m */; };
+		DEC95A62189F8AA5004A6007 /* EKSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC95A61189F8AA5004A6007 /* EKSettingsViewController.m */; };
 		DED2B5AF189826780086CD5F /* EKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5AC189826780086CD5F /* EKAppDelegate.m */; };
 		DED2B5B2189828BE0086CD5F /* EKMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5B1189828BE0086CD5F /* EKMenuViewController.m */; };
 		DED2B5B5189829270086CD5F /* EKMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2B5B4189829270086CD5F /* EKMenuView.m */; };
@@ -155,6 +158,12 @@
 		DEC95A52189F04A7004A6007 /* EKAddressBookUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAddressBookUtil.m; sourceTree = "<group>"; };
 		DEC95A54189F04DD004A6007 /* EKPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKPerson.h; sourceTree = "<group>"; };
 		DEC95A55189F04DD004A6007 /* EKPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKPerson.m; sourceTree = "<group>"; };
+		DEC95A5A189F76EA004A6007 /* EKGalleryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKGalleryCell.h; sourceTree = "<group>"; };
+		DEC95A5B189F76EA004A6007 /* EKGalleryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKGalleryCell.m; sourceTree = "<group>"; };
+		DEC95A5D189F790A004A6007 /* EKGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKGalleryViewController.h; sourceTree = "<group>"; };
+		DEC95A5E189F790A004A6007 /* EKGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKGalleryViewController.m; sourceTree = "<group>"; };
+		DEC95A60189F8AA5004A6007 /* EKSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettingsViewController.h; sourceTree = "<group>"; };
+		DEC95A61189F8AA5004A6007 /* EKSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettingsViewController.m; sourceTree = "<group>"; };
 		DED2B5AB189826780086CD5F /* EKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAppDelegate.h; sourceTree = "<group>"; };
 		DED2B5AC189826780086CD5F /* EKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAppDelegate.m; sourceTree = "<group>"; };
 		DED2B5B0189828BE0086CD5F /* EKMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMenuViewController.h; sourceTree = "<group>"; };
@@ -332,6 +341,10 @@
 				DE9EA33C189DA71F00E39469 /* EKMusicPlayerViewController.m */,
 				DE59FBB3189E7F56009ED9B0 /* EKContactsViewController.h */,
 				DE59FBB4189E7F56009ED9B0 /* EKContactsViewController.m */,
+				DEC95A5D189F790A004A6007 /* EKGalleryViewController.h */,
+				DEC95A5E189F790A004A6007 /* EKGalleryViewController.m */,
+				DEC95A60189F8AA5004A6007 /* EKSettingsViewController.h */,
+				DEC95A61189F8AA5004A6007 /* EKSettingsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -374,6 +387,8 @@
 				DE59FBB7189E7FBC009ED9B0 /* EKContactsView.m */,
 				DE680149189E84B4004EB0DF /* EKContactsCell.h */,
 				DE68014A189E84B4004EB0DF /* EKContactsCell.m */,
+				DEC95A5A189F76EA004A6007 /* EKGalleryCell.h */,
+				DEC95A5B189F76EA004A6007 /* EKGalleryCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -571,6 +586,7 @@
 				DED2B5B2189828BE0086CD5F /* EKMenuViewController.m in Sources */,
 				DE20E5191898338A00EA2F68 /* EKMenuTableViewProvider.m in Sources */,
 				DED2B5AF189826780086CD5F /* EKAppDelegate.m in Sources */,
+				DEC95A62189F8AA5004A6007 /* EKSettingsViewController.m in Sources */,
 				DE92CBA118994A41000CA82E /* EKCameraView.m in Sources */,
 				DE9EA343189DAE3D00E39469 /* EKMusicPlayerTableViewProvider.m in Sources */,
 				DE20E51C18983ED100EA2F68 /* EKCameraViewController.m in Sources */,
@@ -580,10 +596,12 @@
 				DEA33ACF189BFEC9000D2DBF /* EKDashboardView.m in Sources */,
 				DEC95A56189F04DD004A6007 /* EKPerson.m in Sources */,
 				DEC33B23189B0560005A9E67 /* EKMapViewController.m in Sources */,
+				DEC95A5F189F790A004A6007 /* EKGalleryViewController.m in Sources */,
 				DE78B8B0189DDC7F00740F12 /* EKMusicPlayer.m in Sources */,
 				DED2B5B818982BFA0086CD5F /* EKMenuCell.m in Sources */,
 				DE9EA322189D109000E39469 /* EKFileSystemUtil.m in Sources */,
 				DE6945F0189807A400E4E961 /* main.m in Sources */,
+				DEC95A5C189F76EA004A6007 /* EKGalleryCell.m in Sources */,
 				DE20E51F189841B600EA2F68 /* MMDrawerVisualStateManager.m in Sources */,
 				DE92CBA418994D73000CA82E /* EKCameraControl.m in Sources */,
 				DE92CBAD1899CA21000CA82E /* EKFocusFrameView.m in Sources */,

@@ -92,7 +92,7 @@ static CGFloat    const kEKHeightForRow    = 52.0f;
 			cell.icon.image = book.avatar;
 		}
         
-            //TODO: add search
+            //TODO: finish live search
         
             //		else {
             //                NSLog(@"Section %d", indexPath.section);

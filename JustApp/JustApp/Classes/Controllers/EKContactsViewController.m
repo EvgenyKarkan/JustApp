@@ -26,7 +26,7 @@
 
 @implementation EKContactsViewController
 
-#pragma mark - Live cycle
+#pragma mark - Life cycle
 
 - (void)loadView
 {
@@ -175,6 +175,7 @@
 		self.tableViewProvider.searching = NO;
 	}
     
+    [SVProgressHUD showErrorWithStatus:@"Search is unfinished"];
 	[self.contactsView.tableView reloadData];
 }
 
@@ -201,6 +202,5 @@
 {
 	self.contactsView.searchBar.showsCancelButton = NO;
 }
-
 
 @end

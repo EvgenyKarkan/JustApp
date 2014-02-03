@@ -23,5 +23,6 @@
     #import <CoreLocation/CoreLocation.h>
     #import <MapKit/MapKit.h>
     #import <AVFoundation/AVFoundation.h>
-#import <AddressBook/AddressBook.h>
+    #import <AddressBook/AddressBook.h>
+    #import <SDWebImage/UIImageView+WebCache.h>
 #endif
