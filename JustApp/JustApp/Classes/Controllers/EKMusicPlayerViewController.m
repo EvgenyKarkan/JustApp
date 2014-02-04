@@ -119,7 +119,6 @@
 	[[NSRunLoop currentRunLoop] addTimer:self.timer
 	                             forMode:NSRunLoopCommonModes];
 	self.paused = NO;
-	
 }
 
 - (void)pauseDidPressedWithTag:(NSUInteger)tag
@@ -149,6 +148,8 @@
 
 - (void)timerFired:(NSTimer *)timer
 {
+    NSParameterAssert(timer != nil);
+    
 	[self updateDisplay];
 }
 

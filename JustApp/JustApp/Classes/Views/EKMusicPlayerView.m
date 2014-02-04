@@ -10,6 +10,7 @@
 #import "EKLayoutUtil.h"
 #import "EKFontsUtil.h"
 
+
 @interface EKMusicPlayerView ()
 
 @property (nonatomic, strong) UIImageView *soundIcon;

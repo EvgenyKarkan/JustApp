@@ -74,7 +74,7 @@
     self.view.backgroundColor = BACKGROUND_COLOR;
 	UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	clearButton.frame = CGRectMake(self.view.frame.size.width / 2.0f - 80.0f, 380.0f, 160.0f, 32.0f);
+	clearButton.frame = CGRectMake(self.view.frame.size.width / 2.0f - 80.0f, self.view.frame.size.height - 100.0f, 160.0f, 32.0f);
 
 	clearButton.showsTouchWhenHighlighted = YES;
     

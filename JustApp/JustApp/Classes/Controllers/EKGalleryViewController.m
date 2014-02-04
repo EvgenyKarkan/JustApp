@@ -35,7 +35,6 @@
 	              @"http://img.go2load.com/photo/02/FunnyCatsKittens_090310/001_FunnyCatsKittens_090310_Go2LoadCOM.jpg",
 	              @"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSTlUKlAVNk72xMPZSwAfgdw05_wjPkQdss0qZ-IAhOZCQMuOoQAIkWU3k",
 	              @"http://freeon.in.ua/uploads/posts/2011-11/thumbs/1320600215_0_284da_78d5c77a_xl.jpg",
-	              @"http://img1.liveinternet.ru/images/attach/c/7/94/442/94442735_large_0_696ef_4c63ff27_orig.png",
 	              @"http://cs402817.vk.me/v402817321/8941/IU0ZH7TlZmQ.jpg",
 	              @"http://cs314324.vk.me/v314324315/4cab/7lgB7KJQ60U.jpg",
 	              @"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSHbQ5C977wp1rF7PFEgYE7S7HyR_IgRgPKhsMv2m8pupTQZJvpyFYbmA",
@@ -133,9 +132,8 @@
 	[cell.icon setImageWithURL:imageUrl
 	          placeholderImage:[UIImage imageNamed:@"Cat"]
 	                 completed: ^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                         weakCell.title.text = @"Image downloaded!!!";
+                         weakCell.title.text = @"Image downloaded!";
                      }];
-    
 	return cell;
 }
 

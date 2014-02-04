@@ -12,6 +12,7 @@
 static NSString * const kSUReuseIdentifier = @"defaultCell";
 static CGFloat    const kEKHeightForRow    = 92.0f;
 
+
 @interface EKMusicPlayerTableViewProvider () 
 
 @property (nonatomic, copy) NSArray *data;
@@ -73,16 +74,19 @@ static CGFloat    const kEKHeightForRow    = 92.0f;
 
 - (void)playButtonPressed:(UIButton *)sender
 {
+    NSParameterAssert(sender != nil);
 	[self.delegate playDidPressedWithTag:sender.tag];
 }
 
 - (void)pauseButtonPressed:(UIButton *)sender
 {
+    NSParameterAssert(sender != nil);
 	[self.delegate pauseDidPressedWithTag:sender.tag];
 }
 
 - (void)stopButtonPressed:(UIButton *)sender
 {
+    NSParameterAssert(sender != nil);
 	[self.delegate stopDidPressedWithTag:sender.tag];
 }
 
