@@ -168,14 +168,15 @@
 			NSRange titleResultsRange = [fullName rangeOfString:searchText options:NSCaseInsensitiveSearch];
 			if (titleResultsRange.length > 0) {
 				[self.tableViewProvider.searchData addObject:[self.tableViewProvider.data objectAtIndex:i]];
+                [self.tableViewProvider prepeareIndexedDataSourceFromData:self.tableViewProvider.searchData];
 			}
 		}
 	}
 	else {
 		self.tableViewProvider.searching = NO;
+        [self.tableViewProvider prepeareIndexedDataSourceFromData:self.tableViewProvider.data];
 	}
-    
-    [SVProgressHUD showErrorWithStatus:@"Search is unfinished"];
+
 	[self.contactsView.tableView reloadData];
 }
 
@@ -190,7 +191,11 @@
 	[self.contactsView.searchBar resignFirstResponder];
 	self.contactsView.searchBar.showsCancelButton = NO;
     
-	[self.tableViewProvider.searchData removeAllObjects];
+    if ([self.tableViewProvider.searchData count] > 0) {
+        [self.tableViewProvider.searchData removeAllObjects];
+    }
+    
+	[self.tableViewProvider prepeareIndexedDataSourceFromData:self.tableViewProvider.data];
 	self.tableViewProvider.searching = NO;
     
 	[self.contactsView.tableView reloadData];

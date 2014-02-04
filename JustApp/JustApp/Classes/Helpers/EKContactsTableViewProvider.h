@@ -9,10 +9,11 @@
 
 @interface EKContactsTableViewProvider : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-- (instancetype)initWithData:(NSMutableArray *)dataSource;
-
-@property (nonatomic, assign) BOOL searching;
+@property (nonatomic, assign) BOOL            searching;
 @property (nonatomic, strong) NSMutableArray *data;
 @property (nonatomic, strong) NSMutableArray *searchData;
+
+- (instancetype)initWithData:(NSMutableArray *)dataSource;
+- (void)prepeareIndexedDataSourceFromData:(NSMutableArray *)datasource;
 
 @end

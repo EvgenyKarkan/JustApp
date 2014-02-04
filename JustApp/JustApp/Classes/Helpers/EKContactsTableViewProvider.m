@@ -34,42 +34,46 @@ static CGFloat    const kEKHeightForRow    = 52.0f;
 	self = [super init];
 	if (self) {
 		self.data = dataSource;
-		self.searchData = [@[] mutableCopy];
+        self.searchData = [@[] mutableCopy];
 	}
-	[self prepareData];
+    
+    [self prepeareIndexedDataSourceFromData:self.data];
     
 	return self;
 }
 
 #pragma mark - Prepare data
 
-- (void)prepareData
+- (void)prepeareIndexedDataSourceFromData:(NSMutableArray *)datasource
 {
-	BOOL found = NO;
+    BOOL found = NO;
 	self.sections = [[NSMutableDictionary alloc] init];
     
-	for (EKPerson *person in self.data) {
+	for (EKPerson *person in datasource) {
+        NSParameterAssert(person != nil);
 		if ([person.lastName isEqualToString:@""]) {
 			person.lastName = @"Skywalker";
 		}
 		NSString *firstLetter = [person.lastName substringToIndex:1];
 		found = NO;
         
-		for (NSString *str in[self.sections allKeys]) {
-			if ([str isEqualToString:firstLetter]) {
+		for (NSString *key in [self.sections allKeys]) {
+            NSParameterAssert(key != nil);
+            NSParameterAssert(![key isEqualToString:@""]);
+            NSParameterAssert(![key isEqualToString:@" "]);
+			if ([key isEqualToString:firstLetter]) {
 				found = YES;
 			}
 		}
         
 		if (!found) {
 			NSMutableArray *valueArray = [@[] mutableCopy];
-            
 			[self.sections setValue:valueArray
 			                 forKey:firstLetter];
 		}
 	}
     
-	for (EKPerson *human in self.data) {
+	for (EKPerson *human in datasource) {
 		[[self.sections objectForKey:[human.lastName substringToIndex:1]] addObject:human];
 	}
     
@@ -87,30 +91,9 @@ static CGFloat    const kEKHeightForRow    = 52.0f;
 		cell = [[EKContactsCell alloc] init];
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-		if (!self.searching) {
-			EKPerson *buddy = [[self.sections valueForKey:[[[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
-			cell.title.text = [NSString stringWithFormat:@"%@ %@", buddy.firstName, buddy.lastName];
-			cell.icon.image = buddy.avatar;
-		}
-        
-            //TODO: finish live search
-        
-            //		else {
-            //                NSLog(@"Section %d", indexPath.section);
-            //                NSLog(@"Path %d", indexPath.row);
-            //
-            //			if (indexPath.section < [self.searchData count]) {
-            //				if (indexPath.row <= indexPath.section) {
-            //                    //EKPerson *homoSapiens = self.searchData[indexPath.row];
-            //
-            //					EKPerson *homoSapiens = [[self.sections valueForKey:[[[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
-            //
-            //					NSParameterAssert(homoSapiens != nil);
-            //					cell.title.text = [NSString stringWithFormat:@"%@ %@", homoSapiens.firstName, homoSapiens.lastName];
-            //					cell.icon.image = homoSapiens.avatar;
-            //				}
-            //			}
-            //		}
+		EKPerson *buddy = [[self.sections valueForKey:[[[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]]         objectAtIndex:indexPath.row];
+		cell.title.text = [NSString stringWithFormat:@"%@ %@", buddy.firstName, buddy.lastName];
+		cell.icon.image = buddy.avatar;
 	}
 	return cell;
 }
