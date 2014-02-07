@@ -32,9 +32,9 @@
 
 - (void)loadView
 {
-	EKMusicPlayerView *view = [[EKMusicPlayerView alloc] init];
-	self.view = view;
-	self.musicPlayerView = view;
+    EKMusicPlayerView *view = [[EKMusicPlayerView alloc] init];
+    self.view = view;
+    self.musicPlayerView = view;
 }
 
 - (void)viewDidLoad
@@ -50,11 +50,11 @@
     [EKFileSystemUtil copyFile:@"LMFAO - Party Rock Anthem.mp3" toFolder:@"Music"];
     [EKFileSystemUtil copyFile:@"Pink panther theme.mp3" toFolder:@"Music"];
     [EKFileSystemUtil copyFile:@"Tarantella dance.mp3" toFolder:@"Music"];
-
+    
     self.tableViewProvider = [[EKMusicPlayerTableViewProvider alloc] initWithData:[EKFileSystemUtil filesFromFolder:@"Music"]
                                                                          delegate:self];
     self.musicPlayerView.tableView.delegate = self.tableViewProvider;
-	self.musicPlayerView.tableView.dataSource = self.tableViewProvider;
+    self.musicPlayerView.tableView.dataSource = self.tableViewProvider;
     [self setupUI];
 }
 
@@ -67,24 +67,24 @@
 
 - (void)setupUI
 {
-	MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
+    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
 	                                                                                 action:@selector(leftDrawerButtonPress:)];
-	leftDrawerButton.tintColor = [UIColor whiteColor];
+    leftDrawerButton.tintColor = [UIColor whiteColor];
     
-	if ([EKLayoutUtil isSystemVersionLessThan7]) {
-		UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+    if ([EKLayoutUtil isSystemVersionLessThan7]) {
+        UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
 		                                                                        target:nil
 		                                                                        action:nil];
-		spacer.width = 12.0f;
-		[self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:spacer, leftDrawerButton, nil]
-		                                  animated:NO];
-	}
-	else {
-		[self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
-	}
+        spacer.width = 12.0f;
+        [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:spacer, leftDrawerButton, nil]
+                                          animated:NO];
+    }
+    else {
+        [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    }
     
     [self.navigationController.navigationBar setTranslucent:NO];
-	self.title = NSLocalizedString(@"JustMusicPlayer", @"JustMusicPlayer");
+    self.title = NSLocalizedString(@"JustMusicPlayer", @"JustMusicPlayer");
 }
 
 - (void)leftDrawerButtonPress:(MMDrawerBarButtonItem *)sender
@@ -92,7 +92,7 @@
     NSParameterAssert(sender != nil);
     
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 #pragma mark - EKMusicPlayerProviderDelegate
@@ -100,25 +100,25 @@
 - (void)playDidPressedWithTag:(NSUInteger)tag
 {
     self.lastPressedButtonTag = tag;
-	NSArray *songs = [EKFileSystemUtil filesFromFolder:@"Music"];
+    NSArray *songs = [EKFileSystemUtil filesFromFolder:@"Music"];
     self.musicPlayerView.songLabel.text = [songs[tag] allKeys][0];
     
-	if (!self.paused) {
-		[[EKMusicPlayer sharedInstance] playMusicFile:[songs[tag] allValues][0]];
-	}
-	else {
-		[[EKMusicPlayer sharedInstance] play];
-	}
+    if (!self.paused) {
+        [[EKMusicPlayer sharedInstance] playMusicFile:[songs[tag] allValues][0]];
+    }
+    else {
+        [[EKMusicPlayer sharedInstance] play];
+    }
     
-	self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1f
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1f
 	                                              target:self
 	                                            selector:@selector(timerFired:)
 	                                            userInfo:nil
 	                                             repeats:YES];
     
-	[[NSRunLoop currentRunLoop] addTimer:self.timer
-	                             forMode:NSRunLoopCommonModes];
-	self.paused = NO;
+    [[NSRunLoop currentRunLoop] addTimer:self.timer
+                                 forMode:NSRunLoopCommonModes];
+    self.paused = NO;
 }
 
 - (void)pauseDidPressedWithTag:(NSUInteger)tag
@@ -127,10 +127,10 @@
         return;
     }
     
-	self.paused = !self.paused;
-	[[EKMusicPlayer sharedInstance] pause];
-	[self.timer invalidate];
-	[self updateDisplay];
+    self.paused = !self.paused;
+    [[EKMusicPlayer sharedInstance] pause];
+    [self.timer invalidate];
+    [self updateDisplay];
 }
 
 - (void)stopDidPressedWithTag:(NSUInteger)tag
@@ -139,9 +139,9 @@
         return;
     }
     
-	[[EKMusicPlayer sharedInstance] stop];
-	[self.timer invalidate];
-	[self updateDisplay];
+    [[EKMusicPlayer sharedInstance] stop];
+    [self.timer invalidate];
+    [self updateDisplay];
 }
 
 #pragma mark - Actions
@@ -150,16 +150,16 @@
 {
     NSParameterAssert(timer != nil);
     
-	[self updateDisplay];
+    [self updateDisplay];
 }
 
 - (void)updateDisplay
 {
-	NSTimeInterval currentTime = [[EKMusicPlayer sharedInstance] currentTime];
-	NSTimeInterval duration = [[EKMusicPlayer sharedInstance] duration];
+    NSTimeInterval currentTime = [[EKMusicPlayer sharedInstance] currentTime];
+    NSTimeInterval duration = [[EKMusicPlayer sharedInstance] duration];
     
-	[self.musicPlayerView.progressView setProgress:(CGFloat)(currentTime / duration)
-	                                      animated:YES];
+    [self.musicPlayerView.progressView setProgress:(CGFloat)(currentTime / duration)
+                                          animated:YES];
 }
 
 @end

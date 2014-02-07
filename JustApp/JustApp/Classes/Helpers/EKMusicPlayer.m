@@ -8,6 +8,7 @@
 
 #import "EKMusicPlayer.h"
 
+
 @interface EKMusicPlayer ()
 
 @property (nonatomic, strong) AVAudioPlayer *player;
@@ -23,36 +24,36 @@ static id _sharedInstance;
 
 + (EKMusicPlayer *)sharedInstance //public API
 {
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-	    _sharedInstance = [[EKMusicPlayer alloc] init];
-	});
-	return _sharedInstance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedInstance = [[EKMusicPlayer alloc] init];
+    });
+    return _sharedInstance;
 }
 
 + (id)allocWithZone:(NSZone *)zone
 {
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-	    _sharedInstance = nil;
-	    _sharedInstance = [super allocWithZone:zone];
-	});
-	return _sharedInstance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedInstance = nil;
+        _sharedInstance = [super allocWithZone:zone];
+    });
+    return _sharedInstance;
 }
 
 - (id)copyWithZone:(NSZone *)zone
 {
-	return self;
+    return self;
 }
 
 + (id)new
 {
-	NSException *exception = [[NSException alloc] initWithName:kEKException
-	                                                    reason:kEKExceptionReason
-	                                                  userInfo:nil];
-	[exception raise];
+    NSException *exception = [[NSException alloc] initWithName:kEKException
+                                                        reason:kEKExceptionReason
+                                                      userInfo:nil];
+    [exception raise];
     
-	return nil;
+    return nil;
 }
 
 #pragma mark - Public APIs

@@ -31,26 +31,26 @@
 
 - (void)loadView
 {
-	EKCameraView *view = [[EKCameraView alloc] init];
-	self.view = view;
-	self.cameraView = view;
+    EKCameraView *view = [[EKCameraView alloc] init];
+    self.view = view;
+    self.cameraView = view;
 }
 
 - (void)viewDidLoad
 {
-	[super viewDidLoad];
+    [super viewDidLoad];
     
-	self.title = NSLocalizedString(@"JustCamera", @"JustCamera");
+    self.title = NSLocalizedString(@"JustCamera", @"JustCamera");
     
-	self.view.backgroundColor = BACKGROUND_COLOR;
-	[self setupLeftMenuButton];
+    self.view.backgroundColor = BACKGROUND_COLOR;
+    [self setupLeftMenuButton];
     
-	[self.cameraView.photoControl addTarget:self
-	                                 action:@selector(showImagePickerController)
-	                       forControlEvents:UIControlEventTouchUpInside];
+    [self.cameraView.photoControl addTarget:self
+                                     action:@selector(showImagePickerController)
+                           forControlEvents:UIControlEventTouchUpInside];
     
-	self.imagePickerController = [[EKImagePickerController alloc] init];
-	self.imagePickerController.delegate = self;
+    self.imagePickerController = [[EKImagePickerController alloc] init];
+    self.imagePickerController.delegate = self;
 }
 
 #pragma mark - Show imagePickerController
@@ -58,20 +58,20 @@
 - (void)showImagePickerController
 {
 #ifdef __i386__
-	NSLog(@"No camera in simulator, sorry bro :(");
+    NSLog(@"No camera in simulator, sorry bro :(");
 #else
-	if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-		[SVProgressHUD showErrorWithStatus:NSLocalizedString(@"NO_CAMERA", @"")];
-	}
-	else {
-		__weak typeof(EKCameraViewController) *weakSelf = self;
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"NO_CAMERA", @"")];
+    }
+    else {
+        __weak typeof(EKCameraViewController) *weakSelf = self;
         
-		[self presentViewController:self.imagePickerController animated:YES completion: ^{
-		    if (weakSelf.moviePlayerController != nil) {
-		        [weakSelf.moviePlayerController.view removeFromSuperview];
-			}
-		}];
-	}
+        [self presentViewController:self.imagePickerController animated:YES completion: ^{
+            if (weakSelf.moviePlayerController != nil) {
+                [weakSelf.moviePlayerController.view removeFromSuperview];
+            }
+        }];
+    }
 #endif
 }
 
@@ -79,21 +79,21 @@
 
 - (void)setupLeftMenuButton
 {
-	MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
-	                                                                                 action:@selector(leftDrawerButtonPress:)];
-	leftDrawerButton.tintColor = [UIColor whiteColor];
+    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
+                                                                                     action:@selector(leftDrawerButtonPress:)];
+    leftDrawerButton.tintColor = [UIColor whiteColor];
     
-	if ([EKLayoutUtil isSystemVersionLessThan7]) {
-		UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-		                                                                        target:nil
-		                                                                        action:nil];
-		spacer.width = 12.0f;
-		[self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:spacer, leftDrawerButton, nil]
-		                                  animated:NO];
-	}
-	else {
-		[self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
-	}
+    if ([EKLayoutUtil isSystemVersionLessThan7]) {
+        UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                                                                target:nil
+                                                                                action:nil];
+        spacer.width = 12.0f;
+        [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:spacer, leftDrawerButton, nil]
+                                          animated:NO];
+    }
+    else {
+        [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    }
 }
 
 - (void)leftDrawerButtonPress:(MMDrawerBarButtonItem *)sender
@@ -101,26 +101,26 @@
     NSParameterAssert(sender != nil);
     
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 #pragma mark - UIImagePickerControllerDelegate API
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-	NSString *mediaType = info[UIImagePickerControllerMediaType];
+    NSString *mediaType = info[UIImagePickerControllerMediaType];
     
-	if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         [picker dismissViewControllerAnimated:YES completion:nil];
-		CGFloat squareSide = self.cameraView.centerImage.frame.size.width;
-		UIImage *squareImage = [EKImageProcessingUtil squareImageWithImage:info[UIImagePickerControllerOriginalImage]
-		                                                      scaledToSize:CGSizeMake(squareSide, squareSide)];
-		self.cameraView.centerImage.image = squareImage;
-	}
-	else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
+        CGFloat squareSide = self.cameraView.centerImage.frame.size.width;
+        UIImage *squareImage = [EKImageProcessingUtil squareImageWithImage:info[UIImagePickerControllerOriginalImage]
+                                                              scaledToSize:CGSizeMake(squareSide, squareSide)];
+        self.cameraView.centerImage.image = squareImage;
+    }
+    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
         [picker dismissViewControllerAnimated:YES completion:nil];
         [self setUpMediaPlayerWithURL:info[UIImagePickerControllerMediaURL]];
-	}
+    }
 }
 
 #pragma mark - Media player stuff

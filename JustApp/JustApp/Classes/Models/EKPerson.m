@@ -17,18 +17,18 @@
                     lastName:(NSString *)lastNAme
                       avatar:(UIImage *)avatar
 {
-	NSParameterAssert(name != nil);
-	NSParameterAssert(lastNAme != nil);
+    NSParameterAssert(name != nil);
+    NSParameterAssert(lastNAme != nil);
     NSParameterAssert(avatar != nil);
     
 	self = [super init];
     
-	if (self) {
-		self.firstName = name;
-		self.lastName = lastNAme;
-		self.avatar = avatar;
-	}
-	return self;
+    if (self) {
+        self.firstName = name;
+        self.lastName = lastNAme;
+        self.avatar = avatar;
+    }
+    return self;
 }
 
 @end

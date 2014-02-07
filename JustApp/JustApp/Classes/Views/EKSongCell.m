@@ -63,11 +63,11 @@
     self.mp3Icon.frame = CGRectMake(30.0f, 12.0f, 25.0f, 25.0f);
     
     CGFloat buttonSide = 35.0f;
-	self.playButton.frame = CGRectMake(self.center.x - buttonSide / 2.0f, 50.0f, buttonSide, buttonSide);
+    self.playButton.frame = CGRectMake(self.center.x - buttonSide / 2.0f, 50.0f, buttonSide, buttonSide);
     
     CGFloat quadro = self.frame.size.width / 4.0f;
     self.pauseButton.frame = CGRectMake(self.playButton.frame.origin.x - quadro, 50.0f, buttonSide, buttonSide);
-	self.stopButton.frame = CGRectMake(self.playButton.frame.origin.x + quadro, 50.0f, buttonSide, buttonSide);
+    self.stopButton.frame = CGRectMake(self.playButton.frame.origin.x + quadro, 50.0f, buttonSide, buttonSide);
 }
 
 @end

@@ -42,22 +42,22 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
 	                                                        leftDrawerViewController:navigationViewControllerLeft];
     
     [self.drawerController setRestorationIdentifier:kEKRestorationID];
-	[self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-	[self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-	[self.drawerController setMaximumLeftDrawerWidth:kEKDrawerSize];
-	[self.drawerController setShowsShadow:YES];
-	self.drawerController.shouldStretchDrawer = NO;
+    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    [self.drawerController setMaximumLeftDrawerWidth:kEKDrawerSize];
+    [self.drawerController setShowsShadow:YES];
+    self.drawerController.shouldStretchDrawer = NO;
     
-	[[MMDrawerVisualStateManager sharedManager] setLeftDrawerAnimationType:MMDrawerAnimationTypeParallax];
+    [[MMDrawerVisualStateManager sharedManager] setLeftDrawerAnimationType:MMDrawerAnimationTypeParallax];
     
-	[self.drawerController setDrawerVisualStateBlock: ^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+    [self.drawerController setDrawerVisualStateBlock: ^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
 	    MMDrawerControllerDrawerVisualStateBlock block;
 	    block = [[MMDrawerVisualStateManager sharedManager] drawerVisualStateBlockForDrawerSide:drawerSide];
 	    if (block) {
 	        block(drawerController, drawerSide, percentVisible);
 		}
-	}];
-
+    }];
+    
     if ([EKLayoutUtil isSystemVersionLessThan7]) {
         [[UINavigationBar appearance] setTintColor:NAV_BAR_BACKGROUND_COLOR];
     }
@@ -67,10 +67,10 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
     
     NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:[EKFontsUtil fontName] size:kEKTitleFontSize], NSFontAttributeName,
                                       [UIColor whiteColor], NSForegroundColorAttributeName, nil];
-	[[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
+    [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	[self.window setRootViewController:self.drawerController];
+    [self.window setRootViewController:self.drawerController];
     [self.window makeKeyAndVisible];
     
     //Initially asking access to AB

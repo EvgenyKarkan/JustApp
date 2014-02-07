@@ -13,56 +13,56 @@
 
 + (CGFloat)tableViewHeight
 {
-	CGFloat result = 0.0f;
+    CGFloat result = 0.0f;
     
-	if ([self isSystemVersionLessThan7]) {
-		result = 360.0f;
-	}
-	else {
-		result = 360.f;
-	}
+    if ([self isSystemVersionLessThan7]) {
+        result = 360.0f;
+    }
+    else {
+        result = 360.f;
+    }
     
-	return result;
+    return result;
 }
 
 + (BOOL)isSystemVersionLessThan7
 {
-	return ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] == NSOrderedAscending);
+    return ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] == NSOrderedAscending);
 }
 
 + (BOOL)isIPad
 {
-	BOOL result = NO;
+    BOOL result = NO;
     
-	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		result = YES;
-	}
-	else {
-		result = NO;
-	}
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        result = YES;
+    }
+    else {
+        result = NO;
+    }
     
-	return result;
+    return result;
 }
 
 + (CGFloat)verticalOffset
 {
-	CGFloat result = 0.0f;
+    CGFloat result = 0.0f;
     
-	if ([self isSystemVersionLessThan7]) {
-		result = 0.0f;
-	}
-	else {
-		result = 64.0f;
-	}
+    if ([self isSystemVersionLessThan7]) {
+        result = 0.0f;
+    }
+    else {
+        result = 64.0f;
+    }
     
-	return result;
+    return result;
 }
 
 #pragma mark - Private API
 
 + (BOOL)isIPhone5
 {
-	return (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)568.0f) < DBL_EPSILON);
+    return (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)568.0f) < DBL_EPSILON);
 }
 
 @end

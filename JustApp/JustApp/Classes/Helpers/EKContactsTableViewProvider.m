@@ -28,18 +28,18 @@ static CGFloat    const kEKHeightForRow    = 52.0f;
 
 - (instancetype)initWithData:(NSMutableArray *)dataSource
 {
-	NSParameterAssert(dataSource != nil);
-	NSParameterAssert([dataSource count] > 0);
+    NSParameterAssert(dataSource != nil);
+    NSParameterAssert([dataSource count] > 0);
     
-	self = [super init];
-	if (self) {
-		self.data = dataSource;
+    self = [super init];
+    if (self) {
+        self.data = dataSource;
         self.searchData = [@[] mutableCopy];
-	}
+    }
     
     [self prepeareIndexedDataSourceFromData:self.data];
     
-	return self;
+    return self;
 }
 
 #pragma mark - Prepare data
@@ -47,82 +47,82 @@ static CGFloat    const kEKHeightForRow    = 52.0f;
 - (void)prepeareIndexedDataSourceFromData:(NSMutableArray *)datasource
 {
     BOOL found = NO;
-	self.sections = [[NSMutableDictionary alloc] init];
+    self.sections = [[NSMutableDictionary alloc] init];
     
-	for (EKPerson *person in datasource) {
+    for (EKPerson *person in datasource) {
         NSParameterAssert(person != nil);
-		if ([person.lastName isEqualToString:@""]) {
-			person.lastName = @"Skywalker";
-		}
-		NSString *firstLetter = [person.lastName substringToIndex:1];
-		found = NO;
+        if ([person.lastName isEqualToString:@""]) {
+            person.lastName = @"Skywalker";
+        }
+        NSString *firstLetter = [person.lastName substringToIndex:1];
+        found = NO;
         
-		for (NSString *key in [self.sections allKeys]) {
+        for (NSString *key in [self.sections allKeys]) {
             NSParameterAssert(key != nil);
             NSParameterAssert(![key isEqualToString:@""]);
             NSParameterAssert(![key isEqualToString:@" "]);
-			if ([key isEqualToString:firstLetter]) {
-				found = YES;
-			}
-		}
+            if ([key isEqualToString:firstLetter]) {
+                found = YES;
+            }
+        }
         
-		if (!found) {
-			NSMutableArray *valueArray = [@[] mutableCopy];
-			[self.sections setValue:valueArray
-			                 forKey:firstLetter];
-		}
-	}
+        if (!found) {
+            NSMutableArray *valueArray = [@[] mutableCopy];
+            [self.sections setValue:valueArray
+                             forKey:firstLetter];
+        }
+    }
     
-	for (EKPerson *human in datasource) {
-		[[self.sections objectForKey:[human.lastName substringToIndex:1]] addObject:human];
-	}
+    for (EKPerson *human in datasource) {
+        [[self.sections objectForKey:[human.lastName substringToIndex:1]] addObject:human];
+    }
     
-	for (NSString *key in [self.sections allKeys]) {
-		[[self.sections objectForKey:key] sortUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES]]];
-	}
+    for (NSString *key in [self.sections allKeys]) {
+        [[self.sections objectForKey:key] sortUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES]]];
+    }
 }
 
 #pragma mark - Tableview delegate & datasourse APIs
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	EKContactsCell *cell = [tableView dequeueReusableCellWithIdentifier:kSUReuseIdentifier];
-	if (cell == nil) {
-		cell = [[EKContactsCell alloc] init];
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    EKContactsCell *cell = [tableView dequeueReusableCellWithIdentifier:kSUReuseIdentifier];
+    if (cell == nil) {
+        cell = [[EKContactsCell alloc] init];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-		EKPerson *buddy = [[self.sections valueForKey:[[[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]]         objectAtIndex:indexPath.row];
-		cell.title.text = [NSString stringWithFormat:@"%@ %@", buddy.firstName, buddy.lastName];
-		cell.icon.image = buddy.avatar;
-	}
-	return cell;
+        EKPerson *buddy = [[self.sections valueForKey:[[[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:indexPath.section]]         objectAtIndex:indexPath.row];
+        cell.title.text = [NSString stringWithFormat:@"%@ %@", buddy.firstName, buddy.lastName];
+        cell.icon.image = buddy.avatar;
+    }
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return kEKHeightForRow;
+    return kEKHeightForRow;
 }
 
 #pragma mark - Indexed stuff APIs
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-	return [[[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section];
+    return [[[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [[self.sections valueForKey:[[[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section]] count];
+    return [[self.sections valueForKey:[[[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] objectAtIndex:section]] count];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-	return [[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    return [[self.sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return [[self.sections allKeys] count];
+    return [[self.sections allKeys] count];
 }
 
 @end

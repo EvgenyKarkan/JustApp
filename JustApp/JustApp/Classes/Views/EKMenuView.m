@@ -16,25 +16,25 @@
 {
 	self = [super initWithFrame:frame];
     
-	if (self) {
-		self.tableView = [[UITableView alloc] init];
-		self.tableView.bounces = NO;
-		self.tableView.backgroundColor = BACKGROUND_COLOR;
+    if (self) {
+        self.tableView = [[UITableView alloc] init];
+        self.tableView.bounces = NO;
+        self.tableView.backgroundColor = BACKGROUND_COLOR;
         self.tableView.separatorColor = [NAV_BAR_BACKGROUND_COLOR colorWithAlphaComponent:0.5f];
-		[self addSubview:self.tableView];
+        [self addSubview:self.tableView];
         
-		if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-			[self.tableView setSeparatorInset:UIEdgeInsetsZero];
-		}
-	}
-	return self;
+        if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+            [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+        }
+    }
+    return self;
 }
 
 - (void)layoutSubviews
 {
-	[super layoutSubviews];
+    [super layoutSubviews];
     
-	self.tableView.frame = CGRectMake(0.0f, 0.0f, 245.0f, [EKLayoutUtil tableViewHeight]);
+    self.tableView.frame = CGRectMake(0.0f, 0.0f, 245.0f, [EKLayoutUtil tableViewHeight]);
 }
 
 @end

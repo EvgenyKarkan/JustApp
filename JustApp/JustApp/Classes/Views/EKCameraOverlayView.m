@@ -43,19 +43,19 @@
         [self.torchButton setSelectedItem:0];
         [self.topBar addSubview:self.torchButton];
         
-		self.frontBackButton = [[DDExpandableButton alloc] initWithPoint:CGPointZero
-		                                                       leftTitle:nil
-		                                                         buttons:@[NSLocalizedString(@"Back", @"Back"),
+        self.frontBackButton = [[DDExpandableButton alloc] initWithPoint:CGPointZero
+                                                               leftTitle:nil
+                                                                 buttons:@[NSLocalizedString(@"Back", @"Back"),
                                                                            NSLocalizedString(@"Front", @"Front")]];
         [self.frontBackButton setToggleMode:YES];
         [self.frontBackButton setInnerBorderWidth:0];
-		[self.frontBackButton setHorizontalPadding:6.0f];
+        [self.frontBackButton setHorizontalPadding:6.0f];
         [self.frontBackButton updateDisplay];
-		[self.topBar addSubview:self.frontBackButton];
+        [self.topBar addSubview:self.frontBackButton];
         
-		self.typeButton = [[DDExpandableButton alloc] initWithPoint:CGPointMake(20.0, 16.5f)
-		                                                  leftTitle:[UIImage imageNamed:@"FrontBackCam"]
-		                                                    buttons:@[NSLocalizedString(@"Photo", @"Photo"),
+        self.typeButton = [[DDExpandableButton alloc] initWithPoint:CGPointMake(20.0, 16.5f)
+                                                          leftTitle:[UIImage imageNamed:@"FrontBackCam"]
+                                                            buttons:@[NSLocalizedString(@"Photo", @"Photo"),
                                                                       NSLocalizedString(@"Video", @"Video")]];
         [self.typeButton setInnerBorderWidth:0];
         [self.typeButton setHorizontalPadding:6.0f];
@@ -65,13 +65,13 @@
         [self.bottomBar addSubview:self.typeButton];
         
         self.cancelButton = [[DDExpandableButton alloc] initWithPoint:CGPointZero
-		                                                       leftTitle:nil
-		                                                         buttons:@[NSLocalizedString(@"Cancel", @"Cancel")]];
+                                                            leftTitle:nil
+                                                              buttons:@[NSLocalizedString(@"Cancel", @"Cancel")]];
         [self.cancelButton setToggleMode:YES];
         [self.cancelButton setInnerBorderWidth:0];
-		[self.cancelButton setHorizontalPadding:6.0f];
+        [self.cancelButton setHorizontalPadding:6.0f];
         [self.cancelButton updateDisplay];
-		[self.bottomBar addSubview:self.cancelButton];
+        [self.bottomBar addSubview:self.cancelButton];
         
         self.videoIndicator = [[UIView alloc] init];
         [self.bottomBar addSubview:self.videoIndicator];

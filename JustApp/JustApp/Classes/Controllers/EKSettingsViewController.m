@@ -25,66 +25,66 @@
 
 - (void)viewDidLoad
 {
-	[super viewDidLoad];
+    [super viewDidLoad];
     [self setUpUI];
 }
 
 - (void)didReceiveMemoryWarning
 {
-	[super didReceiveMemoryWarning];
+    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - Action
 
 - (void)buttonPressed:(id)sender
 {
-	SDImageCache *imageCache = [SDImageCache sharedImageCache];
-	[imageCache clearMemory];
-	[imageCache clearDisk];
-	[imageCache cleanDisk];
+    SDImageCache *imageCache = [SDImageCache sharedImageCache];
+    [imageCache clearMemory];
+    [imageCache clearDisk];
+    [imageCache cleanDisk];
     
     [SVProgressHUD showSuccessWithStatus:@"Cache cleared!"];
 }
 
 - (void)setUpUI
 {
-	MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
+    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
 	                                                                                 action:@selector(leftDrawerButtonPress:)];
-	leftDrawerButton.tintColor = [UIColor whiteColor];
+    leftDrawerButton.tintColor = [UIColor whiteColor];
     
-	if ([EKLayoutUtil isSystemVersionLessThan7]) {
-		UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+    if ([EKLayoutUtil isSystemVersionLessThan7]) {
+        UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
 		                                                                        target:nil
 		                                                                        action:nil];
-		spacer.width = 12.0f;
-		[self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:spacer, leftDrawerButton, nil]
+        spacer.width = 12.0f;
+        [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:spacer, leftDrawerButton, nil]
 		                                  animated:NO];
-	}
-	else {
-		[self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
-	}
+    }
+    else {
+        [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    }
     
-	[self.navigationController.navigationBar setTranslucent:NO];
-	self.title = NSLocalizedString(@"JustSettings", @"JustSettings");
+    [self.navigationController.navigationBar setTranslucent:NO];
+    self.title = NSLocalizedString(@"JustSettings", @"JustSettings");
     
     if (![EKLayoutUtil isSystemVersionLessThan7]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
     self.view.backgroundColor = BACKGROUND_COLOR;
-	UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	clearButton.frame = CGRectMake(self.view.frame.size.width / 2.0f - 80.0f, self.view.frame.size.height - 100.0f, 160.0f, 32.0f);
-
-	clearButton.showsTouchWhenHighlighted = YES;
+    UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    clearButton.frame = CGRectMake(self.view.frame.size.width / 2.0f - 80.0f, self.view.frame.size.height - 100.0f, 160.0f, 32.0f);
     
-	[clearButton setTitle:NSLocalizedString(@"Clear cache", @"")
-	             forState:UIControlStateNormal];
-	[clearButton.titleLabel setFont:[UIFont fontWithName:[EKFontsUtil fontName]
-	                                                size:15.0f]];
-	[clearButton addTarget:self
-	                action:@selector(buttonPressed:)
-	      forControlEvents:UIControlEventTouchUpInside];
+    clearButton.showsTouchWhenHighlighted = YES;
+    
+    [clearButton setTitle:NSLocalizedString(@"Clear cache", @"")
+                 forState:UIControlStateNormal];
+    [clearButton.titleLabel setFont:[UIFont fontWithName:[EKFontsUtil fontName]
+                                                    size:15.0f]];
+    [clearButton addTarget:self
+                    action:@selector(buttonPressed:)
+          forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:clearButton];
     
@@ -104,10 +104,10 @@
 
 - (void)leftDrawerButtonPress:(MMDrawerBarButtonItem *)sender
 {
-	NSParameterAssert(sender != nil);
+    NSParameterAssert(sender != nil);
     
-	self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 @end

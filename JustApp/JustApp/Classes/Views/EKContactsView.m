@@ -13,43 +13,43 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-	self = [super initWithFrame:frame];
-	if (self) {
-		self.backgroundColor = BACKGROUND_COLOR;
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = BACKGROUND_COLOR;
         
-		self.tableView = [[UITableView alloc] init];
-		self.tableView.bounces = YES;
-		self.tableView.backgroundColor = BACKGROUND_COLOR;
-		self.tableView.separatorColor = [NAV_BAR_BACKGROUND_COLOR colorWithAlphaComponent:0.5f];
+        self.tableView = [[UITableView alloc] init];
+        self.tableView.bounces = YES;
+        self.tableView.backgroundColor = BACKGROUND_COLOR;
+        self.tableView.separatorColor = [NAV_BAR_BACKGROUND_COLOR colorWithAlphaComponent:0.5f];
         
-		[self.tableView setSectionIndexColor:[UIColor whiteColor]];
+        [self.tableView setSectionIndexColor:[UIColor whiteColor]];
         
-		if ([self.tableView respondsToSelector:@selector(setSectionIndexBackgroundColor:)]) {
-			[self.tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
-		}
+        if ([self.tableView respondsToSelector:@selector(setSectionIndexBackgroundColor:)]) {
+            [self.tableView setSectionIndexBackgroundColor:[UIColor clearColor]];
+        }
         
-		[self addSubview:self.tableView];
+        [self addSubview:self.tableView];
         
-		self.searchBar = [[UISearchBar alloc] init];
-		self.searchBar.placeholder = @"Search...";
-		if ([self.searchBar respondsToSelector:@selector(barTintColor)]) {
-			self.searchBar.barTintColor = BACKGROUND_COLOR;
-		}
-		else {
-			self.searchBar.tintColor = BACKGROUND_COLOR;
-		}
+        self.searchBar = [[UISearchBar alloc] init];
+        self.searchBar.placeholder = @"Search...";
+        if ([self.searchBar respondsToSelector:@selector(barTintColor)]) {
+            self.searchBar.barTintColor = BACKGROUND_COLOR;
+        }
+        else {
+            self.searchBar.tintColor = BACKGROUND_COLOR;
+        }
         
-		[self addSubview:self.searchBar];
-	}
-	return self;
+        [self addSubview:self.searchBar];
+    }
+    return self;
 }
 
 - (void)layoutSubviews
 {
-	[super layoutSubviews];
+    [super layoutSubviews];
     
-	self.searchBar.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, 44.0f);
-	self.tableView.frame = CGRectMake(0.0f, 44.0f, self.frame.size.width, self.frame.size.height - 44.0f);
+    self.searchBar.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, 44.0f);
+    self.tableView.frame = CGRectMake(0.0f, 44.0f, self.frame.size.width, self.frame.size.height - 44.0f);
 }
 
 @end

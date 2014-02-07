@@ -15,44 +15,44 @@
 
 + (UIImage *)squareImageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize
 {
-	NSParameterAssert(image != nil);
-	NSParameterAssert(!CGSizeEqualToSize(newSize, CGSizeZero));
+    NSParameterAssert(image != nil);
+    NSParameterAssert(!CGSizeEqualToSize(newSize, CGSizeZero));
     
-	double ratio = 0.0f;
-	double delta = 0.0f;
-	CGPoint offset = CGPointZero;
+    double ratio = 0.0f;
+    double delta = 0.0f;
+    CGPoint offset = CGPointZero;
     
-	CGSize size = CGSizeMake(newSize.width, newSize.width);
+    CGSize size = CGSizeMake(newSize.width, newSize.width);
     
-	if (image.size.width > image.size.height) {
-		ratio = newSize.width / image.size.width;
-		delta = (ratio * image.size.width - ratio * image.size.height);
-		offset = CGPointMake(delta / 2, 0);
-	}
-	else {
-		ratio = newSize.width / image.size.height;
-		delta = (ratio * image.size.height - ratio * image.size.width);
-		offset = CGPointMake(0, delta / 2);
-	}
+    if (image.size.width > image.size.height) {
+        ratio = newSize.width / image.size.width;
+        delta = (ratio * image.size.width - ratio * image.size.height);
+        offset = CGPointMake(delta / 2, 0);
+    }
+    else {
+        ratio = newSize.width / image.size.height;
+        delta = (ratio * image.size.height - ratio * image.size.width);
+        offset = CGPointMake(0, delta / 2);
+    }
     
-	CGRect clipRect = CGRectMake(-offset.x, -offset.y,
-	                             (ratio * image.size.width) + delta,
-	                             (ratio * image.size.height) + delta);
+    CGRect clipRect = CGRectMake(-offset.x, -offset.y,
+                                (ratio * image.size.width) + delta,
+                                (ratio * image.size.height) + delta);
     
-	if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
-		UIGraphicsBeginImageContextWithOptions(size, YES, 0.0);
-	}
-	else {
-		UIGraphicsBeginImageContext(size);
-	}
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
+        UIGraphicsBeginImageContextWithOptions(size, YES, 0.0);
+    }
+    else {
+        UIGraphicsBeginImageContext(size);
+    }
     
-	UIRectClip(clipRect);
-	[image drawInRect:clipRect];
+    UIRectClip(clipRect);
+    [image drawInRect:clipRect];
     
-	UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     
-	return newImage;
+    return newImage;
 }
 
 @end

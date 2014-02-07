@@ -24,35 +24,35 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-	self = [super initWithFrame:frame];
+    self = [super initWithFrame:frame];
     
-	if (self) {
-		self.photoControl = [[EKCameraControl alloc] initWithImage:[UIImage imageNamed:kEKCameraAsset]];
-		[self addSubview:self.photoControl];
+    if (self) {
+        self.photoControl = [[EKCameraControl alloc] initWithImage:[UIImage imageNamed:kEKCameraAsset]];
+        [self addSubview:self.photoControl];
         
-		self.centerImage = [[UIImageView alloc] init];
-		self.centerImage.image = [UIImage imageNamed:kEKFaceAsset];
-		self.centerImage.layer.borderColor = NAV_BAR_BACKGROUND_COLOR.CGColor;
-		self.centerImage.layer.borderWidth = 5.0f;
-		[self addSubview:self.centerImage];
+        self.centerImage = [[UIImageView alloc] init];
+        self.centerImage.image = [UIImage imageNamed:kEKFaceAsset];
+        self.centerImage.layer.borderColor = NAV_BAR_BACKGROUND_COLOR.CGColor;
+        self.centerImage.layer.borderWidth = 5.0f;
+        [self addSubview:self.centerImage];
         
-		self.helloLabel = [[UILabel alloc] init];
-		self.helloLabel.backgroundColor = [UIColor clearColor];
-		self.helloLabel.textAlignment = NSTextAlignmentCenter;
-		self.helloLabel.font = [UIFont fontWithName:[EKFontsUtil fontName]
+        self.helloLabel = [[UILabel alloc] init];
+        self.helloLabel.backgroundColor = [UIColor clearColor];
+        self.helloLabel.textAlignment = NSTextAlignmentCenter;
+        self.helloLabel.font = [UIFont fontWithName:[EKFontsUtil fontName]
                                                size:[EKFontsUtil fontSizeForLabel]];
-		self.helloLabel.text = NSLocalizedString(@"HELLO_TEXT", @"");
-		self.helloLabel.textColor = NAV_BAR_BACKGROUND_COLOR;
-		[self addSubview:self.helloLabel];
-	}
-	return self;
+        self.helloLabel.text = NSLocalizedString(@"HELLO_TEXT", @"");
+        self.helloLabel.textColor = NAV_BAR_BACKGROUND_COLOR;
+        [self addSubview:self.helloLabel];
+    }
+    return self;
 }
 
 #pragma mark - UIView class overriden API
 
 - (void)layoutSubviews
 {
-	[super layoutSubviews];
+    [super layoutSubviews];
     
     CGFloat imageSide       = self.frame.size.width / 1.25f;
     CGFloat halfSelfWidth   = self.frame.size.width / 2.0f;

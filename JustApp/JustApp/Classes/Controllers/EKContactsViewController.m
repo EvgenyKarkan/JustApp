@@ -30,24 +30,24 @@
 
 - (void)loadView
 {
-	EKContactsView *view = [[EKContactsView alloc] init];
-	self.view = view;
-	self.contactsView = view;
+    EKContactsView *view = [[EKContactsView alloc] init];
+    self.view = view;
+    self.contactsView = view;
 }
 
 - (void)viewDidLoad
 {
-	[super viewDidLoad];
+    [super viewDidLoad];
     
-	[self setupUI];
-	[self handleAccessToAdressBookForCurrentAccesType:[EKAddressBookUtil currentAccessType]];
+    [self setupUI];
+    [self handleAccessToAdressBookForCurrentAccesType:[EKAddressBookUtil currentAccessType]];
     
     self.contactsView.searchBar.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
 {
-	[super didReceiveMemoryWarning];
+    [super didReceiveMemoryWarning];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -95,40 +95,40 @@
 
 - (void)loadAddressBookDataAndPassItToTableViewProvider
 {
-	NSMutableArray *data = [EKAddressBookUtil persons];
+    NSMutableArray *data = [EKAddressBookUtil persons];
     
-	if ([data count] > 0 && data != nil) {
-		self.tableViewProvider = [[EKContactsTableViewProvider alloc] initWithData:data];
-		self.contactsView.tableView.delegate = self.tableViewProvider;
-		self.contactsView.tableView.dataSource = self.tableViewProvider;
-	}
-	else {
-		[SVProgressHUD showErrorWithStatus:@"AddressBook is empty. Sorry"];
-	}
+    if ([data count] > 0 && data != nil) {
+        self.tableViewProvider = [[EKContactsTableViewProvider alloc] initWithData:data];
+        self.contactsView.tableView.delegate = self.tableViewProvider;
+        self.contactsView.tableView.dataSource = self.tableViewProvider;
+    }
+    else {
+        [SVProgressHUD showErrorWithStatus:@"AddressBook is empty. Sorry"];
+    }
 }
 
 #pragma mark - UI
 
 - (void)setupUI
 {
-	MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
-	                                                                                 action:@selector(leftDrawerButtonPress:)];
-	leftDrawerButton.tintColor = [UIColor whiteColor];
+    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
+                                                                                     action:@selector(leftDrawerButtonPress:)];
+    leftDrawerButton.tintColor = [UIColor whiteColor];
     
-	if ([EKLayoutUtil isSystemVersionLessThan7]) {
-		UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-		                                                                        target:nil
-		                                                                        action:nil];
-		spacer.width = 12.0f;
-		[self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:spacer, leftDrawerButton, nil]
-		                                  animated:NO];
-	}
-	else {
-		[self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
-	}
+    if ([EKLayoutUtil isSystemVersionLessThan7]) {
+        UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                                                                target:nil
+                                                                                action:nil];
+        spacer.width = 12.0f;
+        [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:spacer, leftDrawerButton, nil]
+                                          animated:NO];
+    }
+    else {
+        [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    }
     
-	[self.navigationController.navigationBar setTranslucent:NO];
-	self.title = NSLocalizedString(@"JustContacts", @"JustContacts");
+    [self.navigationController.navigationBar setTranslucent:NO];
+    self.title = NSLocalizedString(@"JustContacts", @"JustContacts");
     
     if (![EKLayoutUtil isSystemVersionLessThan7]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -137,75 +137,75 @@
 
 - (void)leftDrawerButtonPress:(MMDrawerBarButtonItem *)sender
 {
-	NSParameterAssert(sender != nil);
+    NSParameterAssert(sender != nil);
     
-	self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 #pragma mark - UISearchBarDelegate stuff
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-	self.contactsView.searchBar.showsCancelButton = YES;
+    self.contactsView.searchBar.showsCancelButton = YES;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-	if ([self.tableViewProvider.searchData count] > 0) {
-		[self.tableViewProvider.searchData removeAllObjects];
-	}
+    if ([self.tableViewProvider.searchData count] > 0) {
+        [self.tableViewProvider.searchData removeAllObjects];
+    }
     
-	if ([searchText length] > 0) {
-		self.tableViewProvider.searching = YES;
-		for (NSUInteger i = 0; i < [self.tableViewProvider.data count]; i++) {
-			NSParameterAssert(self.tableViewProvider.data[i] != nil);
+    if ([searchText length] > 0) {
+        self.tableViewProvider.searching = YES;
+        for (NSUInteger i = 0; i < [self.tableViewProvider.data count]; i++) {
+            NSParameterAssert(self.tableViewProvider.data[i] != nil);
             
-			NSString *name = ((EKPerson *)self.tableViewProvider.data[i]).firstName;
-			NSString *lastName = ((EKPerson *)self.tableViewProvider.data[i]).lastName;
-			NSString *fullName = [NSString stringWithFormat:@"%@%@", name, lastName];
+            NSString *name = ((EKPerson *)self.tableViewProvider.data[i]).firstName;
+            NSString *lastName = ((EKPerson *)self.tableViewProvider.data[i]).lastName;
+            NSString *fullName = [NSString stringWithFormat:@"%@%@", name, lastName];
             
-			NSRange titleResultsRange = [fullName rangeOfString:searchText options:NSCaseInsensitiveSearch];
-			if (titleResultsRange.length > 0) {
-				[self.tableViewProvider.searchData addObject:[self.tableViewProvider.data objectAtIndex:i]];
+            NSRange titleResultsRange = [fullName rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            if (titleResultsRange.length > 0) {
+                [self.tableViewProvider.searchData addObject:[self.tableViewProvider.data objectAtIndex:i]];
                 [self.tableViewProvider prepeareIndexedDataSourceFromData:self.tableViewProvider.searchData];
-			}
-		}
-	}
-	else {
-		self.tableViewProvider.searching = NO;
+            }
+        }
+    }
+    else {
+        self.tableViewProvider.searching = NO;
         [self.tableViewProvider prepeareIndexedDataSourceFromData:self.tableViewProvider.data];
-	}
-
-	[self.contactsView.tableView reloadData];
+    }
+    
+    [self.contactsView.tableView reloadData];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-	[[searchBar valueForKey:@"_searchField"] resignFirstResponder];
+    [[searchBar valueForKey:@"_searchField"] resignFirstResponder];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-	self.contactsView.searchBar.text = @"";
-	[self.contactsView.searchBar resignFirstResponder];
-	self.contactsView.searchBar.showsCancelButton = NO;
+    self.contactsView.searchBar.text = @"";
+    [self.contactsView.searchBar resignFirstResponder];
+    self.contactsView.searchBar.showsCancelButton = NO;
     
     if ([self.tableViewProvider.searchData count] > 0) {
         [self.tableViewProvider.searchData removeAllObjects];
     }
     
-	[self.tableViewProvider prepeareIndexedDataSourceFromData:self.tableViewProvider.data];
-	self.tableViewProvider.searching = NO;
+    [self.tableViewProvider prepeareIndexedDataSourceFromData:self.tableViewProvider.data];
+    self.tableViewProvider.searching = NO;
     
-	[self.contactsView.tableView reloadData];
+    [self.contactsView.tableView reloadData];
 }
 
 #pragma mark - Listening to UIKeybord notification
 
 - (void)onKeyboardHide:(NSNotification *)notification
 {
-	self.contactsView.searchBar.showsCancelButton = NO;
+    self.contactsView.searchBar.showsCancelButton = NO;
 }
 
 @end

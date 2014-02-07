@@ -29,40 +29,40 @@ static CGFloat    const kEKHeightForRow    = 92.0f;
     NSParameterAssert(dataSource != nil);
     NSParameterAssert([dataSource count] > 0);
     
-	self = [super init];
-	if (self) {
-		self.data = dataSource;
+    self = [super init];
+    if (self) {
+        self.data = dataSource;
         self.delegate = delegate;
-	}
+    }
     
-	return self;
+    return self;
 }
 
 #pragma mark - Tableview delegate & datasourse APIs
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [self.data count];
+    return [self.data count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	EKSongCell *cell = [tableView dequeueReusableCellWithIdentifier:kSUReuseIdentifier];
-	if (cell == nil) {
-		cell = [[EKSongCell alloc] init];
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;
-		cell.songLabel.text = [self.data[indexPath.row] allKeys][0];
+    EKSongCell *cell = [tableView dequeueReusableCellWithIdentifier:kSUReuseIdentifier];
+    if (cell == nil) {
+        cell = [[EKSongCell alloc] init];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.songLabel.text = [self.data[indexPath.row] allKeys][0];
         
-		cell.playButton.tag = indexPath.row;
-		cell.pauseButton.tag = indexPath.row;
-		cell.stopButton.tag = indexPath.row;
+        cell.playButton.tag = indexPath.row;
+        cell.pauseButton.tag = indexPath.row;
+        cell.stopButton.tag = indexPath.row;
         
-		[cell.playButton addTarget:self action:@selector(playButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-		[cell.pauseButton addTarget:self action:@selector(pauseButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-		[cell.stopButton addTarget:self action:@selector(stopButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-	}
+        [cell.playButton addTarget:self action:@selector(playButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.pauseButton addTarget:self action:@selector(pauseButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.stopButton addTarget:self action:@selector(stopButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    }
     
-	return cell;
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
