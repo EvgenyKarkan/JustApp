@@ -38,9 +38,9 @@
 
 - (void)loadView
 {
-	EKMenuView *view = [[EKMenuView alloc] init];
-	self.view = view;
-	self.menuView = view;
+    EKMenuView *view = [[EKMenuView alloc] init];
+    self.view = view;
+    self.menuView = view;
 }
 
 - (void)viewDidLoad
