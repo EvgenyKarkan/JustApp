@@ -58,7 +58,7 @@
 - (void)showImagePickerController
 {
 #ifdef __i386__
-    NSLog(@"No camera in simulator, sorry bro :(");
+    NSLog(@"No camera in simulator, sorry bro :("); 
 #else
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"NO_CAMERA", @"")];
