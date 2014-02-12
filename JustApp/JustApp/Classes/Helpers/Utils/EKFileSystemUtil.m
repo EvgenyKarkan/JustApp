@@ -79,7 +79,9 @@
     
     NSData *file = nil;
     
-    for (NSUInteger i = 0; i < [filesNames count]; i++) {
+    NSUInteger counter = [filesNames count];
+    
+    for (NSUInteger i = 0; i < counter; i++) {
         NSParameterAssert(filesNames[i] != nil);
         NSString *name = [(NSString *)filesNames[i] stringByDeletingPathExtension];
         file = [[NSFileManager defaultManager] contentsAtPath:[self pathForFile:(NSString *)filesNames[i]

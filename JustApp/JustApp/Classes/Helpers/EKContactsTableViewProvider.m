@@ -16,7 +16,7 @@ static CGFloat    const kEKHeightForRow    = 52.0f;
 
 @interface EKContactsTableViewProvider ()
 
-@property (nonatomic, strong) NSMutableArray *lastNames;
+@property (nonatomic, strong) NSMutableArray      *lastNames;
 @property (nonatomic, strong) NSMutableDictionary *sections;
 
 @end
@@ -57,7 +57,9 @@ static CGFloat    const kEKHeightForRow    = 52.0f;
         NSString *firstLetter = [person.lastName substringToIndex:1];
         found = NO;
         
-        for (NSString *key in [self.sections allKeys]) {
+        NSArray *allKeysArray = [self.sections allKeys];
+        
+        for (NSString *key in allKeysArray) {
             NSParameterAssert(key != nil);
             NSParameterAssert(![key isEqualToString:@""]);
             NSParameterAssert(![key isEqualToString:@" "]);
@@ -77,7 +79,9 @@ static CGFloat    const kEKHeightForRow    = 52.0f;
         [[self.sections objectForKey:[human.lastName substringToIndex:1]] addObject:human];
     }
     
-    for (NSString *key in [self.sections allKeys]) {
+    NSArray *allKeysArray = [self.sections allKeys];
+    
+    for (NSString *key in allKeysArray) {
         [[self.sections objectForKey:key] sortUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES]]];
     }
 }

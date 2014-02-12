@@ -158,7 +158,8 @@
     
     if ([searchText length] > 0) {
         self.tableViewProvider.searching = YES;
-        for (NSUInteger i = 0; i < [self.tableViewProvider.data count]; i++) {
+        NSUInteger counter = [self.tableViewProvider.data count];
+        for (NSUInteger i = 0; i < counter; i++) {
             NSParameterAssert(self.tableViewProvider.data[i] != nil);
             
             NSString *name = ((EKPerson *)self.tableViewProvider.data[i]).firstName;

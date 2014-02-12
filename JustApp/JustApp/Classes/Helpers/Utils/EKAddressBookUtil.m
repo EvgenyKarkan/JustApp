@@ -19,9 +19,10 @@
     
     if (addressBook != nil) {
         NSArray *allPeople = (__bridge_transfer NSArray *)ABAddressBookCopyArrayOfAllPeople(addressBook);
-        
-        if ([allPeople count] > 0) {
-            for (NSUInteger i = 0; i < [allPeople count]; i++) {
+        NSUInteger counter = [allPeople count];
+        if (counter > 0) {
+            
+            for (NSUInteger i = 0; i < counter; i++) {
                 ABRecordRef person = (__bridge ABRecordRef)allPeople[i];
                 NSParameterAssert(person != nil);
                 

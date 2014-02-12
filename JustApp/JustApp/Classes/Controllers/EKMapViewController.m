@@ -222,7 +222,9 @@
     
 	NSParameterAssert([self.breadcrumbs count] > 1);
     
-    for (NSUInteger i = 0; i < [self.breadcrumbs count]; i++) {
+    NSUInteger counter = [self.breadcrumbs count];
+    
+    for (NSUInteger i = 0; i < counter; i++) {
         CLLocationCoordinate2D location2D = [(NSValue *)self.breadcrumbs[i] MKCoordinateValue];
         MKMapPoint point = MKMapPointForCoordinate(CLLocationCoordinate2DMake(location2D.latitude,
                                                                               location2D.longitude));
