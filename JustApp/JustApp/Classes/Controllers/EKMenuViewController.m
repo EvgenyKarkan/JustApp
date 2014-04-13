@@ -57,11 +57,11 @@
     self.menuView.tableView.delegate = self.tableViewProvider;
     self.menuView.tableView.dataSource = self.tableViewProvider;
     
-    self.mapViewController = [[EKMapViewController alloc] init];
+    self.mapViewController         = [[EKMapViewController alloc] init];
     self.musicPlayerViewController = [[EKMusicPlayerViewController alloc] init];
-    self.contactsViewController = [[EKContactsViewController alloc] init];
-    self.galleryViewController = [[EKGalleryViewController alloc] init];
-    self.settingsViewController = [[EKSettingsViewController alloc] init];
+    self.contactsViewController    = [[EKContactsViewController alloc] init];
+    self.galleryViewController     = [[EKGalleryViewController alloc] init];
+    self.settingsViewController    = [[EKSettingsViewController alloc] init];
 }
 
 #pragma mark - Show controllers
