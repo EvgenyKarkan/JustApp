@@ -1,20 +1,20 @@
 PODS:
-  - DDExpandableButton (1.0.0)
-  - MMDrawerController (0.5.1):
+  - DDExpandableButton (1.1.1)
+  - MMDrawerController (0.5.7):
     - MMDrawerController/Core
     - MMDrawerController/MMDrawerBarButtonItem
     - MMDrawerController/MMDrawerVisualStates
     - MMDrawerController/Subclass
-  - MMDrawerController/Core (0.5.1)
-  - MMDrawerController/MMDrawerBarButtonItem (0.5.1):
+  - MMDrawerController/Core (0.5.7)
+  - MMDrawerController/MMDrawerBarButtonItem (0.5.7):
     - MMDrawerController/Core
-  - MMDrawerController/MMDrawerVisualStates (0.5.1):
+  - MMDrawerController/MMDrawerVisualStates (0.5.7):
     - MMDrawerController/Core
-  - MMDrawerController/Subclass (0.5.1):
+  - MMDrawerController/Subclass (0.5.7):
     - MMDrawerController/Core
-  - SDWebImage (3.5.2):
+  - SDWebImage (3.7.1):
     - SDWebImage/Core
-  - SDWebImage/Core (3.5.2)
+  - SDWebImage/Core (3.7.1)
   - SVProgressHUD (1.0)
 
 DEPENDENCIES:
@@ -24,9 +24,9 @@ DEPENDENCIES:
   - SVProgressHUD
 
 SPEC CHECKSUMS:
-  DDExpandableButton: 0ba1536af0633b0c73701f9a8321e7233970ec67
-  MMDrawerController: 3e22aec684dbee5307ff9d1e76523003a3303a2d
-  SDWebImage: fe7ce01ae4e0a884d168f59c9dd82d35baf8429e
-  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
+  DDExpandableButton: 01fa0f6c2a1aab65736e707c54d14b860bddca8f
+  MMDrawerController: c3ab7a318ddc7e2bcd133139c3161af08c6e1197
+  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.33.1
