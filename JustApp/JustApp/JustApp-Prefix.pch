@@ -25,4 +25,5 @@
     #import <AVFoundation/AVFoundation.h>
     #import <AddressBook/AddressBook.h>
     #import <SDWebImage/UIImageView+WebCache.h>
+    #import <SDWebImage/SDWebImage.h>
 #endif

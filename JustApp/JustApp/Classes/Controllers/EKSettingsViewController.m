@@ -40,8 +40,7 @@
 {
     SDImageCache *imageCache = [SDImageCache sharedImageCache];
     [imageCache clearMemory];
-    [imageCache clearDisk];
-    [imageCache cleanDisk];
+    [imageCache clearDiskOnCompletion:nil];
     
     [SVProgressHUD showSuccessWithStatus:@"Cache cleared!"];
 }

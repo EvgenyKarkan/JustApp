@@ -1,21 +1,23 @@
 PODS:
   - DDExpandableButton (1.1.1)
-  - MMDrawerController (0.5.7):
+  - MMDrawerController (0.6.0):
+    - MMDrawerController/Core (= 0.6.0)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
+    - MMDrawerController/MMDrawerVisualStates (= 0.6.0)
+    - MMDrawerController/Subclass (= 0.6.0)
+  - MMDrawerController/Core (0.6.0)
+  - MMDrawerController/MMDrawerBarButtonItem (0.6.0):
     - MMDrawerController/Core
-    - MMDrawerController/MMDrawerBarButtonItem
-    - MMDrawerController/MMDrawerVisualStates
-    - MMDrawerController/Subclass
-  - MMDrawerController/Core (0.5.7)
-  - MMDrawerController/MMDrawerBarButtonItem (0.5.7):
+  - MMDrawerController/MMDrawerVisualStates (0.6.0):
     - MMDrawerController/Core
-  - MMDrawerController/MMDrawerVisualStates (0.5.7):
+  - MMDrawerController/Subclass (0.6.0):
     - MMDrawerController/Core
-  - MMDrawerController/Subclass (0.5.7):
-    - MMDrawerController/Core
-  - SDWebImage (3.7.1):
-    - SDWebImage/Core
-  - SDWebImage/Core (3.7.1)
-  - SVProgressHUD (1.0)
+  - SDWebImage (5.19.0):
+    - SDWebImage/Core (= 5.19.0)
+  - SDWebImage/Core (5.19.0)
+  - SVProgressHUD (2.3.1):
+    - SVProgressHUD/Core (= 2.3.1)
+  - SVProgressHUD/Core (2.3.1)
 
 DEPENDENCIES:
   - DDExpandableButton
@@ -23,10 +25,19 @@ DEPENDENCIES:
   - SDWebImage
   - SVProgressHUD
 
-SPEC CHECKSUMS:
-  DDExpandableButton: 01fa0f6c2a1aab65736e707c54d14b860bddca8f
-  MMDrawerController: c3ab7a318ddc7e2bcd133139c3161af08c6e1197
-  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
-  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
+SPEC REPOS:
+  trunk:
+    - DDExpandableButton
+    - MMDrawerController
+    - SDWebImage
+    - SVProgressHUD
 
-COCOAPODS: 0.33.1
+SPEC CHECKSUMS:
+  DDExpandableButton: 0e8768eac8b73a45154bd7e470746e6363748765
+  MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
+  SDWebImage: 981fd7e860af070920f249fd092420006014c3eb
+  SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
+
+PODFILE CHECKSUM: 1705cacaa633d65b0c82bba641bfebdbf671e3be
+
+COCOAPODS: 1.15.2
